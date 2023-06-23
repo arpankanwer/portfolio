@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mysite/core/configs/configs.dart';
+import 'package:mysite/core/res/responsive.dart';
+
+class CustomSectionHeading extends StatelessWidget {
+  final String text;
+
+  const CustomSectionHeading({Key? key, required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Responsive(
+      desktop: Text(
+        text,
+        style: const TextStyle(fontSize: 56),
+      ),
+      tablet: Text(
+        text,
+        style: const TextStyle(fontSize: 36),
+      ),
+      mobile: Text(
+        text,
+        style: const TextStyle(fontSize: 26),
+      ),
+    );
+  }
+}
+
+class CustomSectionSubHeading extends StatelessWidget {
+  final String text;
+
+  const CustomSectionSubHeading({Key? key, required this.text})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return Responsive(
+      desktop: Text(text,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.roboto(
+            color: theme.textColor.withOpacity(0.8),
+            fontSize: 20,
+            letterSpacing: 0.3,
+            wordSpacing: 3,
+          )),
+      tablet: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.roboto(
+          color: theme.textColor.withOpacity(0.8),
+          fontSize: 16,
+        ),
+      ),
+      mobile: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.roboto(
+          color: theme.textColor.withOpacity(0.8),
+          fontSize: 13,
+        ),
+      ),
+    );
+  }
+}
