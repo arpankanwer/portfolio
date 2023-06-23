@@ -18,7 +18,7 @@ I am a dedicated and enthusiastic developer who constantly seeks opportunities t
 
 ### Project 1
 
-![Project 1](project1_banner.jpg)
+<!-- ![Project 1](project1_banner.jpg)
 
 - **Description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mattis massa, id bibendum nisi. In at tellus vitae odio pellentesque efficitur ac vitae quam.
 - **GitHub Repository:** [Project 1 Repository](https://github.com/arpankanwer/eduwings)
@@ -28,14 +28,14 @@ I am a dedicated and enthusiastic developer who constantly seeks opportunities t
 ![Project 2](project2_banner.jpg)
 
 - **Description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mattis massa, id bibendum nisi. In at tellus vitae odio pellentesque efficitur ac vitae quam.
-- **GitHub Repository:** [Project 2 Repository](https://github.com/arpankanwer/chatie)
+- **GitHub Repository:** [Project 2 Repository](https://github.com/arpankanwer/chatie) -->
 
 ## Contact Me
 
 I'm always interested in new opportunities and collaborations. Feel free to reach out to me through the following channels:
 
-- Email: [arpan@example.com](mailto:arpankanwer98@gmail.com)
+- Email: [arpankanwer98@gmail.com](mailto:arpankanwer98@gmail.com)
 - LinkedIn: [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
-- Personal Website: [www.arpankanwer.com](https://arpankanwer.me)
+- Personal Website: [Arpan Kanwer](https://arpankanwer.me)
 
 Let's connect and create something amazing together!
