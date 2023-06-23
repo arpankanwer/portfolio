@@ -16,11 +16,11 @@ class ProjectUtils {
 List<ProjectUtils> projectUtils = [
   ProjectUtils(
     banners: 'assets/imgs/1.png',
-    icons: 'assets/icons/github.svg',
+    icons: 'assets/imgs/github.png',
     titles: 'Eduwings Global',
     description:
         'This app Eduwings Global for the company Eduwings Global is made by me in Flutter for students so they can check their profile anytime.',
-    links: 'https://github.com/arpankanwer/EduwingsGlobal',
+    links: 'https://github.com/arpankanwer/eduwings_global',
   ),
   // ProjectUtils(
   //   banners: 'assets/imgs/2.png',

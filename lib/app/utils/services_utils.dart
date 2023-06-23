@@ -22,10 +22,10 @@ List<Skill> servicesUtils = [
     level: 1,
   ),
   Skill(
-    name: 'Database',
-    icon: 'assets/icons/database.svg',
-    description: "Database management and creation",
-    tool: ['Sql', 'MongoDB', 'Firestore Database'],
+    name: 'Frameworks',
+    icon: 'assets/icons/website.svg',
+    description: "Created apps in these frameworks",
+    tool: ['Flutter', 'Spring Boot', '.NET', 'Angular'],
     level: 1,
   ),
   Skill(
@@ -51,10 +51,10 @@ List<Skill> servicesUtils = [
     level: 1,
   ),
   Skill(
-    name: 'Frameworks',
-    icon: 'assets/icons/website.svg',
-    description: "Created apps in these frameworks",
-    tool: ['Flutter', 'Spring Boot', '.NET', 'Angular'],
+    name: 'Database',
+    icon: 'assets/icons/database.svg',
+    description: "Database management and creation",
+    tool: ['Sql', 'MongoDB', 'Firestore Database'],
     level: 1,
-  ),
+  )
 ];

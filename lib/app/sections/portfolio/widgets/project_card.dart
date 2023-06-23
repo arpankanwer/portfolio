@@ -37,7 +37,7 @@ class ProjectCardState extends State<ProjectCard> {
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 1.w),
-        width: Responsive.isDesktop(context) ? 50.w : 70.w,
+        width: Responsive.isDesktop(context) ? 60.w : 70.w,
         height: 50.h,
         decoration: BoxDecoration(
           gradient: isHover ? pinkpurple : grayBack,
