@@ -4,7 +4,7 @@ String yourname = "I'm Birarpanjot Singh Kanwer,";
 
 String animationtxt1 = "Application Developer";
 String animationtxt2 = "Software Developer";
-String animationtxt3 = "Application Developer";
+String animationtxt3 = "Program Developer";
 
 //
 String contactHeadding = "Let’s try my service now!";

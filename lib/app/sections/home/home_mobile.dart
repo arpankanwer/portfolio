@@ -43,22 +43,10 @@ class HomeMobile extends StatelessWidget {
             ),
           ),
           Space.y(1.w)!,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                "A ",
-                style: TextStyle(
-                  fontSize: isFontSize(context, 18),
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              AnimatedTextKit(
-                animatedTexts: mobileList,
-                repeatForever: true,
-                isRepeatingAnimation: true,
-              ),
-            ],
+          AnimatedTextKit(
+            animatedTexts: mobileList,
+            repeatForever: true,
+            isRepeatingAnimation: true,
           ),
 
           Space.y(2.w)!,
@@ -71,14 +59,12 @@ class HomeMobile extends StatelessWidget {
                   html.window.open(resume, "pdf");
                 },
               ),
-              // const EntranceFader(
-              //   offset: Offset(0, 0),
-              //   delay: Duration(seconds: 1),
-              //   duration: Duration(milliseconds: 800),
-              //   child: ZoomAnimations(),
-              // )
-
-              const ZoomAnimations()
+              const EntranceFader(
+                offset: Offset(0, 0),
+                delay: Duration(seconds: 1),
+                duration: Duration(milliseconds: 800),
+                child: ZoomAnimations(),
+              )
             ],
           ),
         ],

@@ -21,8 +21,6 @@ class WorkCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
       decoration: BoxDecoration(
@@ -31,13 +29,13 @@ class WorkCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         boxShadow: [blackColorShadow],
       ),
-      height: height * 0.4,
       child: InkWell(
         hoverColor: Colors.transparent,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         onTap: () {},
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -73,8 +71,6 @@ class WorkCard extends StatelessWidget {
             const SizedBox(height: 16.0),
             Text(
               description,
-              overflow:
-                  Responsive.isMobile(context) ? TextOverflow.ellipsis : TextOverflow.visible,
               style: const TextStyle(fontSize: 16.0),
             ),
           ],

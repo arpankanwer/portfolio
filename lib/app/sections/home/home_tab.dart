@@ -65,21 +65,9 @@ class HomeTab extends StatelessWidget {
                   offset: const Offset(-10, 0),
                   delay: const Duration(seconds: 1),
                   duration: const Duration(milliseconds: 800),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "A ",
-                        style: TextStyle(
-                          fontSize: isFontSize(context, 24),
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      AnimatedTextKit(
-                        animatedTexts: tabList,
-                        isRepeatingAnimation: true,
-                      ),
-                    ],
+                  child: AnimatedTextKit(
+                    animatedTexts: tabList,
+                    isRepeatingAnimation: true,
                   ),
                 ),
                 Space.y(1.5.w)!,
