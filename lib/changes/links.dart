@@ -1,6 +1,6 @@
 // CV
 const String resume =
-    'https://drive.google.com/file/d/1digfv2cPgv6aSO9sRlfEwYcGTbjbNzPp/view?usp=sharing';
+    'https://drive.google.com/file/d/1RtCZ0qQxTQ-BWn_Em4lUj9ctacjueZaF/view?usp=sharing';
 
 // Github Link
 const String gitHub = 'https://github.com/arpankanwer';
@@ -16,7 +16,6 @@ const String buymeacoffee = 'https://www.buymeacoffee.com/arpankanwer';
 // Github Link
 const String instagram = 'https://instagram.com/arpankanwer';
 // socialLinks
-
 
 const String fiverr = 'https://www.fiverr.com/arpankanwer';
 // Github Link

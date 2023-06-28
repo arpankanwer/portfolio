@@ -1,6 +1,6 @@
 String hellotag = '''Hi there, Welcome to My Portfolio ''';
 
-String yourname = "I'm Arpan Kanwer,";
+String yourname = "I'm Birarpanjot Singh Kanwer,";
 
 String animationtxt1 = "Application Developer";
 String animationtxt2 = "Software Developer";

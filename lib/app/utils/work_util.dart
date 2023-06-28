@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/core/color/colors.dart';
 
+import '../../core/res/responsive.dart';
+
 class WorkCard extends StatelessWidget {
   final String title;
   final String company;
@@ -21,7 +23,7 @@ class WorkCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    return AnimatedContainer(
+    return Container(
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
       decoration: BoxDecoration(
         gradient: pinkpurple,
@@ -30,12 +32,6 @@ class WorkCard extends StatelessWidget {
         boxShadow: [blackColorShadow],
       ),
       height: height * 0.4,
-      // decoration: BoxDecoration(
-      //   color: Colors.white.withOpacity(0.3),
-      //   borderRadius: BorderRadius.circular(20.0),
-      // ),
-      curve: Curves.fastOutSlowIn,
-      duration: const Duration(milliseconds: 300),
       child: InkWell(
         hoverColor: Colors.transparent,
         splashColor: Colors.transparent,
@@ -77,6 +73,8 @@ class WorkCard extends StatelessWidget {
             const SizedBox(height: 16.0),
             Text(
               description,
+              overflow:
+                  Responsive.isMobile(context) ? TextOverflow.ellipsis : TextOverflow.visible,
               style: const TextStyle(fontSize: 16.0),
             ),
           ],
