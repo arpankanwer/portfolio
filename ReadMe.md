@@ -1,6 +1,6 @@
 # Arpan Kanwer's Portfolio
 
-![Arpan Kanwer](assets/portfolio_photo.jpg)
+![Arpan Kanwer](assets/imgs/portfolio_photo.jpg)
 
 Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer dedicated to crafting exceptional digital experiences. I specialize in building user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a commitment to clean code, I strive to deliver high-quality solutions that exceed expectations.
 
