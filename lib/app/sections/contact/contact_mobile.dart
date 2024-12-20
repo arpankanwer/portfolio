@@ -12,7 +12,6 @@ class ContactMobileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
     return Column(
       children: [
         Space.y(10.w)!,
