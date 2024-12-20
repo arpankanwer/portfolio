@@ -17,15 +17,17 @@ class ConnectedBloc extends Bloc<ConnectedEvent, ConnectedState> {
 
     subscription = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.mobile ||
-          result == ConnectivityResult.wifi) {
+        .listen((List<ConnectivityResult> results) {
+      // Check for desired connection types within the list
+      if (results.contains(ConnectivityResult.mobile) ||
+          results.contains(ConnectivityResult.wifi)) {
         add(OnConnectedEvent());
       } else {
         add(OnNotConnectedEvent());
       }
     });
   }
+
   @override
   Future<void> close() {
     subscription?.cancel();
