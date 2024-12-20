@@ -1,4 +1,4 @@
-# Arpan Kanwer's Portfolio
+# Birarpanjot Singh Kanwer's Portfolio
 
 ![Arpan Kanwer](assets/imgs/portfolio_photo.png)
 
