@@ -2,40 +2,62 @@
 
 ![Arpan Kanwer](portfolio_photo.jpg)
 
-Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer with a knack for crafting amazing digital experiences. I specialize in creating user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a love for clean code, I strive to deliver high-quality solutions that exceed expectations.
+Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer dedicated to crafting exceptional digital experiences. I specialize in building user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a commitment to clean code, I strive to deliver high-quality solutions that exceed expectations.
 
 ## About Me
 
-I am a dedicated and enthusiastic developer who constantly seeks opportunities to learn and grow in the ever-evolving world of technology. I enjoy working on challenging projects that push my boundaries and allow me to unleash my creativity. My skills include:
+As a dedicated and enthusiastic developer, I am constantly seeking opportunities to learn and grow in the ever-evolving world of technology. I thrive on challenging projects that push my boundaries and allow me to unleash my creativity. My skills include:
 
-- HTML, CSS, and JavaScript
-- React.js and Vue.js
-- Node.js and Express.js
-- SQL and NoSQL databases
-- Git and version control
+- **Front-End Development:** HTML, CSS, JavaScript, React.js, Vue.js
+- **Back-End Development:** Node.js, Express.js
+- **Databases:** SQL, NoSQL
+- **Version Control:** Git
 
 ## Projects
 
-### Project 1
+Here are some of the projects I've worked on:
 
-<!-- ![Project 1](project1_banner.jpg)
+### EduWings Global
 
-- **Description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mattis massa, id bibendum nisi. In at tellus vitae odio pellentesque efficitur ac vitae quam.
-- **GitHub Repository:** [Project 1 Repository](https://github.com/arpankanwer/eduwings)
+An educational platform designed to connect students with tutors worldwide, facilitating seamless learning experiences.
 
-### Project 2
+- **Technologies Used:** Dart
+- **GitHub Repository:** [EduWings Global](https://github.com/arpankanwer/eduwings_global)
 
-![Project 2](project2_banner.jpg)
+### Shopping Cart Application
 
-- **Description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mattis massa, id bibendum nisi. In at tellus vitae odio pellentesque efficitur ac vitae quam.
-- **GitHub Repository:** [Project 2 Repository](https://github.com/arpankanwer/chatie) -->
+A Java-based shopping cart application that allows users to browse products, add items to their cart, and proceed to checkout.
+
+- **Technologies Used:** Java
+- **GitHub Repository:** [Shopping Cart](https://github.com/arpankanwer/ShoppingCart)
+
+### Chatie
+
+A chat application developed using Dart, enabling real-time communication between users with a focus on simplicity and efficiency.
+
+- **Technologies Used:** Dart
+- **GitHub Repository:** [Chatie](https://github.com/arpankanwer/chatie)
+
+### Portfolio Website
+
+My personal portfolio website showcasing my projects, skills, and experience.
+
+- **Technologies Used:** Dart
+- **GitHub Repository:** [Portfolio](https://github.com/arpankanwer/portfolio)
+
+### Smart Garden
+
+A smart garden project involving a zone-divided raised garden bed operated using motorized valves controlled by a microcontroller, interfaced with an internally hosted website.
+
+- **Technologies Used:** C
+- **GitHub Repository:** [Smart Garden](https://github.com/arpankanwer/SmartGarden)
 
 ## Contact Me
 
 I'm always interested in new opportunities and collaborations. Feel free to reach out to me through the following channels:
 
-- Email: [arpankanwer98@gmail.com](mailto:arpankanwer98@gmail.com)
-- LinkedIn: [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
-- Personal Website: [Arpan Kanwer](https://arpankanwer.me)
+- **Email:** [arpankanwer98@gmail.com](mailto:arpankanwer98@gmail.com)
+- **LinkedIn:** [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
+- **Personal Website:** [Arpan Kanwer](https://arpankanwer.me)
 
 Let's connect and create something amazing together!
