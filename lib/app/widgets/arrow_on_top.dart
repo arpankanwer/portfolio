@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ArrowOnTop extends StatefulWidget {
-  const ArrowOnTop({Key? key}) : super(key: key);
+  const ArrowOnTop({super.key});
 
   @override
   ArrowOnTopState createState() => ArrowOnTopState();

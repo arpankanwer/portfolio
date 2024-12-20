@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'package:universal_html/html.dart' as html;
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key}) : super(key: key);
+  const HomeTab({super.key});
 
   @override
   Widget build(BuildContext context) {

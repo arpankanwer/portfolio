@@ -4,7 +4,7 @@ import 'package:mysite/app/sections/main/main_section.dart';
 import 'bloc/connected_bloc.dart';
 
 class NChecking extends StatelessWidget {
-  const NChecking({Key? key}) : super(key: key);
+  const NChecking({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class NChecking extends StatelessWidget {
 }
 
 class NoConnectionErorr extends StatelessWidget {
-  const NoConnectionErorr({Key? key}) : super(key: key);
+  const NoConnectionErorr({super.key});
 
   @override
   Widget build(BuildContext context) {

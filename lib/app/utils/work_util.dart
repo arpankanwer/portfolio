@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/core/color/colors.dart';
 
-import '../../core/res/responsive.dart';
 
 class WorkCard extends StatelessWidget {
   final String title;

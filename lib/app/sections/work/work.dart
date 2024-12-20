@@ -4,7 +4,7 @@ import 'package:mysite/app/sections/work/work_mobile.dart';
 import 'package:mysite/core/res/responsive.dart';
 
 class Work extends StatelessWidget {
-  const Work({Key? key}) : super(key: key);
+  const Work({super.key});
 
   @override
   Widget build(BuildContext context) {

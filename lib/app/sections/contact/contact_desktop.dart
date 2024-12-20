@@ -9,7 +9,7 @@ import 'package:mysite/core/util/constants.dart';
 import 'package:sizer/sizer.dart';
 
 class ContactDesktop extends StatelessWidget {
-  const ContactDesktop({Key? key}) : super(key: key);
+  const ContactDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {

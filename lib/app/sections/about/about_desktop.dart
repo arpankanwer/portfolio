@@ -5,7 +5,7 @@ import 'package:mysite/changes/strings.dart';
 import 'package:mysite/core/configs/configs.dart';
 
 class AboutDesktop extends StatelessWidget {
-  const AboutDesktop({Key? key}) : super(key: key);
+  const AboutDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {
