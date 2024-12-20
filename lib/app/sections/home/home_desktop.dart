@@ -2,7 +2,7 @@ import 'package:mysite/app/sections/home/widgets/animation_text.dart';
 import 'package:mysite/core/animations/zoom_animation.dart';
 import 'package:mysite/core/res/responsive_size.dart';
 import 'package:sizer/sizer.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:url_launcher/url_launcher.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:mysite/app/widgets/color_chage_btn.dart';
@@ -79,8 +79,11 @@ class HomeDesktop extends StatelessWidget {
                   Space.y(3.w)!,
                   ColorChageButton(
                     text: 'download cv',
-                    onTap: () {
-                      html.window.open(resume, "pdf");
+                    onTap: () async {
+                      final Uri resumeUrl = Uri.parse(resume);
+                      if (await canLaunchUrl(resumeUrl)) {
+                        await launchUrl(resumeUrl);
+                      }
                     },
                   ),
                 ],
