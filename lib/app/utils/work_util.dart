@@ -24,7 +24,7 @@ class WorkCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
       decoration: BoxDecoration(
         gradient: pinkpurple,
-        color: Colors.transparent.withOpacity(0.3),
+        color: Colors.transparent.withAlpha((0.3 * 255).toInt()),
         borderRadius: BorderRadius.circular(25),
         boxShadow: [blackColorShadow],
       ),

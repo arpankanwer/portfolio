@@ -55,7 +55,7 @@ class _ServiceCardState extends State<_ServiceCard> {
               widget.service.description,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: isHover ? whiteColor.withOpacity(0.8) : theme.textColor,
+                color: isHover ? whiteColor.withAlpha((0.8 * 255).toInt()) : theme.textColor,
                 fontWeight: FontWeight.w200,
                 fontSize: 13,
               ),

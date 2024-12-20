@@ -75,8 +75,8 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
               end: Alignment.bottomRight,
               colors: [
                 theme.secondaryColor,
-                theme.secondaryColor.withOpacity(0),
-                theme.primaryColor.withOpacity(0.1),
+                theme.secondaryColor.withAlpha((0.0 * 255).toInt()),
+                theme.primaryColor.withAlpha((0.1 * 255).toInt()),
                 theme.primaryColor
               ],
               stops: const [
@@ -88,7 +88,7 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.black.withOpacity(0.8),
+              color: Colors.black.withAlpha((0.8 * 255).toInt()),
               image: const DecorationImage(
                 fit: BoxFit.cover,
                 alignment: Alignment.bottomLeft,

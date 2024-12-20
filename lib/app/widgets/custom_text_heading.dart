@@ -39,7 +39,7 @@ class CustomSectionSubHeading extends StatelessWidget {
       desktop: Text(text,
           textAlign: TextAlign.center,
           style: GoogleFonts.roboto(
-            color: theme.textColor.withOpacity(0.8),
+            color: theme.textColor.withAlpha((0.8 * 255).toInt()),
             fontSize: 20,
             letterSpacing: 0.3,
             wordSpacing: 3,
@@ -48,7 +48,7 @@ class CustomSectionSubHeading extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: GoogleFonts.roboto(
-          color: theme.textColor.withOpacity(0.8),
+          color: theme.textColor.withAlpha((0.8 * 255).toInt()),
           fontSize: 16,
         ),
       ),
@@ -56,7 +56,7 @@ class CustomSectionSubHeading extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: GoogleFonts.roboto(
-          color: theme.textColor.withOpacity(0.8),
+          color: theme.textColor.withAlpha((0.8 * 255).toInt()),
           fontSize: 13,
         ),
       ),

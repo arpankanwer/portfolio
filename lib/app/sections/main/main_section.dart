@@ -78,7 +78,7 @@ class MainPage extends StatelessWidget {
                   width: 200,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: primaryColor.withOpacity(0.5),
+                    color: primaryColor.withAlpha((0.5 * 255).toInt()),
                   ),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(

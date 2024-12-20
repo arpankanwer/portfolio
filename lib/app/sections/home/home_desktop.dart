@@ -73,7 +73,7 @@ class HomeDesktop extends StatelessWidget {
                         style: TextStyle(
                           fontSize: isFontSize(context, 20),
                           fontWeight: FontWeight.w400,
-                          color: theme.textColor.withOpacity(0.6),
+                          color: theme.textColor.withAlpha((0.6 * 255).toInt()),
                         )),
                   ),
                   Space.y(3.w)!,
