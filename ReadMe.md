@@ -1,6 +1,6 @@
 # Arpan Kanwer's Portfolio
 
-![Arpan Kanwer](portfolio_photo.jpg)
+![Arpan Kanwer](assets/portfolio_photo.jpg)
 
 Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer dedicated to crafting exceptional digital experiences. I specialize in building user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a commitment to clean code, I strive to deliver high-quality solutions that exceed expectations.
 
@@ -16,6 +16,13 @@ As a dedicated and enthusiastic developer, I am constantly seeking opportunities
 ## Projects
 
 Here are some of the projects I've worked on:
+
+### Portfolio Website
+
+My personal portfolio website showcasing my projects, skills, and experience.
+
+- **Technologies Used:** Dart
+- **GitHub Repository:** [Portfolio](https://github.com/arpankanwer/portfolio)
 
 ### EduWings Global
 
@@ -38,13 +45,6 @@ A chat application developed using Dart, enabling real-time communication betwee
 - **Technologies Used:** Dart
 - **GitHub Repository:** [Chatie](https://github.com/arpankanwer/chatie)
 
-### Portfolio Website
-
-My personal portfolio website showcasing my projects, skills, and experience.
-
-- **Technologies Used:** Dart
-- **GitHub Repository:** [Portfolio](https://github.com/arpankanwer/portfolio)
-
 ### Smart Garden
 
 A smart garden project involving a zone-divided raised garden bed operated using motorized valves controlled by a microcontroller, interfaced with an internally hosted website.
@@ -56,8 +56,8 @@ A smart garden project involving a zone-divided raised garden bed operated using
 
 I'm always interested in new opportunities and collaborations. Feel free to reach out to me through the following channels:
 
-- **Email:** [arpankanwer98@gmail.com](mailto:arpankanwer98@gmail.com)
+- **Email:** [kanwer@sheridancollege.ca](mailto:kanwer@sheridancollege.ca)
 - **LinkedIn:** [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
-- **Personal Website:** [Arpan Kanwer](https://arpankanwer.me)
+- **Personal Website:** [Arpan Kanwer](https://arpankanwer.web.app/)
 
 Let's connect and create something amazing together!
