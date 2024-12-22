@@ -59,5 +59,6 @@ I'm always interested in new opportunities and collaborations. Feel free to reac
 - **Email:** [kanwer@sheridancollege.ca](mailto:kanwer@sheridancollege.ca)
 - **LinkedIn:** [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
 - **Personal Website:** [Arpan Kanwer](https://arpankanwer.web.app/)
+- **Github:** [Arpan Kanwer](https://github.com/arpankanwer/)
 
 Let's connect and create something amazing together!
