@@ -21,14 +21,14 @@ Here are some of the projects I've worked on:
 
 My personal portfolio website showcasing my projects, skills, and experience.
 
-- **Technologies Used:** Dart
+- **Technologies Used:** Flutter and Dart
 - **GitHub Repository:** [Portfolio](https://github.com/arpankanwer/portfolio)
 
 ### EduWings Global
 
 An educational platform designed to connect students with tutors worldwide, facilitating seamless learning experiences.
 
-- **Technologies Used:** Dart
+- **Technologies Used:** Flutter and Dart
 - **GitHub Repository:** [EduWings Global](https://github.com/arpankanwer/eduwings_global)
 
 ### Shopping Cart Application
@@ -42,14 +42,14 @@ A Java-based shopping cart application that allows users to browse products, add
 
 A chat application developed using Dart, enabling real-time communication between users with a focus on simplicity and efficiency.
 
-- **Technologies Used:** Dart
+- **Technologies Used:** Flutter and Dart
 - **GitHub Repository:** [Chatie](https://github.com/arpankanwer/chatie)
 
 ### Smart Garden
 
 A smart garden project involving a zone-divided raised garden bed operated using motorized valves controlled by a microcontroller, interfaced with an internally hosted website.
 
-- **Technologies Used:** C
+- **Technologies Used:** C and React for Web UI
 - **GitHub Repository:** [Smart Garden](https://github.com/arpankanwer/SmartGarden)
 
 ## Contact Me
@@ -59,5 +59,6 @@ I'm always interested in new opportunities and collaborations. Feel free to reac
 - **Email:** [kanwer@sheridancollege.ca](mailto:kanwer@sheridancollege.ca)
 - **LinkedIn:** [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
 - **Personal Website:** [Arpan Kanwer](https://arpankanwer.web.app/)
+- **Github:** [Arpan Kanwer](https://github.com/arpankanwer/)
 
 Let's connect and create something amazing together!
