@@ -36,7 +36,7 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
                   state.isDarkThemeOn ? IconUrls.darkIcon : IconUrls.lightIcon,
                   height: 30,
                   width: 30,
-                  color: state.isDarkThemeOn ? Colors.black : Colors.white,
+                  color: state.isDarkThemeOn ? Colors.white : Colors.black,
                 )),
             // Space.x!,
           ],
