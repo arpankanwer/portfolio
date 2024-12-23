@@ -31,8 +31,8 @@ class _MobileDrawer extends StatelessWidget {
                         Text(state.isDarkThemeOn ? "Light Mode" : "Dark Mode"),
                     trailing: Switch(
                       value: state.isDarkThemeOn,
-                      activeColor: theme.primaryColor,
-                      inactiveTrackColor: Colors.grey,
+                      activeColor: Colors.grey,
+                      inactiveTrackColor: theme.primaryColor,
                       onChanged: (newValue) {
                         context.read<ThemeCubit>().updateTheme(newValue);
                       },
