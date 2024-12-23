@@ -17,44 +17,49 @@ List<Skill> servicesUtils = [
   Skill(
     name: 'Flutter App Development',
     icon: 'assets/icons/flutter.svg',
-    description: "Created several applications using flutter for all platforms",
-    tool: ['Flutter', 'Dart', 'Firebase', 'MongoDb', 'Sql', 'PHP'],
+    description:
+        'Developed cross-platform applications using Flutter, implementing responsive UIs and integrating services like Firebase.',
+    tool: ['Flutter and Dart', 'Firebase', 'SQLite'],
     level: 1,
   ),
   Skill(
-    name: 'Frameworks',
-    icon: 'assets/icons/website.svg',
-    description: "Created apps in these frameworks",
-    tool: ['Flutter', 'Spring Boot', '.NET', 'Angular'],
+    name: 'Web Development Frameworks',
+    icon: 'assets/icons/web_development.svg',
+    description:
+        'Built web applications utilizing modern frameworks, ensuring scalability and performance.',
+    tool: ['Angular/ReactJS', 'Spring Boot', '.NET'],
     level: 1,
   ),
   Skill(
     name: 'Programming Languages',
     icon: 'assets/icons/graphic.svg',
-    description: "Knowledgable in many programming languages and frameworks",
-    tool: [
-      'Java',
-      'PHP',
-      'Python',
-      'Dart',
-      'C++',
-      'C#',
-      'HTML, CSS and Javascript'
-    ],
+    description:
+        'Proficient in multiple programming languages, enabling versatile software development across various domains.',
+    tool: ['Java/Python', 'C++/C#', 'HTML/CSS/Javascript'],
     level: 1,
   ),
   Skill(
-    name: 'Version Control',
-    icon: 'assets/icons/android.svg',
-    description: "Used version control in many projects",
-    tool: ['Git', 'TFS'],
+    name: 'Version Control Systems',
+    icon: 'assets/icons/version.svg',
+    description:
+        'Experienced in collaborative development using version control systems, managing codebases effectively.',
+    tool: ['Git', 'GitHub', 'TFS'],
     level: 1,
   ),
   Skill(
-    name: 'Database',
+    name: 'Database Management',
     icon: 'assets/icons/database.svg',
-    description: "Database management and creation",
-    tool: ['Sql', 'MongoDB', 'Firestore Database'],
+    description:
+        'Skilled in designing and managing databases, ensuring data integrity and optimal performance.',
+    tool: ['MySQL', 'MongoDB', 'Firestore'],
     level: 1,
-  )
+  ),
+  Skill(
+    name: 'Software Testing & Quality Assurance',
+    icon: 'assets/icons/testing.svg',
+    description:
+        'Conducted comprehensive testing to ensure software reliability and performance.',
+    tool: ['JUnit', 'Selenium', 'Postman'],
+    level: 1,
+  ),
 ];
