@@ -15,27 +15,44 @@ class WorkMobile extends StatelessWidget {
         children: [
           const CustomSectionHeading(text: '\nWorks'),
           Space.y(1.w)!,
-          const Column(
+          Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              WorkCard(
+                title: 'Software QA (Quality Assurance) Engineer',
+                company: 'Evertz Microsystems',
+                location: 'Burlington, Canada',
+                duration: 'January - April 2024',
+                description:
+                    'Developed innovative products using Python scripts and ReactJS for web UI. Collaborated with cross-functional teams to create full-fledged web interfaces. Tested multiple products using XPS hardware machines and managed extensive server configurations.',
+              ),
+              SizedBox(height: 20.0),
+              WorkCard(
+                title: 'Programming/Software Tutor',
+                company: 'Sheridan College',
+                location: 'Brampton, Canada',
+                duration: 'September - December 2023',
+                description:
+                    'Conduct tutorials and mentoring sessions in Python, Swift, Kotlin, and MongoDB. Help students with assignments, focusing on debugging, database optimization, and advanced programming concepts. Provide feedback to improve their understanding of modern tools and practices.',
+              ),
+              SizedBox(height: 20.0),
+              WorkCard(
+                title: 'Programming/Software Tutor',
+                company: 'Sheridan College',
+                location: 'Brampton, Canada',
+                duration: 'January - April 2023',
+                description:
+                    'Led tutorials and one-on-one sessions in Java, PHP, and MySQL. Supported students in lab work, projects, and assignments, emphasizing coding fundamentals and database management. Provided actionable feedback to foster growth and improve their skills.',
+              ),
+              SizedBox(height: 20.0),
               WorkCard(
                 title: 'Application Developer',
                 company: 'Eduwings Global',
                 location: 'Ludhiana, India',
                 duration: 'August 2021 - November 2021',
                 description:
-                    'I was given project to create Application for the firm and i have used Flutter technology to create Android App. I have also used Firebase for backend and database. I have also used Google Map API for location tracking and Google Calendar API for scheduling.',
-              ),
-              SizedBox(height: 20.0),
-              WorkCard(
-                title:
-                    'Applied Computing Full Time Tutor (Presently Part-Time)',
-                company: 'Sheridan College',
-                location: 'Brampton, CA',
-                duration: 'January 2023 - Present',
-                description:
-                    'Provided tutorials, one-on-one and group sessions in Java, PHP and MySQL. Assisted students with their assignments and projects. Helped students with their lab work and assignments. Provided feedback to students on their assignments and projects.',
+                    'Designed and developed an Android application for the firm using Flutter. Integrated Firebase for backend services and database management. Utilized Google Maps API for real-time location tracking and Google Calendar API for scheduling functionality.',
               ),
             ],
           ),
