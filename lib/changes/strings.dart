@@ -16,7 +16,7 @@ String miniDescription =
     "A passionate individual in the software field is driven by a deep love for creating innovative solutions.";
 
 String servicesSubHeading =
-    "My proficiency lies in a range of programming languages, including Python, Java, Dart, C/C#, and JavaScript, along with frameworks such as .Net, Spring Boot, Flutter, and React Native with Expo. I am adept at web development, employing HTML, CSS, JavaScript, and ReactJS to create dynamic and engaging user interfaces.";
+    "My proficiency lies in a range of programming languages that are listed below.";
 
 //
 String protfolioSubHeading =

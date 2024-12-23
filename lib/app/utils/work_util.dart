@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/core/color/colors.dart';
 
-
 class WorkCard extends StatelessWidget {
   final String title;
   final String company;
@@ -26,7 +25,7 @@ class WorkCard extends StatelessWidget {
         gradient: pinkpurple,
         color: Colors.transparent.withAlpha((0.3 * 255).toInt()),
         borderRadius: BorderRadius.circular(25),
-        boxShadow: [blackColorShadow],
+        // boxShadow: [blackColorShadow],
       ),
       child: InkWell(
         hoverColor: Colors.transparent,
@@ -54,17 +53,21 @@ class WorkCard extends StatelessWidget {
             const SizedBox(height: 4.0),
             Text(
               location,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16.0,
-                color: Colors.grey,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey[400]
+                    : Colors.grey[800],
               ),
             ),
             const SizedBox(height: 8.0),
             Text(
               duration,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16.0,
-                color: Colors.grey,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey[400]
+                    : Colors.grey[800],
               ),
             ),
             const SizedBox(height: 16.0),

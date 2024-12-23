@@ -20,11 +20,11 @@ class ServiceDesktopState extends State<ServiceDesktop> {
         children: [
           const CustomSectionHeading(text: '\nSkills'),
           Space.y(1.w)!,
-          CustomSectionSubHeading(text: servicesSubHeading),
-          Space.y(2.w)!,
+          // CustomSectionSubHeading(text: servicesSubHeading),
+          // Space.y(2.w)!,
           Wrap(
             spacing: width * 0.03,
-            runSpacing: height * 0.05,
+            runSpacing: height * 0.02,
             alignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.start,
             children: servicesUtils
