@@ -37,8 +37,8 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
     )..repeat(reverse: true);
 
     _alignAnimation = Tween<AlignmentGeometry>(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
+      begin: Alignment.bottomCenter,
+      end: Alignment.center,
     ).animate(
       CurvedAnimation(
         parent: _controller2,
@@ -92,7 +92,7 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
               image: const DecorationImage(
                 fit: BoxFit.cover,
                 alignment: Alignment.bottomLeft,
-                image: AssetImage('assets/imgs/my1.jpg'),
+                image: AssetImage('assets/imgs/cover_image.jpg'),
               ),
             ),
           ),
