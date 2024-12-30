@@ -16,7 +16,7 @@ class ProjectUtils {
 List<ProjectUtils> projectUtils = [
   ProjectUtils(
     banners: 'assets/imgs/projects/eduwings_global.png',
-    icons: 'assets/imgs/github.png',
+    icons: 'assets/imgs/appicons/github.png',
     titles: 'Eduwings Global',
     description:
         'This app Eduwings Global for the company Eduwings Global is made by me in Flutter for students so they can check their profile anytime.',
@@ -24,19 +24,12 @@ List<ProjectUtils> projectUtils = [
   ),
   ProjectUtils(
     banners: 'assets/imgs/projects/chatie.png',
-    icons: 'assets/imgs/github.png',
+    icons: 'assets/imgs/appicons/github.png',
     titles: 'Chatie',
     description:
         'A real-time group chat application that allows users to send messages using Firebase Storage.',
     links: 'https://github.com/arpankanwer/chatie/',
   ),
-  // ProjectUtils(
-  //   banners: 'assets/imgs/3.png',
-  //   icons: 'assets/imgs/flutter.png',
-  //   titles: 'Exercise App',
-  //   description:
-  //       'This is a just Fully function Exercise App by using flutter, source code is also available, check below.',
-  // ),
   // ProjectUtils(
   //   banners: 'assets/imgs/4.png',
   //   icons: 'assets/imgs/flutter.png',
