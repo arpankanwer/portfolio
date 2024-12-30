@@ -15,7 +15,7 @@ class ProjectUtils {
 
 List<ProjectUtils> projectUtils = [
   ProjectUtils(
-    banners: 'assets/imgs/1.png',
+    banners: 'assets/imgs/projects/eduwings_global.png',
     icons: 'assets/imgs/github.png',
     titles: 'Eduwings Global',
     description:
@@ -23,7 +23,7 @@ List<ProjectUtils> projectUtils = [
     links: 'https://github.com/arpankanwer/eduwings_global',
   ),
   ProjectUtils(
-    banners: 'assets/imgs/2.png',
+    banners: 'assets/imgs/projects/chatie.png',
     icons: 'assets/imgs/github.png',
     titles: 'Chatie',
     description:

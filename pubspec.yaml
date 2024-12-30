@@ -1,5 +1,5 @@
 name: mysite
-description: Portfolio Website for Birarpanjot Singh Kanwer
+description: Portfolio of Birarpanjot Singh
 
 publish_to: "none"
 
@@ -49,6 +49,7 @@ flutter:
 
   assets:
     - assets/imgs/
+    - assets/imgs/projects/
     - assets/icons/
     - assets/gif/
 
