@@ -38,11 +38,12 @@ List<ProjectUtils> projectUtils = [
         'GigJet is a full-stack capstone-winning mobile app for iOS and Android. It connects taskers who post tasks with talent seekers who apply to complete them, offering features like chat, task tracking, and geolocation.',
     links: 'https://www.youtube.com/watch?v=M1adKEKeFLo',
   ),
-  // ProjectUtils(
-  //   banners: 'assets/imgs/4.png',
-  //   icons: 'assets/imgs/flutter.png',
-  //   titles: 'Awesome Plant App UI',
-  //   description:
-  //       'This is a just Plant App UI by using flutter, source code is also available, check below.',
-  // ),
+  ProjectUtils(
+    banners: 'assets/imgs/projects/smartgarden.png',
+    icons: 'assets/imgs/appicons/github.png',
+    titles: 'SmartGarden - Automated Garden Management',
+    description:
+        'SmartGarden is a project featuring a zone-divided raised garden bed operated using motorized valves controlled by a microcontroller. It includes an internally hosted website for seamless garden management.',
+    links: 'https://github.com/Evertz-Garden/SmartGarden',
+  )
 ];
