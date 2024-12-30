@@ -30,6 +30,14 @@ List<ProjectUtils> projectUtils = [
         'A real-time group chat application that allows users to send messages using Firebase Storage.',
     links: 'https://github.com/arpankanwer/chatie/',
   ),
+  ProjectUtils(
+    banners: 'assets/imgs/projects/gigjet.png',
+    icons: 'assets/imgs/appicons/youtube.png',
+    titles: 'GigJet - where tasks meet talent',
+    description:
+        'GigJet is a full-stack capstone-winning mobile app for iOS and Android. It connects taskers who post tasks with talent seekers who apply to complete them, offering features like chat, task tracking, and geolocation.',
+    links: 'https://www.youtube.com/watch?v=M1adKEKeFLo',
+  ),
   // ProjectUtils(
   //   banners: 'assets/imgs/4.png',
   //   icons: 'assets/imgs/flutter.png',
