@@ -64,7 +64,7 @@ class HomeMobile extends StatelessWidget {
               ),
               const EntranceFader(
                 offset: Offset(0, 0),
-                delay: Duration(seconds: 1),
+                // delay: Duration(seconds: 1),
                 duration: Duration(milliseconds: 800),
                 child: ZoomAnimations(),
               )
