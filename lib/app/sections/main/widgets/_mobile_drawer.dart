@@ -28,7 +28,7 @@ class _MobileDrawer extends StatelessWidget {
                       // color: theme.textColor,
                     ),
                     title:
-                        Text(state.isDarkThemeOn ? "Light Mode" : "Dark Mode"),
+                        Text(state.isDarkThemeOn ? "Dark Mode" : "Dark Mode"),
                     trailing: Switch(
                       value: state.isDarkThemeOn,
                       activeColor: Colors.grey,
