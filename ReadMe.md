@@ -29,7 +29,7 @@ My personal portfolio website showcasing my projects, skills, and experience.
 GigJet is a full-stack capstone-winning mobile app for iOS and Android. It connects taskers who post tasks with talent seekers who apply to complete them. The app includes features such as real-time chat, task tracking, and geolocation.  
 
 - **Technologies Used:** ReactJS, React Native with Expo  
-- **Demo Video:** [GigJet on YouTube](https://www.youtube.com/watch?v=M1adKEKeFLo)
+- **Pitch Video:** [GigJet on YouTube](https://www.youtube.com/watch?v=M1adKEKeFLo)
 
 ### EduWings Global
 
