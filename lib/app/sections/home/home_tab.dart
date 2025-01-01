@@ -24,7 +24,7 @@ class HomeTab extends StatelessWidget {
         children: [
           Positioned(
             right: 10.w,
-            bottom: 20.w,
+            bottom: 5.w,
             child: const EntranceFader(
               offset: Offset(0, 0),
               // delay: Duration(seconds: 1),

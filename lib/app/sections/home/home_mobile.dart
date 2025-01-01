@@ -43,27 +43,34 @@ class HomeMobile extends StatelessWidget {
             ),
           ),
           Space.y(1.w)!,
-          AnimatedTextKit(
-            animatedTexts: mobileList,
-            repeatForever: true,
-            isRepeatingAnimation: true,
-          ),
 
-          Space.y(2.w)!,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ColorChageButton(
-                text: 'download cv',
-                onTap: () async {
-                  final Uri resumeUrl = Uri.parse(resume);
-                  if (await canLaunchUrl(resumeUrl)) {
-                    await launchUrl(resumeUrl);
-                  }
-                },
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  AnimatedTextKit(
+                    animatedTexts: mobileList,
+                    repeatForever: true,
+                    isRepeatingAnimation: true,
+                  ),
+                  Space.y(4.w)!,
+                  ColorChageButton(
+                    text: 'download cv',
+                    onTap: () async {
+                      final Uri resumeUrl = Uri.parse(resume);
+                      if (await canLaunchUrl(resumeUrl)) {
+                        await launchUrl(resumeUrl);
+                      }
+                    },
+                  ),
+                ],
               ),
               const EntranceFader(
-                offset: Offset(0, 0),
+                offset: Offset(0, -30),
                 // delay: Duration(seconds: 1),
                 duration: Duration(milliseconds: 800),
                 child: ZoomAnimations(),
