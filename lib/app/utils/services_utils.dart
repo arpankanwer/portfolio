@@ -15,11 +15,11 @@ class Skill {
 
 List<Skill> servicesUtils = [
   Skill(
-    name: 'Flutter App Development',
+    name: 'Mobile App Development',
     icon: 'assets/icons/flutter.svg',
     description:
         'Developed cross-platform applications using Flutter, implementing responsive UIs and integrating services like Firebase.',
-    tool: ['Flutter and Dart', 'Firebase', 'SQLite'],
+    tool: ['Flutter and Dart', 'React Native with Expo', 'Django'],
     level: 1,
   ),
   Skill(
@@ -35,7 +35,7 @@ List<Skill> servicesUtils = [
     icon: 'assets/icons/graphic.svg',
     description:
         'Proficient in multiple programming languages, enabling versatile software development across various domains.',
-    tool: ['Java/Python', 'C++/C#', 'HTML/CSS/Javascript'],
+    tool: ['Java/Python', 'C++/C#', 'Swift/Kotlin'],
     level: 1,
   ),
   Skill(
@@ -51,7 +51,7 @@ List<Skill> servicesUtils = [
     icon: 'assets/icons/database.svg',
     description:
         'Skilled in designing and managing databases, ensuring data integrity and optimal performance.',
-    tool: ['MySQL', 'MongoDB', 'Firestore'],
+    tool: ['MySQL', 'MongoDB', 'Cloud Firestore'],
     level: 1,
   ),
   Skill(
@@ -59,7 +59,7 @@ List<Skill> servicesUtils = [
     icon: 'assets/icons/testing.svg',
     description:
         'Conducted comprehensive testing to ensure software reliability and performance.',
-    tool: ['JUnit', 'Selenium', 'Postman'],
+    tool: ['JUnit', 'Selenium', 'Jira', 'Postman'],
     level: 1,
   ),
 ];
