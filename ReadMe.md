@@ -1,6 +1,6 @@
 # Birarpanjot Singh Kanwer's Portfolio
 
-![Arpan Kanwer](github_images/portfolio_photo.png)
+![Birarpanjot Singh](github_images/portfolio_photo.png)
 
 Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer dedicated to crafting exceptional digital experiences. I specialize in building user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a commitment to clean code, I strive to deliver high-quality solutions that exceed expectations.
 
@@ -66,6 +66,6 @@ I'm always interested in new opportunities and collaborations. Feel free to reac
 - **Email:** [kanwer@sheridancollege.ca](mailto:kanwer@sheridancollege.ca)
 - **LinkedIn:** [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
 - **Github:** [Arpan Kanwer](https://github.com/arpankanwer/)
-- **Personal Website:** [Arpan Kanwer](https://arpankanwer.web.app/)
+- **Personal Website:** [Arpan Kanwer](https://arpankanwer.tech/)
 
 Let's connect and create something amazing together!
