@@ -1,6 +1,6 @@
 // CV
 const String resume =
-    'https://drive.google.com/file/d/1RtCZ0qQxTQ-BWn_Em4lUj9ctacjueZaF/view?usp=sharing';
+    'https://drive.google.com/file/d/1u-_i8Wm-DwtMuVBVbrBBGyXgYuYIsrii/view?usp=sharing';
 
 // Github Link
 const String gitHub = 'https://github.com/arpankanwer';
