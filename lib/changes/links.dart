@@ -1,6 +1,7 @@
 // CV
-const String resume =
-    'https://drive.google.com/file/d/1e_2eCN-1pm3oqnb9eR5fBQsZuIgWZExF/view?usp=sharing';
+const String resume = String.fromEnvironment('RESUME_URL',
+    defaultValue:
+        'https://drive.google.com/file/d/1cr_nULsEqd9WWpItf9R0FZNNNg3gXoP-/view?usp=sharing');
 
 // Github Link
 const String gitHub = 'https://github.com/arpankanwer';
