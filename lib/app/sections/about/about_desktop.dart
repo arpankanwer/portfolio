@@ -27,7 +27,7 @@ class AboutDesktop extends StatelessWidget {
             alignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.start,
             children: const [
-              Text("- Arpan Kanwer"),
+              Text("- Birarpanjot Singh"),
             ],
           ),
         ],

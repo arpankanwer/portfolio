@@ -2,7 +2,7 @@
 
 ![Birarpanjot Singh](github_images/portfolio_photo.png)
 
-Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer dedicated to crafting exceptional digital experiences. I specialize in building user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a commitment to clean code, I strive to deliver high-quality solutions that exceed expectations.
+Welcome to my portfolio! I'm Birarpanjot Singh, a passionate developer dedicated to crafting exceptional digital experiences. I specialize in building user-friendly and visually appealing web and mobile applications. With a keen eye for detail and a commitment to clean code, I strive to deliver high-quality solutions that exceed expectations.
 
 ## About Me
 
@@ -67,8 +67,8 @@ A smart garden project involving a zone-divided raised garden bed operated using
 I'm always interested in new opportunities and collaborations. Feel free to reach out to me through the following channels:
 
 - **Email:** [kanwer@sheridancollege.ca](mailto:kanwer@sheridancollege.ca)
-- **LinkedIn:** [Arpan Kanwer](https://www.linkedin.com/in/arpankanwer)
-- **Github:** [Arpan Kanwer](https://github.com/arpankanwer/)
-- **Personal Website:** [Arpan Kanwer](https://arpankanwer.tech/)
+- **LinkedIn:** [Birarpanjot Singh](https://www.linkedin.com/in/arpankanwer)
+- **Github:** [Birarpanjot Singh](https://github.com/arpankanwer/)
+- **Personal Website:** [Birarpanjot Singh](https://arpankanwer.tech/)
 
 Let's connect and create something amazing together!
