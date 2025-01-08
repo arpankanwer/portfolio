@@ -8,10 +8,13 @@ Welcome to my portfolio! I'm Arpan Kanwer, a passionate developer dedicated to c
 
 As a dedicated and enthusiastic developer, I am constantly seeking opportunities to learn and grow in the ever-evolving world of technology. I thrive on challenging projects that push my boundaries and allow me to unleash my creativity. My skills include:
 
-- **Front-End Development:** HTML, CSS, JavaScript, React.js, Vue.js
-- **Back-End Development:** Node.js, Express.js
-- **Databases:** SQL, NoSQL
-- **Version Control:** Git
+- **Front-End Development:** HTML, CSS, JavaScript, React.js, React Native, Angular  
+- **Back-End Development:** Node.js, Express.js, Django, Advanced Spring Boot  
+- **Programming Languages:** Java, PHP, Python, Dart, Kotlin, Swift, .NET, C, C#  
+- **Frameworks:** Flutter, React, React Native, Angular, Django  
+- **Development Style:** Object-Oriented Programming (OOP), RESTful API integration  
+- **Databases:** SQL Server, MongoDB, NoSQL Real-time, Cloud Firestore (Firebase)  
+- **Version Control:** Git, TFS
 
 ## Projects
 
