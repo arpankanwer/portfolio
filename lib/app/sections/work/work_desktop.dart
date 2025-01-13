@@ -12,7 +12,7 @@ class WorkDesktop extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      padding: const EdgeInsets.all(20.0),
+      padding: EdgeInsets.only(left: 20.0, right: 20.0),
       child: Column(
         children: [
           const CustomSectionHeading(text: '\nWorks'),

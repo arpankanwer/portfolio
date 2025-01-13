@@ -19,82 +19,85 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return SizedBox(
-      height: 60.h,
-      child: Stack(
-        children: [
-          Positioned(
-            right: 10.w,
-            bottom: 5.w,
-            child: const EntranceFader(
-              offset: Offset(0, 0),
-              // delay: Duration(seconds: 1),
-              duration: Duration(milliseconds: 800),
-              child: ZoomAnimations(),
+      height: 95.h,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10.h),
+        child: Stack(
+          children: [
+            Positioned(
+              right: 10.w,
+              bottom: 18.w,
+              child: const EntranceFader(
+                offset: Offset(0, 0),
+                duration: Duration(milliseconds: 100),
+                child: ZoomAnimations(),
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10.w, top: 10.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      hellotag,
-                      style: AppText.h3!
-                          .copyWith(fontSize: isFontSize(context, 18)),
-                    ),
-                    EntranceFader(
-                      offset: const Offset(0, 0),
-                      delay: const Duration(seconds: 2),
-                      duration: const Duration(milliseconds: 800),
-                      child: Image.asset(StaticImage.hi, height: 10.sp),
-                    ),
-                  ],
-                ),
-                Space.y(1.w)!,
-                Text(
-                  yourname,
-                  style: TextStyle(
-                    fontSize: isFontSize(context, 38),
-                    fontWeight: FontWeight.w600,
+            Padding(
+              padding: EdgeInsets.only(left: 10.w, top: 10.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        hellotag,
+                        style: AppText.h3!
+                            .copyWith(fontSize: isFontSize(context, 18)),
+                      ),
+                      EntranceFader(
+                        offset: const Offset(0, 0),
+                        delay: const Duration(seconds: 2),
+                        duration: const Duration(milliseconds: 800),
+                        child: Image.asset(StaticImage.hi, height: 10.sp),
+                      ),
+                    ],
                   ),
-                ),
-                EntranceFader(
-                  offset: const Offset(-10, 0),
-                  delay: const Duration(seconds: 1),
-                  duration: const Duration(milliseconds: 800),
-                  child: AnimatedTextKit(
-                    animatedTexts: tabList,
-                    isRepeatingAnimation: true,
-                  ),
-                ),
-                Space.y(1.5.w)!,
-                Padding(
-                  padding: EdgeInsets.only(right: 50.w),
-                  child: Text(
-                    miniDescription,
+                  Space.y(1.w)!,
+                  Text(
+                    yourname,
                     style: TextStyle(
-                        fontSize: isFontSize(context, 16),
-                        fontWeight: FontWeight.w100,
-                        color: theme.textColor.withAlpha((0.6 * 255).toInt())),
+                      fontSize: isFontSize(context, 38),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                Space.y(2.w)!,
-                ColorChageButton(
-                  text: 'download cv',
-                  onTap: () async {
-                    final Uri resumeUrl = Uri.parse(resume);
-                    if (await canLaunchUrl(resumeUrl)) {
-                      await launchUrl(resumeUrl);
-                    }
-                  },
-                ),
-              ],
+                  EntranceFader(
+                    offset: const Offset(-10, 0),
+                    delay: const Duration(seconds: 1),
+                    duration: const Duration(milliseconds: 800),
+                    child: AnimatedTextKit(
+                      animatedTexts: tabList,
+                      isRepeatingAnimation: true,
+                    ),
+                  ),
+                  Space.y(1.5.w)!,
+                  Padding(
+                    padding: EdgeInsets.only(right: 50.w),
+                    child: Text(
+                      miniDescription,
+                      style: TextStyle(
+                          fontSize: isFontSize(context, 16),
+                          fontWeight: FontWeight.w100,
+                          color:
+                              theme.textColor.withAlpha((0.6 * 255).toInt())),
+                    ),
+                  ),
+                  Space.y(2.w)!,
+                  ColorChageButton(
+                    text: 'download cv',
+                    onTap: () async {
+                      final Uri resumeUrl = Uri.parse(resume);
+                      if (await canLaunchUrl(resumeUrl)) {
+                        await launchUrl(resumeUrl);
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

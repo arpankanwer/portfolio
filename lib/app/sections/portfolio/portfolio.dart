@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'portfolio_desktop.dart';
 import 'portfolio_mobile.dart';
 import 'package:mysite/core/res/responsive.dart';
@@ -8,8 +9,11 @@ class Portfolio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
-      mobile: PortfolioMobileTab(),
+    return Responsive(
+      mobile: Padding(
+        padding: EdgeInsets.only(top: 6.w),
+        child: PortfolioMobileTab(),
+      ),
       tablet: PortfolioMobileTab(),
       desktop: PortfolioDesktop(),
     );
