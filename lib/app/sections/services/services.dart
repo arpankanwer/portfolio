@@ -18,8 +18,11 @@ class Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
-      mobile: ServiceMobile(),
+    return Responsive(
+      mobile: Padding(
+        padding: EdgeInsets.only(top: 6.w),
+        child: ServiceMobile(),
+      ),
       tablet: ServiceMobile(),
       desktop: ServiceDesktop(),
     );
