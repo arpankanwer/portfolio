@@ -10,7 +10,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Responsive(
       mobile: Padding(
-        padding: EdgeInsets.only(top: 4.w),
+        padding: EdgeInsets.only(top: 7.w),
         child: AboutDesktop(),
       ),
       tablet: AboutDesktop(),
