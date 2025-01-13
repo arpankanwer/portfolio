@@ -17,6 +17,7 @@ class AboutDesktop extends StatelessWidget {
           .copyWith(bottom: height * 0.2),
       child: Column(
         children: [
+          Space.y(4.w)!,
           const CustomSectionHeading(text: '\nAbout Me'),
           Space.y(1.w)!,
           const CustomSectionSubHeading(text: aboutMeDetail),
