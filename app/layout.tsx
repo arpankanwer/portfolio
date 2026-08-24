@@ -5,7 +5,6 @@ import SmoothScroll from '@/components/SmoothScroll';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
-import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,24 +18,22 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: 'Birarpanjot Singh Kanwer | Software Developer',
-  description: 'Portfolio of Birarpanjot Singh Kanwer, a Senior Software Developer, Mobile Engineer, and Cloud Enthusiast.',
+  description: 'Portfolio of Birarpanjot Singh Kanwer, a Backend Engineer, Mobile Developer, and Cloud Enthusiast based in Canada.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} dark`}>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-white" suppressHydrationWarning>
-        <ThemeProvider>
-          <div className="noise-bg"></div>
-          <SmoothScroll>
-            <CustomCursor />
-            <Navbar />
-            <main className="relative z-10 flex min-h-screen flex-col">
-              {children}
-            </main>
-            <Footer />
-          </SmoothScroll>
-        </ThemeProvider>
+        <div className="noise-bg"></div>
+        <SmoothScroll>
+          <CustomCursor />
+          <Navbar />
+          <main className="relative z-10 flex min-h-screen flex-col">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

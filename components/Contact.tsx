@@ -44,7 +44,7 @@ export default function Contact() {
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('arpankanwer98@gmail.com');
+    navigator.clipboard.writeText('birarpanjot@gmail.com');
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
@@ -99,8 +99,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-xs text-white/50 font-medium">Direct Email</h3>
-                    <a href="mailto:arpankanwer98@gmail.com" className="text-sm font-semibold text-white hover:text-cyan transition-colors">
-                      arpankanwer98@gmail.com
+                    <a href="mailto:birarpanjot@gmail.com" className="text-sm font-semibold text-white hover:text-cyan transition-colors">
+                      birarpanjot@gmail.com
                     </a>
                   </div>
                 </div>

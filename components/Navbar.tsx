@@ -2,10 +2,9 @@
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Menu, X, Command as CommandIcon, Sparkles, FileText, Sun, Moon, Palette } from 'lucide-react';
+import { Menu, X, Command as CommandIcon, Sparkles, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CommandPalette from '@/components/CommandPalette';
-import { useTheme, Theme } from '@/components/ThemeProvider';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -18,7 +17,6 @@ const navLinks = [
 
 export default function Navbar() {
   const { scrollY } = useScroll();
-  const { theme, setTheme, toggleTheme } = useTheme();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -114,24 +112,7 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="flex items-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-white/70 hover:text-white transition-all cursor-pointer group"
-              title={`Switch Theme (Current: ${theme.toUpperCase()})`}
-              aria-label="Toggle visual theme"
-            >
-              {theme === 'light' ? (
-                <Sun size={14} className="text-amber-500 group-hover:rotate-45 transition-transform" />
-              ) : theme === 'midnight' ? (
-                <Palette size={14} className="text-cyan group-hover:scale-110 transition-transform" />
-              ) : (
-                <Moon size={14} className="text-primary group-hover:-rotate-12 transition-transform" />
-              )}
-              <span className="hidden md:inline capitalize font-mono text-[11px]">{theme}</span>
-            </button>
-
+          <div className="flex items-center gap-3">
             {/* Quick Command Palette Button */}
             <button
               onClick={() => setCommandOpen(true)}
@@ -197,43 +178,12 @@ export default function Navbar() {
               </Link>
             </motion.div>
           ))}
-          <div className="pt-6 flex flex-col items-center gap-4 w-full px-8 max-w-xs">
-            {/* Theme Selector in Mobile Menu */}
-            <div className="w-full flex items-center justify-between p-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
-              <button
-                onClick={() => setTheme('dark')}
-                className={cn(
-                  "flex-1 py-1.5 rounded-full flex items-center justify-center gap-1.5 transition-all",
-                  theme === 'dark' ? "bg-primary text-white font-semibold shadow-md" : "text-white/60 hover:text-white"
-                )}
-              >
-                <Moon size={12} /> Dark
-              </button>
-              <button
-                onClick={() => setTheme('light')}
-                className={cn(
-                  "flex-1 py-1.5 rounded-full flex items-center justify-center gap-1.5 transition-all",
-                  theme === 'light' ? "bg-amber-500 text-white font-semibold shadow-md" : "text-white/60 hover:text-white"
-                )}
-              >
-                <Sun size={12} /> Light
-              </button>
-              <button
-                onClick={() => setTheme('midnight')}
-                className={cn(
-                  "flex-1 py-1.5 rounded-full flex items-center justify-center gap-1.5 transition-all",
-                  theme === 'midnight' ? "bg-cyan text-black font-semibold shadow-md" : "text-white/60 hover:text-white"
-                )}
-              >
-                <Palette size={12} /> Midnight
-              </button>
-            </div>
-
+          <div className="pt-6 flex flex-col items-center gap-4">
             <a
               href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-sm"
+              className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-sm"
               onClick={() => setMobileMenuOpen(false)}
             >
               <FileText size={16} /> View Resume (PDF)
@@ -244,7 +194,7 @@ export default function Navbar() {
                 setMobileMenuOpen(false);
                 setCommandOpen(true);
               }}
-              className="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 text-sm text-white"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 text-sm text-white"
             >
               <CommandIcon size={16} /> Open Command Palette (⌘K)
             </button>

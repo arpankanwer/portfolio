@@ -118,7 +118,7 @@ export default function Hero() {
           </Link>
 
           <a 
-            href="mailto:arpankanwer98@gmail.com?subject=Portfolio%20Inquiry%20-%20Birarpanjot%20Singh%20Kanwer"
+            href="mailto:birarpanjot@gmail.com?subject=Portfolio%20Inquiry%20-%20Birarpanjot%20Singh%20Kanwer"
             className="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary/80 to-secondary/80 hover:from-primary hover:to-secondary text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(79,140,255,0.3)]"
           >
             Contact Me <Mail size={16} />
