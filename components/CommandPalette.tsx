@@ -13,9 +13,13 @@ import {
   Check, 
   ExternalLink,
   Code2,
-  Sparkles
+  Sparkles,
+  Sun,
+  Moon,
+  Palette
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '@/components/ThemeProvider';
 
 interface CommandPaletteProps {
   isOpen?: boolean;
@@ -25,6 +29,7 @@ interface CommandPaletteProps {
 export default function CommandPalette({ isOpen: controlledOpen, onClose }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const isControlled = controlledOpen !== undefined;
   const showModal = isControlled ? controlledOpen : open;
@@ -67,7 +72,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('birarpanjot@gmail.com');
+    navigator.clipboard.writeText('arpankanwer98@gmail.com');
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -159,6 +164,50 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
                   </Command.Item>
                 </Command.Group>
 
+                <Command.Group heading="Visual Theme" className="px-2 py-1 text-xs font-semibold text-white/40 uppercase tracking-wider mt-3">
+                  <Command.Item 
+                    onSelect={() => {
+                      setTheme('dark');
+                      handleClose();
+                    }}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 cursor-pointer transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Moon size={16} className="text-primary" />
+                      <span>Dark Theme (Default Obsidian)</span>
+                    </div>
+                    {theme === 'dark' && <span className="text-xs text-primary font-mono font-semibold">Active</span>}
+                  </Command.Item>
+
+                  <Command.Item 
+                    onSelect={() => {
+                      setTheme('light');
+                      handleClose();
+                    }}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 cursor-pointer transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Sun size={16} className="text-amber-400" />
+                      <span>Light Theme (Minimalist Slate)</span>
+                    </div>
+                    {theme === 'light' && <span className="text-xs text-amber-400 font-mono font-semibold">Active</span>}
+                  </Command.Item>
+
+                  <Command.Item 
+                    onSelect={() => {
+                      setTheme('midnight');
+                      handleClose();
+                    }}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 cursor-pointer transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Palette size={16} className="text-cyan" />
+                      <span>Midnight Theme (Deep Sapphire)</span>
+                    </div>
+                    {theme === 'midnight' && <span className="text-xs text-cyan font-mono font-semibold">Active</span>}
+                  </Command.Item>
+                </Command.Group>
+
                 <Command.Group heading="Quick Actions" className="px-2 py-1 text-xs font-semibold text-white/40 uppercase tracking-wider mt-3">
                   <Command.Item 
                     onSelect={copyEmail}
@@ -166,9 +215,23 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
                   >
                     <div className="flex items-center gap-3">
                       {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} className="text-white/60" />}
-                      <span>{copied ? "Copied birarpanjot@gmail.com!" : "Copy Email Address"}</span>
+                      <span>{copied ? "Copied arpankanwer98@gmail.com!" : "Copy Email Address"}</span>
                     </div>
-                    <span className="text-xs text-white/40 font-mono">birarpanjot@gmail.com</span>
+                    <span className="text-xs text-white/40 font-mono">arpankanwer98@gmail.com</span>
+                  </Command.Item>
+
+                  <Command.Item 
+                    onSelect={() => {
+                      window.open('https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing', '_blank');
+                      handleClose();
+                    }}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 cursor-pointer transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <FileText size={16} className="text-primary" />
+                      <span>View Resume</span>
+                    </div>
+                    <span className="text-xs text-white/40 font-mono">Google Drive PDF</span>
                   </Command.Item>
 
                   <Command.Item 

@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Download, Mail, Sparkles, Terminal } from 'lucide-react';
+import { ArrowRight, Download, ExternalLink, FileText, Mail, Sparkles, Terminal } from 'lucide-react';
 import Link from 'next/link';
 
 const roles = [
@@ -118,20 +118,20 @@ export default function Hero() {
           </Link>
 
           <a 
-            href="mailto:birarpanjot@gmail.com?subject=Portfolio%20Inquiry%20-%20Birarpanjot%20Singh%20Kanwer"
+            href="mailto:arpankanwer98@gmail.com?subject=Portfolio%20Inquiry%20-%20Birarpanjot%20Singh%20Kanwer"
             className="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary/80 to-secondary/80 hover:from-primary hover:to-secondary text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(79,140,255,0.3)]"
           >
             Contact Me <Mail size={16} />
           </a>
 
           <a 
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="px-7 py-3.5 rounded-full glass hover:bg-white/10 text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 border border-white/15"
           >
-            Download Resume 
-            <Download size={16} className="text-white/70" />
+            View Resume 
+            <ExternalLink size={16} className="text-white/70" />
           </a>
         </motion.div>
       </motion.div>
