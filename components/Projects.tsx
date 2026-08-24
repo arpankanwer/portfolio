@@ -239,13 +239,13 @@ export default function Projects() {
           className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary uppercase tracking-wider mb-3">
               Portfolio Showcase
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan to-secondary">Engineering Work</span>.
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+              Featured <span className="text-gradient">Engineering Work</span>.
             </h2>
-            <p className="text-white/70 text-base sm:text-lg max-w-2xl">
+            <p className="text-slate-600 dark:text-white/70 text-base sm:text-lg max-w-2xl">
               Live mobile apps published on the App Store & Google Play, award-winning capstones, IoT systems, and open-source contributions.
             </p>
           </div>
@@ -261,8 +261,8 @@ export default function Projects() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer ${
                   isActive 
-                    ? 'bg-white text-black font-semibold shadow-[0_0_20px_rgba(255,255,255,0.2)]' 
-                    : 'bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black font-semibold shadow-sm dark:shadow-[0_0_20px_rgba(255,255,255,0.2)]' 
+                    : 'bg-slate-100 hover:bg-slate-200/80 text-slate-600 hover:text-slate-900 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white/70 dark:hover:text-white border border-slate-200 dark:border-white/10'
                 }`}
               >
                 {tab.label}
@@ -287,7 +287,7 @@ export default function Projects() {
                 {/* Visual Preview */}
                 <div 
                   onClick={() => setSelectedProject(project)}
-                  className="w-full lg:w-1/2 relative rounded-2xl overflow-hidden aspect-[16/10] group cursor-pointer border border-white/15 bg-black/40 flex items-center justify-center p-4"
+                  className="w-full lg:w-1/2 relative rounded-2xl overflow-hidden aspect-[16/10] group cursor-pointer border border-slate-200/80 dark:border-white/15 bg-slate-100 dark:bg-black/40 flex items-center justify-center p-4"
                 >
                   <Image
                     src={project.image}
@@ -296,10 +296,10 @@ export default function Projects() {
                     referrerPolicy="no-referrer"
                     className="object-contain p-2 transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 dark:from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                   
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between z-10">
-                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-white text-xs font-mono border border-white/20">
+                    <span className="px-3 py-1 rounded-full bg-slate-900/80 dark:bg-black/70 backdrop-blur-md text-white text-xs font-mono border border-white/20">
                       Click for Deep-Dive Specs
                     </span>
                     <span className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-primary group-hover:scale-110 transition-all">
@@ -313,33 +313,33 @@ export default function Projects() {
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-3">
                       {project.award && (
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/20 border border-secondary/40 text-cyan text-xs font-semibold uppercase tracking-wider">
-                          <Trophy size={13} className="text-yellow-400" />
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/30 text-primary dark:text-cyan text-xs font-semibold uppercase tracking-wider">
+                          <Trophy size={13} className="text-amber-500 dark:text-yellow-400" />
                           <span>{project.award}</span>
                         </div>
                       )}
 
                       {project.badge && !project.award && (
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-cyan text-xs font-semibold">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-cyan text-xs font-semibold">
                           <Smartphone size={13} className="text-primary" />
                           <span>{project.badge}</span>
                         </div>
                       )}
 
                       {project.downloads && (
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
                           <Download size={12} />
                           <span>{project.downloads} Downloads</span>
                         </div>
                       )}
                     </div>
 
-                    <h3 className="text-3xl sm:text-4xl font-display font-bold text-white mb-2">
+                    <h3 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-white mb-2">
                       {project.title}
                     </h3>
-                    <p className="text-xs sm:text-sm font-mono text-cyan/90 mb-4">{project.subtitle}</p>
+                    <p className="text-xs sm:text-sm font-mono text-primary dark:text-cyan/90 mb-4">{project.subtitle}</p>
 
-                    <p className="text-white/75 text-sm sm:text-base leading-relaxed mb-6">
+                    <p className="text-slate-600 dark:text-white/75 text-sm sm:text-base leading-relaxed mb-6">
                       {project.description}
                     </p>
 
@@ -348,7 +348,7 @@ export default function Projects() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80"
+                          className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-medium text-slate-700 dark:text-white/80"
                         >
                           {tag}
                         </span>
@@ -358,7 +358,7 @@ export default function Projects() {
                     {/* Key Highlights Bullet points */}
                     <div className="space-y-2 mb-6">
                       {project.features.slice(0, 3).map((feat, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-white/70">
+                        <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-white/70">
                           <CheckCircle2 size={15} className="text-primary shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </div>
@@ -367,10 +367,10 @@ export default function Projects() {
                   </div>
 
                   {/* Actions Bar */}
-                  <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-white/10">
+                  <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-200/80 dark:border-white/10">
                     <button
                       onClick={() => setSelectedProject(project)}
-                      className="flex-1 min-w-[170px] py-2.5 px-4 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                      className="flex-1 min-w-[170px] py-2.5 px-4 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-xs sm:text-sm hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm dark:shadow-[0_0_20px_rgba(255,255,255,0.15)]"
                     >
                       <Layers size={15} /> System Architecture
                     </button>
@@ -381,7 +381,7 @@ export default function Projects() {
                         href={project.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2.5 px-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all text-xs font-mono flex items-center gap-1.5"
+                        className="py-2.5 px-3 rounded-full bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5"
                         title="View on Apple App Store"
                       >
                         <Smartphone size={14} className="text-primary" />
@@ -395,10 +395,10 @@ export default function Projects() {
                         href={project.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2.5 px-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all text-xs font-mono flex items-center gap-1.5"
+                        className="py-2.5 px-3 rounded-full bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5"
                         title="View on Google Play Store"
                       >
-                        <Radio size={14} className="text-emerald-400" />
+                        <Radio size={14} className="text-emerald-500 dark:text-emerald-400" />
                         <span>Google Play</span>
                       </a>
                     )}
@@ -409,7 +409,7 @@ export default function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all"
+                        className="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white transition-all"
                         title="View Source on GitHub"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
@@ -432,7 +432,7 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-black/85 backdrop-blur-xl"
+              className="fixed inset-0 bg-slate-900/60 dark:bg-black/85 backdrop-blur-xl"
             />
 
             <motion.div
@@ -440,12 +440,12 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full max-w-3xl max-h-[90vh] bg-[#0b0b10] border border-white/15 rounded-3xl shadow-2xl overflow-y-auto z-10 p-6 sm:p-8"
+              className="relative w-full max-w-3xl max-h-[90vh] bg-white dark:bg-[#0b0b10] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-y-auto z-10 p-6 sm:p-8"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
+                className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-white/10 dark:hover:bg-white/20 flex items-center justify-center dark:text-white transition-colors cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -455,55 +455,55 @@ export default function Projects() {
                 <div>
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     {selectedProject.award && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/20 text-cyan text-xs font-semibold">
-                        <Trophy size={13} className="text-yellow-400" />
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 dark:bg-secondary/20 text-primary dark:text-cyan text-xs font-semibold">
+                        <Trophy size={13} className="text-amber-500 dark:text-yellow-400" />
                         <span>{selectedProject.award}</span>
                       </div>
                     )}
                     {selectedProject.badge && !selectedProject.award && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 text-cyan text-xs font-semibold">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-cyan text-xs font-semibold">
                         <Smartphone size={13} className="text-primary" />
                         <span>{selectedProject.badge}</span>
                       </div>
                     )}
                     {selectedProject.downloads && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
                         <Download size={12} />
                         <span>{selectedProject.downloads} Downloads</span>
                       </div>
                     )}
                   </div>
 
-                  <h3 className="text-3xl font-display font-bold text-white">
+                  <h3 className="text-3xl font-display font-bold text-slate-900 dark:text-white">
                     {selectedProject.title}
                   </h3>
-                  <p className="text-sm font-mono text-cyan">{selectedProject.subtitle}</p>
+                  <p className="text-sm font-mono text-primary dark:text-cyan">{selectedProject.subtitle}</p>
                 </div>
 
                 {/* Metrics */}
                 <div className="grid grid-cols-3 gap-3">
                   {selectedProject.metrics.map((m, i) => (
-                    <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                      <p className="text-xs text-white/50">{m.label}</p>
-                      <p className="text-lg font-display font-bold text-white mt-1">{m.value}</p>
+                    <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 text-center">
+                      <p className="text-xs text-slate-500 dark:text-white/50">{m.label}</p>
+                      <p className="text-lg font-display font-bold text-slate-900 dark:text-white mt-1">{m.value}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* Live App Store Links if available */}
                 {(selectedProject.appStoreUrl || selectedProject.playStoreUrl || selectedProject.githubUrl) && (
-                  <div className="flex flex-wrap items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
-                    <span className="text-xs text-white/60 font-mono">Live Access:</span>
+                  <div className="flex flex-wrap items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
+                    <span className="text-xs text-slate-600 dark:text-white/60 font-mono">Live Access:</span>
                     {selectedProject.appStoreUrl && (
                       <a
                         href={selectedProject.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium flex items-center gap-1.5 transition-all"
+                        className="px-3.5 py-1.5 rounded-full bg-slate-200/70 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 transition-all"
                       >
                         <Smartphone size={13} className="text-primary" />
                         <span>Apple App Store</span>
-                        <ExternalLink size={11} className="text-white/40" />
+                        <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
                       </a>
                     )}
                     {selectedProject.playStoreUrl && (
@@ -511,11 +511,11 @@ export default function Projects() {
                         href={selectedProject.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium flex items-center gap-1.5 transition-all"
+                        className="px-3.5 py-1.5 rounded-full bg-slate-200/70 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 transition-all"
                       >
-                        <Radio size={13} className="text-emerald-400" />
+                        <Radio size={13} className="text-emerald-500 dark:text-emerald-400" />
                         <span>Google Play Store</span>
-                        <ExternalLink size={11} className="text-white/40" />
+                        <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
                       </a>
                     )}
                     {selectedProject.githubUrl && (
@@ -523,11 +523,11 @@ export default function Projects() {
                         href={selectedProject.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium flex items-center gap-1.5 transition-all"
+                        className="px-3.5 py-1.5 rounded-full bg-slate-200/70 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 transition-all"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         <span>GitHub Repository</span>
-                        <ExternalLink size={11} className="text-white/40" />
+                        <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
                       </a>
                     )}
                   </div>
@@ -535,40 +535,40 @@ export default function Projects() {
 
                 {/* Overview */}
                 <div className="space-y-2">
-                  <h4 className="text-xs uppercase tracking-wider font-bold text-white/50 flex items-center gap-2">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
                     <Sparkles size={14} className="text-primary" /> System Overview
                   </h4>
-                  <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-700 dark:text-white/80 leading-relaxed">
                     {selectedProject.overview}
                   </p>
                 </div>
 
                 {/* Architecture */}
                 <div className="space-y-2">
-                  <h4 className="text-xs uppercase tracking-wider font-bold text-white/50 flex items-center gap-2">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
                     <Cpu size={14} className="text-secondary" /> Architecture & Data Flow
                   </h4>
-                  <p className="text-sm sm:text-base text-white/80 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/10 font-mono text-xs">
+                  <p className="text-sm sm:text-base text-slate-700 dark:text-white/80 leading-relaxed bg-slate-50 dark:bg-white/5 p-4 rounded-xl border border-slate-200/60 dark:border-white/10 font-mono text-xs">
                     {selectedProject.architecture}
                   </p>
                 </div>
 
                 {/* Challenges & Results */}
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <h4 className="text-xs uppercase tracking-wider font-bold text-white/50 flex items-center gap-2">
-                      <ShieldAlert size={14} className="text-amber-400" /> Engineering Challenges
+                  <div className="space-y-2 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
+                    <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
+                      <ShieldAlert size={14} className="text-amber-500 dark:text-amber-400" /> Engineering Challenges
                     </h4>
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed">
                       {selectedProject.challenges}
                     </p>
                   </div>
 
-                  <div className="space-y-2 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <h4 className="text-xs uppercase tracking-wider font-bold text-white/50 flex items-center gap-2">
-                      <Trophy size={14} className="text-emerald-400" /> Outcomes & Impact
+                  <div className="space-y-2 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
+                    <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
+                      <Trophy size={14} className="text-emerald-500 dark:text-emerald-400" /> Outcomes & Impact
                     </h4>
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed">
                       {selectedProject.results}
                     </p>
                   </div>
@@ -576,13 +576,13 @@ export default function Projects() {
 
                 {/* Complete Feature Breakdown */}
                 <div className="space-y-3">
-                  <h4 className="text-xs uppercase tracking-wider font-bold text-white/50">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50">
                     Complete Feature Breakdown
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-2">
                     {selectedProject.features.map((feat, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-white/80 bg-white/[0.03] p-2.5 rounded-lg border border-white/5">
-                        <CheckCircle2 size={13} className="text-cyan shrink-0" />
+                      <div key={i} className="flex items-center gap-2 text-xs text-slate-700 dark:text-white/80 bg-slate-50 dark:bg-white/[0.03] p-2.5 rounded-lg border border-slate-200/60 dark:border-white/5">
+                        <CheckCircle2 size={13} className="text-primary dark:text-cyan shrink-0" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -590,9 +590,9 @@ export default function Projects() {
                 </div>
 
                 {/* Tech Stack Chips */}
-                <div className="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-2">
                   {selectedProject.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-white/90">
+                    <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-mono text-slate-800 dark:text-white/90 border border-slate-200/50 dark:border-transparent">
                       {tag}
                     </span>
                   ))}

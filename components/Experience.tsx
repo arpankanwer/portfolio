@@ -80,20 +80,20 @@ export default function Experience() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
             Career Progression
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-            Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan via-primary to-secondary">Experience</span>.
+          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+            Professional <span className="text-gradient">Experience</span>.
           </h2>
-          <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
             A track record of engineering scalable applications, automating test workflows, and driving high-impact technical initiatives.
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Central spine line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-white/10 -translate-x-1/2" />
           <motion.div 
             className="absolute left-4 md:left-1/2 top-0 w-[2px] bg-gradient-to-b from-primary via-cyan to-secondary -translate-x-1/2"
             style={{ height: lineHeight }}
@@ -106,7 +106,7 @@ export default function Experience() {
                 <div key={index} className="relative flex flex-col md:flex-row items-start md:items-center justify-between w-full">
                   
                   {/* Timeline Dot with Pulse */}
-                  <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-[#050505] -translate-x-1/2 z-20 shadow-[0_0_12px_rgba(79,140,255,0.8)] mt-1.5 md:mt-0" />
+                  <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-slate-50 dark:border-[#050505] -translate-x-1/2 z-20 shadow-[0_0_12px_rgba(79,140,255,0.8)] mt-1.5 md:mt-0" />
                   
                   {/* Experience Card */}
                   <motion.div 
@@ -116,27 +116,27 @@ export default function Experience() {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     className={`w-full pl-10 md:pl-0 md:w-[46%] ${isEven ? 'md:mr-auto md:text-left' : 'md:ml-auto md:text-left'}`}
                   >
-                    <div className="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden group hover:border-primary/40 hover:bg-white/[0.06] transition-all duration-300">
+                    <div className="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden group hover:border-primary/40 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all duration-300">
                       {/* Top Bar */}
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                         <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-cyan">
                           {exp.date}
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-full bg-white/5 text-[11px] font-medium text-white/60">
+                        <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 text-[11px] font-medium text-slate-600 dark:text-white/60">
                           {exp.badge}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors">
                         {exp.role}
                       </h3>
                       
-                      <div className="flex items-center gap-3 text-xs sm:text-sm text-white/70 mb-4 font-medium">
-                        <span className="flex items-center gap-1.5 text-white">
+                      <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-600 dark:text-white/70 mb-4 font-medium">
+                        <span className="flex items-center gap-1.5 text-slate-900 dark:text-white">
                           <Building2 size={14} className="text-primary" /> {exp.company}
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1.5 text-white/50">
+                        <span className="flex items-center gap-1.5 text-slate-500 dark:text-white/50">
                           <MapPin size={13} /> {exp.location}
                         </span>
                       </div>
@@ -144,7 +144,7 @@ export default function Experience() {
                       {/* Bullets */}
                       <div className="space-y-2.5 mb-5">
                         {exp.bullets.map((bullet, bIdx) => (
-                          <div key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-white/75 leading-relaxed">
+                          <div key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-white/75 leading-relaxed">
                             <CheckCircle2 size={14} className="text-cyan shrink-0 mt-1" />
                             <span>{bullet}</span>
                           </div>
@@ -152,9 +152,9 @@ export default function Experience() {
                       </div>
 
                       {/* Tech Chips */}
-                      <div className="pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
+                      <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-1.5">
                         {exp.stack.map((tech) => (
-                          <span key={tech} className="px-2.5 py-0.5 rounded-md bg-white/5 text-[11px] font-mono text-white/70">
+                          <span key={tech} className="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-[11px] font-mono text-slate-700 dark:text-white/70 border border-slate-200/50 dark:border-transparent">
                             {tech}
                           </span>
                         ))}

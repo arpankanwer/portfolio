@@ -51,14 +51,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-6 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl inline-flex items-center gap-2.5 shadow-[0_0_20px_rgba(79,140,255,0.15)]"
+          className="mb-6 px-4 py-1.5 rounded-full border border-slate-200/80 dark:border-white/15 bg-white/80 dark:bg-white/5 backdrop-blur-xl inline-flex items-center gap-2.5 shadow-sm dark:shadow-[0_0_20px_rgba(79,140,255,0.15)]"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan"></span>
           </span>
-          <span className="text-xs font-medium text-white/90 tracking-wide">Available for Full-time & Contract Roles</span>
-          <Sparkles size={13} className="text-yellow-400" />
+          <span className="text-xs font-medium text-slate-800 dark:text-white/90 tracking-wide">Available for Full-time & Contract Roles</span>
+          <Sparkles size={13} className="text-amber-500 dark:text-yellow-400" />
         </motion.div>
 
         {/* Main Title */}
@@ -66,7 +66,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tight mb-4 leading-[1.08] text-white"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tight mb-4 leading-[1.08] text-slate-900 dark:text-white"
         >
           Birarpanjot Singh Kanwer
         </motion.h1>
@@ -98,9 +98,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          className="text-base sm:text-lg md:text-xl text-white/70 font-normal max-w-3xl mb-10 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-white/70 font-normal max-w-3xl mb-10 leading-relaxed"
         >
-          Specializing in scalable distributed systems, high-performance backends, and modern mobile & web experiences using <span className="text-white font-medium">Node.js, React Native, Next.js, AWS, and Cloud Architecture</span>.
+          Specializing in scalable distributed systems, high-performance backends, and modern mobile & web experiences using <span className="text-slate-900 dark:text-white font-medium">Node.js, React Native, Next.js, AWS, and Cloud Architecture</span>.
         </motion.p>
 
         {/* 3 Call-To-Action Buttons */}
@@ -112,14 +112,14 @@ export default function Hero() {
         >
           <Link 
             href="#projects"
-            className="px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.25)]"
+            className="px-7 py-3.5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-md dark:shadow-[0_0_30px_rgba(255,255,255,0.25)]"
           >
             View Projects <ArrowRight size={16} />
           </Link>
 
           <a 
             href="mailto:birarpanjot@gmail.com?subject=Portfolio%20Inquiry%20-%20Birarpanjot%20Singh%20Kanwer"
-            className="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary/80 to-secondary/80 hover:from-primary hover:to-secondary text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(79,140,255,0.3)]"
+            className="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-95 text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-md dark:shadow-[0_0_25px_rgba(79,140,255,0.3)]"
           >
             Contact Me <Mail size={16} />
           </a>
@@ -128,10 +128,10 @@ export default function Hero() {
             href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-3.5 rounded-full glass hover:bg-white/10 text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 border border-white/15"
+            className="px-7 py-3.5 rounded-full glass hover:bg-slate-100 dark:hover:bg-white/10 text-slate-800 dark:text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 border border-slate-200/80 dark:border-white/15"
           >
             View Resume 
-            <ExternalLink size={16} className="text-white/70" />
+            <ExternalLink size={16} className="text-slate-500 dark:text-white/70" />
           </a>
         </motion.div>
       </motion.div>
@@ -141,10 +141,10 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-white/40"
       >
         <span className="text-[10px] font-mono tracking-widest uppercase">Scroll to explore</span>
-        <div className="w-4 h-7 rounded-full border border-white/20 flex justify-center p-1">
+        <div className="w-4 h-7 rounded-full border border-slate-300 dark:border-white/20 flex justify-center p-1">
           <motion.div
             className="w-1 h-1.5 bg-primary rounded-full"
             animate={{ y: [0, 10, 0] }}

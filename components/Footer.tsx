@@ -28,36 +28,36 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-[#020204] py-16 px-6 sm:px-12 relative overflow-hidden">
+    <footer className="border-t border-slate-200 dark:border-white/10 bg-slate-100/70 dark:bg-[#020204] py-16 px-6 sm:px-12 relative overflow-hidden transition-colors">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         
         {/* Left Side */}
         <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
           <div className="flex items-center gap-2">
-            <span className="font-display font-bold text-xl tracking-tight text-white">
+            <span className="font-display font-bold text-xl tracking-tight text-slate-900 dark:text-white">
               Birarpanjot Singh Kanwer
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
           </div>
-          <p className="text-xs text-white/50 max-w-sm">
+          <p className="text-xs text-slate-600 dark:text-white/50 max-w-sm">
             Software Developer • Full-Stack & Mobile Engineer • Based in Ontario, Canada
           </p>
           {torontoTime && (
-            <div className="flex items-center gap-2 mt-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-cyan">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="flex items-center gap-2 mt-1 px-3 py-1 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[11px] font-mono text-primary dark:text-cyan shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Toronto/Guelph (EST): {torontoTime}</span>
             </div>
           )}
         </div>
 
         {/* Center Quick Links */}
-        <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-white/60">
-          <Link href="#about" className="hover:text-white transition-colors">About</Link>
-          <Link href="#skills" className="hover:text-white transition-colors">Skills</Link>
-          <Link href="#experience" className="hover:text-white transition-colors">Experience</Link>
-          <Link href="#projects" className="hover:text-white transition-colors">Projects</Link>
-          <Link href="#education" className="hover:text-white transition-colors">Education</Link>
-          <Link href="#contact" className="hover:text-white transition-colors">Contact</Link>
+        <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-slate-600 dark:text-white/60">
+          <Link href="#about" className="hover:text-primary dark:hover:text-white transition-colors">About</Link>
+          <Link href="#skills" className="hover:text-primary dark:hover:text-white transition-colors">Skills</Link>
+          <Link href="#experience" className="hover:text-primary dark:hover:text-white transition-colors">Experience</Link>
+          <Link href="#projects" className="hover:text-primary dark:hover:text-white transition-colors">Projects</Link>
+          <Link href="#education" className="hover:text-primary dark:hover:text-white transition-colors">Education</Link>
+          <Link href="#contact" className="hover:text-primary dark:hover:text-white transition-colors">Contact</Link>
         </div>
 
         {/* Right Socials & Back to Top */}
@@ -66,7 +66,7 @@ export default function Footer() {
             href="https://github.com/arpankanwer"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-2.5 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-colors shadow-sm"
             aria-label="GitHub Profile"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
@@ -76,7 +76,7 @@ export default function Footer() {
             href="https://linkedin.com/in/arpankanwer"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-[#0077b5] hover:bg-white/10 transition-colors"
+            className="p-2.5 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white/70 hover:text-[#0077b5] dark:hover:text-[#0077b5] hover:bg-slate-200 dark:hover:bg-white/10 transition-colors shadow-sm"
             aria-label="LinkedIn Profile"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
@@ -84,7 +84,7 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="p-2.5 rounded-full bg-white/10 hover:bg-primary text-white transition-all cursor-pointer shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            className="p-2.5 rounded-full bg-slate-900 text-white dark:bg-white/10 hover:bg-primary dark:hover:bg-primary text-white transition-all cursor-pointer shadow-sm dark:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             aria-label="Scroll back to top"
             title="Back to top"
           >
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 gap-4">
+      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-slate-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-white/40 gap-4">
         <span>© {new Date().getFullYear()} Birarpanjot Singh Kanwer. All rights reserved.</span>
         <div className="flex items-center gap-2">
           <span>Crafted with Next.js 15, TypeScript & Tailwind CSS</span>

@@ -67,13 +67,13 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
             Get In Touch
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-            Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-cyan">Extraordinary</span>.
+          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+            Let&apos;s Build Something <span className="text-gradient">Extraordinary</span>.
           </h2>
-          <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
             Open to discussing engineering roles, full-stack architectures, or collaborative projects.
           </p>
         </motion.div>
@@ -92,71 +92,71 @@ export default function Contact() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[60px] rounded-full pointer-events-none" />
               
               {/* Email Block */}
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between group">
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between group">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary shrink-0">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <h3 className="text-xs text-white/50 font-medium">Direct Email</h3>
-                    <a href="mailto:birarpanjot@gmail.com" className="text-sm font-semibold text-white hover:text-cyan transition-colors">
+                    <h3 className="text-xs text-slate-500 dark:text-white/50 font-medium">Direct Email</h3>
+                    <a href="mailto:birarpanjot@gmail.com" className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary dark:hover:text-cyan transition-colors">
                       birarpanjot@gmail.com
                     </a>
                   </div>
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-all cursor-pointer"
+                  className="p-2 rounded-lg bg-slate-200/70 hover:bg-slate-300 dark:bg-white/5 dark:hover:bg-white/15 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
                   title="Copy email to clipboard"
                 >
-                  {copiedEmail ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+                  {copiedEmail ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
                 </button>
               </div>
 
               {/* Phone Block */}
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between group">
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between group">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-cyan/20 flex items-center justify-center text-cyan shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-cyan/10 dark:bg-cyan/20 flex items-center justify-center text-cyan shrink-0">
                     <Phone size={18} />
                   </div>
                   <div>
-                    <h3 className="text-xs text-white/50 font-medium">Direct Phone</h3>
-                    <a href="tel:+12898891472" className="text-sm font-semibold text-white hover:text-cyan transition-colors">
+                    <h3 className="text-xs text-slate-500 dark:text-white/50 font-medium">Direct Phone</h3>
+                    <a href="tel:+12898891472" className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary dark:hover:text-cyan transition-colors">
                       +1 (289) 889-1472
                     </a>
                   </div>
                 </div>
                 <button
                   onClick={copyPhone}
-                  className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-all cursor-pointer"
+                  className="p-2 rounded-lg bg-slate-200/70 hover:bg-slate-300 dark:bg-white/5 dark:hover:bg-white/15 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
                   title="Copy phone to clipboard"
                 >
-                  {copiedPhone ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+                  {copiedPhone ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
                 </button>
               </div>
 
               {/* Location Block */}
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary shrink-0">
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-secondary/10 dark:bg-secondary/20 flex items-center justify-center text-secondary shrink-0">
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <h3 className="text-xs text-white/50 font-medium">Base Location</h3>
-                  <p className="text-sm font-semibold text-white">
+                  <h3 className="text-xs text-slate-500 dark:text-white/50 font-medium">Base Location</h3>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">
                     Guelph / Greater Toronto Area, ON, Canada
                   </p>
                 </div>
               </div>
 
               {/* Social Channels */}
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                <span className="text-xs font-mono text-white/50">Online Profiles:</span>
+              <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between">
+                <span className="text-xs font-mono text-slate-500 dark:text-white/50">Online Profiles:</span>
                 <div className="flex gap-2">
                   <a 
                     href="https://github.com/arpankanwer" 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                    className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
                     title="GitHub Profile"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
@@ -165,7 +165,7 @@ export default function Contact() {
                     href="https://linkedin.com/in/arpankanwer" 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all"
+                    className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-white hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all"
                     title="LinkedIn Profile"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
@@ -190,7 +190,7 @@ export default function Contact() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm flex items-center gap-3"
+                    className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm flex items-center gap-3"
                   >
                     <MessageSquareCheck size={20} className="shrink-0" />
                     <span>Message received! Thank you for reaching out — I will respond shortly.</span>
@@ -200,66 +200,66 @@ export default function Contact() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-white/70 mb-2">
+                  <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-white/70 mb-2">
                     Your Name
                   </label>
                   <input
                     id="name"
                     type="text"
                     {...register('name')}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     placeholder="Jane Doe"
                   />
-                  {errors.name && <p className="mt-1 text-xs text-rose-400">{errors.name.message}</p>}
+                  {errors.name && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.name.message}</p>}
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-white/70 mb-2">
+                  <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-white/70 mb-2">
                     Your Email
                   </label>
                   <input
                     id="email"
                     type="email"
                     {...register('email')}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     placeholder="jane@company.com"
                   />
-                  {errors.email && <p className="mt-1 text-xs text-rose-400">{errors.email.message}</p>}
+                  {errors.email && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.email.message}</p>}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-xs font-semibold uppercase tracking-wider text-white/70 mb-2">
+                <label htmlFor="subject" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-white/70 mb-2">
                   Subject
                 </label>
                 <input
                   id="subject"
                   type="text"
                   {...register('subject')}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                   placeholder="Software Engineering Role / Project Inquiry"
                 />
-                {errors.subject && <p className="mt-1 text-xs text-rose-400">{errors.subject.message}</p>}
+                {errors.subject && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.subject.message}</p>}
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-white/70 mb-2">
+                <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-white/70 mb-2">
                   Message
                 </label>
                 <textarea
                   id="message"
                   rows={4}
                   {...register('message')}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
+                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
                   placeholder="Hi Birarpanjot, we saw your portfolio and would love to connect..."
                 />
-                {errors.message && <p className="mt-1 text-xs text-rose-400">{errors.message.message}</p>}
+                {errors.message && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.message.message}</p>}
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer shadow-[0_0_25px_rgba(255,255,255,0.2)]"
+                className="w-full py-3.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-sm hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer shadow-sm dark:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
               >
                 {isSubmitting ? (
                   <span>Sending Message...</span>

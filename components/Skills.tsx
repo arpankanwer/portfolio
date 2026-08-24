@@ -2,170 +2,213 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Code2, 
   Server, 
   Smartphone, 
   Cloud, 
   Database, 
   CheckCircle2, 
-  Terminal,
-  Cpu
+  Cpu,
+  Layers,
+  Sparkles,
+  ExternalLink
 } from 'lucide-react';
 
-const categories = [
-  { id: 'all', label: 'All Stack', icon: Cpu },
-  { id: 'backend', label: 'Backend', icon: Server },
-  { id: 'frontend', label: 'Frontend', icon: Code2 },
-  { id: 'mobile', label: 'Mobile', icon: Smartphone },
-  { id: 'cloud', label: 'Cloud & DevOps', icon: Cloud },
-  { id: 'database', label: 'Databases', icon: Database },
-  { id: 'qa', label: 'QA Automation', icon: CheckCircle2 },
-  { id: 'languages', label: 'Languages', icon: Terminal },
-];
+interface TechCategory {
+  id: string;
+  label: string;
+  icon: typeof Server;
+  description: string;
+  items: {
+    name: string;
+    level: 'Production Core' | 'Advanced' | 'Proficient';
+    highlight?: string;
+  }[];
+}
 
-const skillsData = [
-  // Languages
-  { name: 'JavaScript / TypeScript', category: 'languages', level: 95, icon: 'TS' },
-  { name: 'Java (Spring Boot / JavaFX)', category: 'languages', level: 90, icon: 'JV' },
-  { name: 'Python (Django / Scripting)', category: 'languages', level: 85, icon: 'PY' },
-  { name: 'Dart / Flutter', category: 'languages', level: 90, icon: 'DT' },
-  { name: 'SQL & Query Optimization', category: 'languages', level: 88, icon: 'SQL' },
-  { name: 'C# / .NET Basics', category: 'languages', level: 80, icon: 'C#' },
-
-  // Backend
-  { name: 'Node.js & Express / NestJS', category: 'backend', level: 95, icon: 'JS' },
-  { name: 'Spring Boot Architecture', category: 'backend', level: 88, icon: 'SB' },
-  { name: 'RESTful & GraphQL API Design', category: 'backend', level: 95, icon: 'API' },
-  { name: 'Django & Python Web Services', category: 'backend', level: 82, icon: 'DJ' },
-  { name: 'Microservices & Event Messaging', category: 'backend', level: 85, icon: 'MS' },
-  { name: 'Native Module Bridging (Video/Audio)', category: 'backend', level: 90, icon: 'BR' },
-
-  // Frontend
-  { name: 'Next.js 15 (App Router & SSR)', category: 'frontend', level: 92, icon: 'NX' },
-  { name: 'React.js Ecosystem', category: 'frontend', level: 95, icon: 'RC' },
-  { name: 'Tailwind CSS & Design Systems', category: 'frontend', level: 95, icon: 'TW' },
-  { name: 'Framer Motion & Animations', category: 'frontend', level: 90, icon: 'FM' },
-
-  // Mobile
-  { name: 'React Native & Expo', category: 'mobile', level: 94, icon: 'RN' },
-  { name: 'Flutter Cross-Platform Apps', category: 'mobile', level: 90, icon: 'FL' },
-  { name: 'iOS App Store & Android Play Deployment', category: 'mobile', level: 90, icon: 'APP' },
-  { name: 'Mobile State Management (Zustand/Redux)', category: 'mobile', level: 92, icon: 'ST' },
-
-  // Cloud & DevOps
-  { name: 'AWS (EC2, S3, RDS, Lambda)', category: 'cloud', level: 88, icon: 'AWS' },
-  { name: 'Docker & Containerization', category: 'cloud', level: 86, icon: 'DK' },
-  { name: 'GitHub Actions & CI/CD Pipelines', category: 'cloud', level: 90, icon: 'GA' },
-  { name: 'Vercel, Firebase Hosting & Expo EAS', category: 'cloud', level: 95, icon: 'CD' },
-  { name: 'Jenkins Automated Pipelines', category: 'cloud', level: 82, icon: 'JK' },
-
-  // Databases
-  { name: 'Firebase Firestore & Realtime DB', category: 'database', level: 94, icon: 'FB' },
-  { name: 'MongoDB & Document Modeling', category: 'database', level: 90, icon: 'MG' },
-  { name: 'Microsoft SQL Server', category: 'database', level: 85, icon: 'SS' },
-  { name: 'Azure Blob Storage', category: 'database', level: 88, icon: 'AZ' },
-
-  // QA Automation
-  { name: 'Selenium WebDriver Test Automation', category: 'qa', level: 92, icon: 'SE' },
-  { name: 'Regression & E2E Testing Strategies', category: 'qa', level: 90, icon: 'QA' },
-  { name: 'Agile/Scrum, Jira, & Git Workflows', category: 'qa', level: 95, icon: 'JR' },
+const techDomains: TechCategory[] = [
+  {
+    id: 'backend',
+    label: 'Backend & Systems',
+    icon: Server,
+    description: 'Scalable services, REST/GraphQL APIs, and low-latency native video bridging.',
+    items: [
+      { name: 'Node.js & Express / NestJS', level: 'Production Core', highlight: 'REST & Event Pipelines' },
+      { name: 'Java & Spring Boot', level: 'Production Core', highlight: 'Enterprise Microservices' },
+      { name: 'TypeScript / JavaScript (ES6+)', level: 'Production Core', highlight: 'Strict Type Systems' },
+      { name: 'Python & Django', level: 'Advanced', highlight: 'Data & Scripting Services' },
+      { name: 'Native Module Bridging', level: 'Production Core', highlight: 'Objective-C / Java / Video' },
+      { name: 'RESTful & GraphQL API Architecture', level: 'Production Core', highlight: 'Clean Contract Design' },
+    ]
+  },
+  {
+    id: 'mobile-frontend',
+    label: 'Mobile & Frontend',
+    icon: Smartphone,
+    description: 'Cross-platform mobile applications and modern SSR web interfaces.',
+    items: [
+      { name: 'React Native & Expo', level: 'Production Core', highlight: 'Published to App Store / Play' },
+      { name: 'Flutter & Dart', level: 'Advanced', highlight: 'Cross-Platform Android / iOS' },
+      { name: 'Next.js 15 & React.js', level: 'Production Core', highlight: 'App Router & SSR Architecture' },
+      { name: 'Tailwind CSS & Design Systems', level: 'Production Core', highlight: 'Accessible Modern UI' },
+      { name: 'Zustand / Redux State Engines', level: 'Production Core', highlight: 'Predictable Global State' },
+      { name: 'Framer Motion & Micro-interactions', level: 'Advanced', highlight: '60fps GPU Animations' },
+    ]
+  },
+  {
+    id: 'cloud-devops',
+    label: 'Cloud & Infrastructure',
+    icon: Cloud,
+    description: 'Containerized deployment pipelines, cloud functions, and CI/CD automation.',
+    items: [
+      { name: 'AWS (EC2, S3, RDS, Lambda)', level: 'Advanced', highlight: 'Cloud Hosting & Storage' },
+      { name: 'Docker & Containerization', level: 'Advanced', highlight: 'Reproducible Build Envs' },
+      { name: 'GitHub Actions & CI/CD', level: 'Production Core', highlight: 'Automated Test & Deploy' },
+      { name: 'Firebase & Google Cloud Platform', level: 'Production Core', highlight: 'Auth, Firestore, Hosting' },
+      { name: 'Expo Application Services (EAS)', level: 'Production Core', highlight: 'Over-the-Air iOS/Android Builds' },
+      { name: 'Vercel Edge Platform', level: 'Production Core', highlight: 'Serverless Edge Functions' },
+    ]
+  },
+  {
+    id: 'data-qa',
+    label: 'Databases & QA Automation',
+    icon: Database,
+    description: 'NoSQL & Relational databases, regression testing suites, and agile workflows.',
+    items: [
+      { name: 'Firebase Firestore & Realtime DB', level: 'Production Core', highlight: 'Real-time WebSocket Sync' },
+      { name: 'PostgreSQL & MS SQL Server', level: 'Advanced', highlight: 'Complex Queries & Indexing' },
+      { name: 'MongoDB & Document Modeling', level: 'Advanced', highlight: 'Schema Design & Aggregations' },
+      { name: 'Selenium WebDriver Automation', level: 'Production Core', highlight: '50+ Evertz Test Suites' },
+      { name: 'Regression & Integration Testing', level: 'Production Core', highlight: 'Cut Test Cycles by 25%' },
+      { name: 'Jira, Agile / Scrum & Git', level: 'Production Core', highlight: 'Iterative Sprint Delivery' },
+    ]
+  }
 ];
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [selectedTab, setSelectedTab] = useState<string>('all');
 
-  const filteredSkills = activeCategory === 'all'
-    ? skillsData
-    : skillsData.filter(s => s.category === activeCategory);
+  const displayedDomains = selectedTab === 'all' 
+    ? techDomains 
+    : techDomains.filter(d => d.id === selectedTab);
 
   return (
-    <section id="skills" className="py-24 px-6 sm:px-12 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-secondary/15 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/2" />
+    <section id="skills" className="py-20 sm:py-24 px-6 sm:px-12 relative overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 right-0 w-[450px] h-[450px] bg-primary/10 dark:bg-secondary/15 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/2" />
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 text-center md:text-left"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-secondary uppercase tracking-wider mb-3">
-            Technical Proficiency
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary uppercase tracking-wider mb-3">
+              <Layers size={13} />
+              Technical Arsenal
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Production-Tested <span className="text-gradient">Core Tech Stack</span>.
+            </h2>
+            <p className="text-slate-600 dark:text-white/70 text-sm sm:text-base max-w-xl mt-2">
+              Clean architectural competencies spanning backend microservices, published mobile applications, and automated CI/CD infrastructure.
+            </p>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-            Interactive <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-primary to-cyan">Tech Stack</span>.
-          </h2>
-          <p className="text-white/70 text-base sm:text-lg max-w-2xl">
-            Filter through my specialized competencies across enterprise backend development, cross-platform mobile frameworks, and cloud architecture.
-          </p>
-        </motion.div>
 
-        {/* Category Selector Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = activeCategory === cat.id;
-            return (
+          {/* Filter Pills */}
+          <div className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 self-start md:self-auto overflow-x-auto max-w-full">
+            <button
+              onClick={() => setSelectedTab('all')}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                selectedTab === 'all'
+                  ? 'bg-primary text-white shadow-sm font-semibold'
+                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              All Domains
+            </button>
+            {techDomains.map((domain) => (
               <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? 'bg-primary text-white shadow-[0_0_20px_rgba(79,140,255,0.4)] scale-105'
-                    : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
+                key={domain.id}
+                onClick={() => setSelectedTab(domain.id)}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  selectedTab === domain.id
+                    ? 'bg-primary text-white shadow-sm font-semibold'
+                    : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                <Icon size={14} />
-                <span>{cat.label}</span>
+                {domain.label.split(' ')[0]}
               </button>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
-        {/* Interactive Skills Grid */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-        >
-          <AnimatePresence>
-            {filteredSkills.map((skill) => (
-              <motion.div
-                layout
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.25 }}
-                whileHover={{ y: -3 }}
-                className="glass-card p-5 rounded-2xl border border-white/10 hover:border-primary/40 transition-all flex flex-col justify-between group"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-mono text-xs font-bold text-cyan group-hover:bg-primary/20 group-hover:text-white transition-colors">
-                      {skill.icon}
+        {/* Categorized Tech Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <AnimatePresence mode="popLayout">
+            {displayedDomains.map((domain) => {
+              const Icon = domain.icon;
+              return (
+                <motion.div
+                  key={domain.id}
+                  layout
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.25 }}
+                  className="glass-card p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 hover:border-primary/40 transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Domain Header */}
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-9 h-9 rounded-xl bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center border border-primary/20">
+                        <Icon size={18} />
+                      </div>
+                      <div>
+                        <h3 className="font-display font-bold text-base text-slate-900 dark:text-white">
+                          {domain.label}
+                        </h3>
+                        <p className="text-xs text-slate-500 dark:text-white/50">
+                          {domain.description}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="text-sm font-semibold text-white group-hover:text-primary transition-colors">
-                      {skill.name}
-                    </h3>
-                  </div>
-                  <span className="text-xs font-mono text-white/50">{skill.level}%</span>
-                </div>
 
-                {/* Progress bar */}
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="h-full bg-gradient-to-r from-primary to-cyan rounded-full"
-                  />
-                </div>
-              </motion.div>
-            ))}
+                    {/* Tech Badges List */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5">
+                      {domain.items.map((tech) => (
+                        <div 
+                          key={tech.name}
+                          className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200/60 dark:border-white/5 hover:border-primary/30 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all group"
+                        >
+                          <div className="flex items-center justify-between gap-1 mb-1">
+                            <span className="text-xs font-semibold text-slate-800 dark:text-white/90 group-hover:text-primary transition-colors line-clamp-1">
+                              {tech.name}
+                            </span>
+                          </div>
+                          {tech.highlight && (
+                            <span className="text-[11px] font-mono text-slate-500 dark:text-cyan/80 line-clamp-1">
+                              {tech.highlight}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom summary tag */}
+                  <div className="mt-5 pt-3 border-t border-slate-200/60 dark:border-white/5 flex items-center justify-between text-[11px] text-slate-500 dark:text-white/40">
+                    <span className="flex items-center gap-1">
+                      <CheckCircle2 size={12} className="text-emerald-500" /> Production Verified
+                    </span>
+                    <span className="font-mono text-slate-400 dark:text-white/30">
+                      {domain.items.length} Core Technologies
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

@@ -27,27 +27,27 @@ export default function About() {
         >
           {/* Left Side: Editorial Story */}
           <div className="flex-1 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider">
               About The Developer
             </div>
 
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Engineering scalable systems with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan to-secondary">precision & craft</span>.
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+              Engineering scalable systems with <span className="text-gradient">precision & craft</span>.
             </h2>
             
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-              I am a Backend & Full-Stack Engineer with deep experience building scalable applications using <strong className="text-white">Node.js, React Native, Next.js, Spring Boot, Flutter, AWS, Firebase</strong>, and cloud infrastructure.
+            <p className="text-slate-700 dark:text-white/80 text-base sm:text-lg leading-relaxed">
+              I am a Backend & Full-Stack Engineer with deep experience building scalable applications using <strong className="text-slate-900 dark:text-white">Node.js, React Native, Next.js, Spring Boot, Flutter, AWS, Firebase</strong>, and cloud infrastructure.
             </p>
             
-            <div className="space-y-3 text-white/70 text-sm sm:text-base leading-relaxed border-l-2 border-primary/40 pl-5">
+            <div className="space-y-3 text-slate-600 dark:text-white/70 text-sm sm:text-base leading-relaxed border-l-2 border-primary/40 pl-5">
               <p>
-                At <strong className="text-white font-medium">KiloBryte</strong>, I develop accessible cross-platform mobile apps for seniors, engineering native module bridging for low-latency video streaming and publishing core features to the App Store and Google Play.
+                At <strong className="text-slate-900 dark:text-white font-medium">KiloBryte</strong>, I develop accessible cross-platform mobile apps for seniors, engineering native module bridging for low-latency video streaming and publishing core features to the App Store and Google Play.
               </p>
               <p>
-                During my engineering tenure at <strong className="text-white font-medium">Evertz Microsystems</strong>, I automated 50+ Selenium test suites, slashing regression cycles by 25% for mission-critical broadcast and IoT systems.
+                During my engineering tenure at <strong className="text-slate-900 dark:text-white font-medium">Evertz Microsystems</strong>, I automated 50+ Selenium test suites, slashing regression cycles by 25% for mission-critical broadcast and IoT systems.
               </p>
               <p>
-                As a designated Programming Tutor at <strong className="text-white font-medium">Sheridan College</strong>, I have mentored over 125+ aspiring developers in software architecture, Spring Boot, AngularJS, and Django.
+                As a designated Programming Tutor at <strong className="text-slate-900 dark:text-white font-medium">Sheridan College</strong>, I have mentored over 125+ aspiring developers in software architecture, Spring Boot, AngularJS, and Django.
               </p>
             </div>
           </div>
@@ -62,16 +62,16 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between hover:border-primary/40 hover:bg-white/[0.07] transition-all group"
+                className="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between hover:border-primary/40 hover:bg-slate-100/80 dark:hover:bg-white/[0.07] transition-all group"
               >
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                   <stat.icon size={20} />
                 </div>
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-white mb-1 tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 dark:text-white mb-1 tracking-tight">
                     {stat.value}
                   </h3>
-                  <p className="text-xs sm:text-sm text-white/60 font-medium">{stat.label}</p>
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-white/60 font-medium">{stat.label}</p>
                 </div>
               </motion.div>
             ))}

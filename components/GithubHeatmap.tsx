@@ -35,12 +35,20 @@ const generateHeatmap = () => {
 
 const heatmapData = generateHeatmap();
 
-const levelColors = [
+const levelColorsDark = [
   'bg-white/5',           // Level 0
   'bg-primary/30',        // Level 1
   'bg-primary/60',        // Level 2
   'bg-primary',           // Level 3
   'bg-cyan shadow-[0_0_8px_rgba(6,182,212,0.6)]', // Level 4
+];
+
+const levelColorsLight = [
+  'bg-slate-200/80',      // Level 0
+  'bg-primary/30',        // Level 1
+  'bg-primary/60',        // Level 2
+  'bg-primary',           // Level 3
+  'bg-cyan shadow-sm',    // Level 4
 ];
 
 export default function GithubHeatmap() {
@@ -58,14 +66,14 @@ export default function GithubHeatmap() {
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                 <GitCommit size={20} />
               </div>
               <div>
-                <h3 className="text-xl font-display font-bold text-white">
+                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
                   Continuous Engineering Activity
                 </h3>
-                <p className="text-xs text-white/60 font-mono">
+                <p className="text-xs text-slate-600 dark:text-white/60 font-mono">
                   1,480+ contributions across repositories in the last year
                 </p>
               </div>
@@ -73,15 +81,15 @@ export default function GithubHeatmap() {
 
             {/* Quick stats chips */}
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan">
-                <Flame size={13} className="text-orange-400" />
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan">
+                <Flame size={13} className="text-orange-500" />
                 <span>38 Week Streak</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary">
                 <GitPullRequest size={13} />
                 <span>120+ PRs Merged</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-secondary">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-secondary">
                 <GitBranch size={13} />
                 <span>50+ Repos</span>
               </div>
@@ -93,24 +101,35 @@ export default function GithubHeatmap() {
             <div className="min-w-[700px] flex gap-1.5">
               {heatmapData.map((week, wIdx) => (
                 <div key={wIdx} className="flex flex-col gap-1.5">
-                  {week.map((cell, dIdx) => (
-                    <div
-                      key={dIdx}
-                      onMouseEnter={() => setHoveredCell({ count: cell.count, week: wIdx, day: dIdx })}
-                      onMouseLeave={() => setHoveredCell(null)}
-                      className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${levelColors[cell.level]} hover:scale-125 hover:z-10`}
-                    />
-                  ))}
+                  {week.map((cell, dIdx) => {
+                    const bgClass = cell.level === 0 
+                      ? 'bg-slate-200 dark:bg-white/5' 
+                      : cell.level === 1 
+                      ? 'bg-primary/30' 
+                      : cell.level === 2 
+                      ? 'bg-primary/60' 
+                      : cell.level === 3 
+                      ? 'bg-primary' 
+                      : 'bg-cyan shadow-sm dark:shadow-[0_0_8px_rgba(6,182,212,0.6)]';
+                    return (
+                      <div
+                        key={dIdx}
+                        onMouseEnter={() => setHoveredCell({ count: cell.count, week: wIdx, day: dIdx })}
+                        onMouseLeave={() => setHoveredCell(null)}
+                        className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${bgClass} hover:scale-125 hover:z-10`}
+                      />
+                    );
+                  })}
                 </div>
               ))}
             </div>
           </div>
 
           {/* Footer & Legend */}
-          <div className="flex items-center justify-between text-xs text-white/40 pt-4 mt-2 border-t border-white/5">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-white/40 pt-4 mt-2 border-t border-slate-200 dark:border-white/5">
             <div className="font-mono">
               {hoveredCell ? (
-                <span className="text-white font-medium">
+                <span className="text-slate-900 dark:text-white font-medium">
                   {hoveredCell.count === 0 ? 'No' : hoveredCell.count} contributions on Day {hoveredCell.day + 1}
                 </span>
               ) : (
@@ -121,9 +140,11 @@ export default function GithubHeatmap() {
             <div className="flex items-center gap-2">
               <span>Less</span>
               <div className="flex gap-1">
-                {levelColors.map((cls, i) => (
-                  <div key={i} className={`w-2.5 h-2.5 rounded-[2px] ${cls}`} />
-                ))}
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-slate-200 dark:bg-white/5" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-primary/30" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-primary/60" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-primary" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-cyan" />
               </div>
               <span>More</span>
             </div>
