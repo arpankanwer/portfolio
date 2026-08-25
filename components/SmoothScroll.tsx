@@ -35,8 +35,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       const el = document.getElementById(id);
       if (!el) return;
       e.preventDefault();
-      // offset for fixed navbar (~80px)
-      lenis.scrollTo(el, { offset: -80, duration: 1.1 });
+      // offset for fixed navbar (~10px to sit just below glass nav, no extra gap)
+      lenis.scrollTo(el, { offset: -10, duration: 1.1 });
       // Update URL without jump
       history.pushState(null, '', href);
     };
@@ -49,7 +49,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       const el = document.getElementById(id);
       if (el) {
         // wait a tick for layout
-        setTimeout(() => lenis.scrollTo(el, { offset: -80, immediate: false }), 100);
+        setTimeout(() => lenis.scrollTo(el, { offset: -10, immediate: false }), 100);
       }
     }
 
