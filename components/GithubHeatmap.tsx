@@ -118,7 +118,7 @@ export default function GithubHeatmap() {
   const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : '50+ Repos';
 
   return (
-    <section className="py-16 px-6 sm:px-12 relative overflow-hidden">
+    <section id="activity" className="py-16 px-6 sm:px-12 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

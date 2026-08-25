@@ -14,9 +14,9 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <GithubHeatmap />
       <Experience />
       <Projects />
-      <GithubHeatmap />
       <Education />
       <Testimonials />
       <Contact />
