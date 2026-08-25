@@ -1,7 +1,28 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { GitCommit, GitPullRequest, GitBranch, Flame } from 'lucide-react';
+
+// Types mirroring lib/github.ts (client-safe copy, no env access)
+type GithubApiDay = {
+  date: string;
+  count: number;
+  level: number;
+  color: string;
+};
+
+type GithubApiWeek = {
+  contributionDays: GithubApiDay[];
+};
+
+type GithubApiData = {
+  totalContributions: number;
+  weeks: GithubApiWeek[];
+  streak: number;
+  longestStreak: number;
+  prs: number;
+  repos: number;
+};
 
 // Generates a mock realistic GitHub heatmap matrix for the last 52 weeks
 const generateHeatmap = () => {
@@ -52,7 +73,49 @@ const levelColorsLight = [
 ];
 
 export default function GithubHeatmap() {
-  const [hoveredCell, setHoveredCell] = useState<{ count: number; week: number; day: number } | null>(null);
+  const [hoveredCell, setHoveredCell] = useState<{ count: number; date?: string; week: number; day: number } | null>(null);
+  const [data, setData] = useState<GithubApiData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/github')
+      .then((r) => r.json())
+      .then((d) => {
+        if (cancelled) return;
+        if (d && !d.error && typeof d.totalContributions === 'number') {
+          setData(d as GithubApiData);
+        }
+      })
+      .catch(() => {
+        // keep mock fallback
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Header total: live or fallback mock "3,399"
+  const totalLabel = data ? data.totalContributions.toLocaleString() : '3,399';
+
+  // Chips: live or fallback hardcoded. For streak, show weeks derived from days (Math.ceil(streak/7)) when >=7, else days.
+  const streakLabel = (() => {
+    if (!data || typeof data.streak !== 'number') return '38 Week Streak';
+    if (data.streak === 0) return '0 Day Streak';
+    if (data.streak >= 7) {
+      const weeks = Math.ceil(data.streak / 7);
+      return `${weeks} Week Streak`;
+    }
+    return `${data.streak} Day Streak`;
+  })();
+
+  const prsLabel =
+    data && typeof data.prs === 'number' ? `${data.prs.toLocaleString()} PRs Merged` : '120+ PRs Merged';
+
+  const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : '50+ Repos';
 
   return (
     <section className="py-16 px-6 sm:px-12 relative overflow-hidden">
@@ -74,7 +137,7 @@ export default function GithubHeatmap() {
                   Continuous Engineering Activity
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-white/60 font-mono">
-                  1,480+ contributions across repositories in the last year
+                  {totalLabel} contributions in the last year
                 </p>
               </div>
             </div>
@@ -83,45 +146,77 @@ export default function GithubHeatmap() {
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan">
                 <Flame size={13} className="text-orange-500" />
-                <span>38 Week Streak</span>
+                <span>{streakLabel}</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary">
                 <GitPullRequest size={13} />
-                <span>120+ PRs Merged</span>
+                <span>{prsLabel}</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-secondary">
                 <GitBranch size={13} />
-                <span>50+ Repos</span>
+                <span>{reposLabel}</span>
               </div>
             </div>
           </div>
 
           {/* Heatmap Grid */}
-          <div className="overflow-x-auto pb-3 pt-2">
-            <div className="min-w-[700px] flex gap-1.5">
-              {heatmapData.map((week, wIdx) => (
-                <div key={wIdx} className="flex flex-col gap-1.5">
-                  {week.map((cell, dIdx) => {
-                    const bgClass = cell.level === 0 
-                      ? 'bg-slate-200 dark:bg-white/5' 
-                      : cell.level === 1 
-                      ? 'bg-primary/30' 
-                      : cell.level === 2 
-                      ? 'bg-primary/60' 
-                      : cell.level === 3 
-                      ? 'bg-primary' 
-                      : 'bg-cyan shadow-sm dark:shadow-[0_0_8px_rgba(6,182,212,0.6)]';
-                    return (
-                      <div
-                        key={dIdx}
-                        onMouseEnter={() => setHoveredCell({ count: cell.count, week: wIdx, day: dIdx })}
-                        onMouseLeave={() => setHoveredCell(null)}
-                        className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${bgClass} hover:scale-125 hover:z-10`}
-                      />
-                    );
-                  })}
-                </div>
-              ))}
+          <div className="overflow-x-auto pb-3 pt-2" data-lenis-prevent>
+            <div className={`min-w-[700px] flex gap-1.5 ${loading ? 'opacity-90' : ''}`}>
+              {data?.weeks && data.weeks.length > 0 ? (
+                data.weeks.map((week, wIdx) => (
+                  <div key={wIdx} className="flex flex-col gap-1.5">
+                    {week.contributionDays.map((day, dIdx) => {
+                      const bgClass =
+                        day.level === 0
+                          ? 'bg-slate-200 dark:bg-white/5'
+                          : day.level === 1
+                            ? 'bg-primary/30'
+                            : day.level === 2
+                              ? 'bg-primary/60'
+                              : day.level === 3
+                                ? 'bg-primary'
+                                : 'bg-cyan shadow-sm dark:shadow-[0_0_8px_rgba(6,182,212,0.6)]';
+                      return (
+                        <div
+                          key={dIdx}
+                          onMouseEnter={() =>
+                            setHoveredCell({ count: day.count, date: day.date, week: wIdx, day: dIdx })
+                          }
+                          onMouseLeave={() => setHoveredCell(null)}
+                          className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${bgClass} hover:scale-125 hover:z-10`}
+                          title={`${day.date}: ${day.count} contributions`}
+                        />
+                      );
+                    })}
+                  </div>
+                ))
+              ) : (
+                // Fallback mock heatmap (also shown during loading)
+                heatmapData.map((week, wIdx) => (
+                  <div key={wIdx} className="flex flex-col gap-1.5">
+                    {week.map((cell, dIdx) => {
+                      const bgClass =
+                        cell.level === 0
+                          ? 'bg-slate-200 dark:bg-white/5'
+                          : cell.level === 1
+                            ? 'bg-primary/30'
+                            : cell.level === 2
+                              ? 'bg-primary/60'
+                              : cell.level === 3
+                                ? 'bg-primary'
+                                : 'bg-cyan shadow-sm dark:shadow-[0_0_8px_rgba(6,182,212,0.6)]';
+                      return (
+                        <div
+                          key={dIdx}
+                          onMouseEnter={() => setHoveredCell({ count: cell.count, week: wIdx, day: dIdx })}
+                          onMouseLeave={() => setHoveredCell(null)}
+                          className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${bgClass} hover:scale-125 hover:z-10`}
+                        />
+                      );
+                    })}
+                  </div>
+                ))
+              )}
             </div>
           </div>
 
@@ -130,7 +225,8 @@ export default function GithubHeatmap() {
             <div className="font-mono">
               {hoveredCell ? (
                 <span className="text-slate-900 dark:text-white font-medium">
-                  {hoveredCell.count === 0 ? 'No' : hoveredCell.count} contributions on Day {hoveredCell.day + 1}
+                  {hoveredCell.count === 0 ? 'No' : hoveredCell.count} contributions
+                  {hoveredCell.date ? ` on ${hoveredCell.date}` : ` on Day ${hoveredCell.day + 1}`}
                 </span>
               ) : (
                 <span>Hover over squares to inspect daily velocity</span>
