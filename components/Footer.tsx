@@ -45,7 +45,7 @@ export default function Footer() {
           {torontoTime && (
             <div className="flex items-center gap-2 mt-1 px-3 py-1 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[11px] font-mono text-primary dark:text-cyan shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Toronto/Guelph (EST): {torontoTime}</span>
+              <span>Toronto (EST): {torontoTime}</span>
             </div>
           )}
         </div>
