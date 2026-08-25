@@ -19,20 +19,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    // Check localStorage or default to dark
-    const stored = localStorage.getItem('bk_portfolio_theme') as Theme | null;
-    if (stored === 'light' || stored === 'dark') {
-      setThemeState(stored);
-      applyTheme(stored);
-    } else {
-      // Default to dark
-      setThemeState('dark');
-      applyTheme('dark');
-    }
-    setMounted(true);
-  }, []);
-
   const applyTheme = (t: Theme) => {
     const root = document.documentElement;
     if (t === 'light') {
@@ -45,6 +31,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.style.colorScheme = 'dark';
     }
   };
+
+  useEffect(() => {
+    // Check localStorage or default to dark
+    const stored = localStorage.getItem('bk_portfolio_theme') as Theme | null;
+    if (stored === 'light' || stored === 'dark') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- theme init from localStorage requires sync setState in mount effect
+      setThemeState(stored);
+      applyTheme(stored);
+    } else {
+      // Default to dark
+      setThemeState('dark');
+      applyTheme('dark');
+    }
+    setMounted(true);
+  }, []);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
