@@ -57,7 +57,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan"></span>
           </span>
-          <span className="text-xs font-medium text-slate-800 dark:text-white/90 tracking-wide">Available for Full-time & Contract Roles</span>
+          <span className="text-xs font-medium text-slate-800 dark:text-white/90 tracking-wide">Available for Full-time</span>
           <Sparkles size={13} className="text-amber-500 dark:text-yellow-400" />
         </motion.div>
 
