@@ -20,6 +20,15 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Birarpanjot Singh Kanwer | Software Developer',
   description: 'Portfolio of Birarpanjot Singh Kanwer, a Backend Engineer, Mobile Developer, and Cloud Enthusiast based in Canada.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

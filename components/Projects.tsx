@@ -647,7 +647,7 @@ export default function Projects() {
                   <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
                     <Cpu size={14} className="text-secondary" /> Architecture & Data Flow
                   </h4>
-                  <p className="text-sm sm:text-base text-slate-700 dark:text-white/80 leading-relaxed bg-slate-50 dark:bg-white/5 p-4 rounded-xl border border-slate-200/60 dark:border-white/10 font-mono text-xs">
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-white/80 leading-relaxed bg-slate-50 dark:bg-white/5 p-4 rounded-xl border border-slate-200/60 dark:border-white/10 font-mono">
                     {selectedProject.architecture}
                   </p>
                 </div>
