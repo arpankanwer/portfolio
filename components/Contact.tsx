@@ -143,7 +143,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xs text-slate-500 dark:text-white/50 font-medium">Base Location</h3>
                   <p className="text-sm font-semibold text-slate-900 dark:text-white">
-                    Guelph / Greater Toronto Area, ON, Canada
+                    Toronto, ON, Canada
                   </p>
                 </div>
               </div>
