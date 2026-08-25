@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ExternalLink, 
@@ -13,7 +13,8 @@ import {
   Smartphone,
   Download,
   Flame,
-  Radio
+  Radio,
+  Play
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -31,6 +32,7 @@ interface Project {
   appStoreUrl?: string;
   playStoreUrl?: string;
   demoUrl?: string;
+  youtubeUrl?: string;
   githubUrl?: string;
   overview: string;
   architecture: string;
@@ -52,7 +54,6 @@ const projects: Project[] = [
     image: '/projects/paigeconnect.png',
     appStoreUrl: 'https://apps.apple.com/ca/app/paige-connect/id6744338186',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA',
-    githubUrl: 'https://github.com/arpankanwer',
     overview: 'Engineered as a core mobile companion for KiloBryte\'s senior telehealth system. Paige Connect enables family members and caregivers to bridge crystal-clear video calls, monitor device heartbeats, and exchange secure check-in updates.',
     architecture: 'React Native cross-platform client with custom Native Objective-C/Swift and Java module bridges for low-overhead audio/video streaming, background push notification orchestration, and bi-directional WebSocket telemetry.',
     features: [
@@ -79,7 +80,8 @@ const projects: Project[] = [
     description: 'Full-stack mobile platform engineered to connect freelance service seekers and verified providers with real-time bidirectional chat, geo-location job postings, and instant quote dispatching.',
     award: 'Awarded "Best Innovation 2024" (Top 1/40+ Capstone Teams)',
     image: '/projects/gigjet.png',
-    githubUrl: 'https://github.com/arpankanwer',
+    youtubeUrl: 'https://youtu.be/M1adKEKeFLo',
+    demoUrl: 'https://youtu.be/M1adKEKeFLo',
     overview: 'GigJet is an end-to-end gig economy platform designed to eliminate friction in hiring local trades and technical specialists. It features a reactive mobile frontend in React Native with a high-throughput Node.js/Express API layer and Firebase real-time sync.',
     architecture: 'Microservice-ready REST API with modular controllers, JWT authentication, Firebase Firestore listeners for low-latency messaging, and cloud-hosted object buckets for portfolio image uploads.',
     features: [
@@ -104,12 +106,11 @@ const projects: Project[] = [
     category: 'production',
     tags: ['Flutter', 'iOS', 'Android', 'Firebase', 'EdTech', 'REST APIs'],
     description: 'Global educational mobile platform connecting learners and mentors with interactive course catalogs, personalized learning roadmaps, real-time assessment tracking, and multi-region localization.',
-    badge: '100+ Downloads • Live App',
+    badge: 'Live App',
     downloads: '100+',
     image: '/projects/skillkoo.png',
     appStoreUrl: 'https://apps.apple.com/us/app/eduwings/id6761086381',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.eduwings.global&hl=en',
-    githubUrl: 'https://github.com/arpankanwer',
     overview: 'SkillKoo transforms mobile education with rich multimedia course materials, structured module progress tracking, and instant mentor notifications. Engineered for high performance across diverse smartphone tiers.',
     architecture: 'Modular mobile client architecture with reactive state management, asynchronous offline-first course caching, Firebase authentication, and scalable media streaming CDN.',
     features: [
@@ -136,7 +137,7 @@ const projects: Project[] = [
     description: 'An automated intelligent botanical monitoring system utilizing environmental sensors, automated moisture detection, automated watering triggers, and real-time telemetry analytics.',
     badge: 'Embedded Systems & Automation',
     image: '/projects/smartgarden.png',
-    githubUrl: 'https://github.com/arpankanwer',
+    githubUrl: 'https://github.com/arpankanwer/SmartGarden',
     overview: 'Smart Garden automates precision horticulture by continuously streaming soil moisture, ambient humidity, temperature, and light levels into an event processing engine that dynamically manages hydration and lighting cycles.',
     architecture: 'Hardware sensor grid connected to embedded micro-controllers running Python firmware, transmitting JSON telemetry over MQTT/HTTP to a centralized dashboard with automated threshold actuators.',
     features: [
@@ -162,7 +163,7 @@ const projects: Project[] = [
     tags: ['Open Source', 'Shell', 'Zsh / Bash', 'DevOps', 'Productivity', 'Automation'],
     description: 'Lightweight, ultra-fast developer shell environment and toolkit designed to minimize terminal latency, optimize plugin loading sequences, and standardize engineering workflows.',
     badge: 'Open Source Contribution',
-    image: 'https://picsum.photos/seed/ohmyopencode/1000/600',
+    image: '/projects/ohmyopencode.webp',
     githubUrl: 'https://github.com/arpankanwer/oh-my-opencode-slim',
     overview: 'A community-driven open-source project focused on shaving hundreds of milliseconds off interactive shell startup times while maintaining rich autocomplete, git prompt decorations, and aliases.',
     architecture: 'Asynchronous lazy-loading architecture with modular prompt engines, caching layers for git status evaluation, and zero-dependency POSIX fallback routines.',
@@ -188,8 +189,8 @@ const projects: Project[] = [
     category: 'featured',
     tags: ['Flutter', 'Dart', 'Azure Blob Storage', 'Cloud Firestore', 'Mobile'],
     description: 'A cross-platform mobile messenger featuring encrypted group rooms, instant multimedia sharing, media pipeline compression, and scalable Azure Blob storage.',
-    image: 'https://picsum.photos/seed/chatieapp/1000/600',
-    githubUrl: 'https://github.com/arpankanwer',
+    image: '/projects/chatie.png',
+    githubUrl: 'https://github.com/arpankanwer/chatie',
     overview: 'Chatie provides seamless group collaboration with instant media streaming. Built natively with Flutter and Dart, the application offloads heavy multimedia payloads to Azure Blob Storage while maintaining live state and presence in Cloud Firestore.',
     architecture: 'Hybrid multi-cloud architecture pairing Google Firebase (Authentication & Realtime Firestore) with Microsoft Azure (Blob Storage with SAS token security) to minimize latency and optimize media ingestion costs.',
     features: [
@@ -220,6 +221,37 @@ const categoryTabs = [
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeTab, setActiveTab] = useState('all');
+
+  // Lock background scroll when modal is open and allow modal inner scroll with Lenis
+  useEffect(() => {
+    if (selectedProject) {
+      const prevBodyOverflow = document.body.style.overflow;
+      const prevHtmlOverflow = document.documentElement.style.overflow;
+      const prevBodyPaddingRight = document.body.style.paddingRight;
+      // Compensate scrollbar width to avoid layout shift
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      return () => {
+        document.body.style.overflow = prevBodyOverflow;
+        document.documentElement.style.overflow = prevHtmlOverflow;
+        document.body.style.paddingRight = prevBodyPaddingRight;
+      };
+    }
+  }, [selectedProject]);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!selectedProject) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selectedProject]);
 
   const filteredProjects = activeTab === 'all' 
     ? projects 
@@ -375,6 +407,20 @@ export default function Projects() {
                       <Layers size={15} /> System Architecture
                     </button>
                     
+                    {/* YouTube / Demo Link — GigJet Pitch Video */}
+                    {(project.youtubeUrl || project.demoUrl) && (
+                      <a
+                        href={project.youtubeUrl || project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2.5 px-4 rounded-full bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm"
+                        title="Watch pitch video on YouTube"
+                      >
+                        <Play size={14} className="fill-white" />
+                        <span>Pitch Video</span>
+                      </a>
+                    )}
+
                     {/* Apple App Store Link */}
                     {project.appStoreUrl && (
                       <a
@@ -426,7 +472,12 @@ export default function Projects() {
       {/* Project Deep-Dive Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-[130] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div
+            data-lenis-prevent
+            className="fixed inset-0 z-[130] flex items-start justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+          >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -436,11 +487,14 @@ export default function Projects() {
             />
 
             <motion.div
+              data-lenis-prevent
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full max-w-3xl max-h-[90vh] bg-white dark:bg-[#0b0b10] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-y-auto z-10 p-6 sm:p-8"
+              className="relative w-full max-w-3xl my-4 sm:my-8 max-h-[90vh] bg-white dark:bg-[#0b0b10] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-y-auto overscroll-contain z-10 p-6 sm:p-8"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
@@ -491,9 +545,21 @@ export default function Projects() {
                 </div>
 
                 {/* Live App Store Links if available */}
-                {(selectedProject.appStoreUrl || selectedProject.playStoreUrl || selectedProject.githubUrl) && (
+                {(selectedProject.appStoreUrl || selectedProject.playStoreUrl || selectedProject.githubUrl || selectedProject.youtubeUrl || selectedProject.demoUrl) && (
                   <div className="flex flex-wrap items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
                     <span className="text-xs text-slate-600 dark:text-white/60 font-mono">Live Access:</span>
+                    {(selectedProject.youtubeUrl || selectedProject.demoUrl) && (
+                      <a
+                        href={selectedProject.youtubeUrl || selectedProject.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
+                      >
+                        <Play size={13} className="fill-white" />
+                        <span>Pitch Video on YouTube</span>
+                        <ExternalLink size={11} className="text-white/70" />
+                      </a>
+                    )}
                     {selectedProject.appStoreUrl && (
                       <a
                         href={selectedProject.appStoreUrl}
@@ -530,6 +596,39 @@ export default function Projects() {
                         <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
                       </a>
                     )}
+                  </div>
+                )}
+
+                {/* YouTube Pitch Video Embed */}
+                {(selectedProject.youtubeUrl || selectedProject.demoUrl) && (
+                  <div className="space-y-2">
+                    <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
+                      <Play size={14} className="text-red-500" /> Pitch Video
+                    </h4>
+                    <div className="aspect-video rounded-xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-black">
+                      <iframe
+                        src={
+                          (() => {
+                            const url = selectedProject.youtubeUrl || selectedProject.demoUrl || '';
+                            if (url.includes('youtu.be/')) return url.replace('youtu.be/', 'www.youtube.com/embed/').split('?')[0];
+                            if (url.includes('watch?v=')) return url.replace('watch?v=', 'embed/').split('&')[0];
+                            return url;
+                          })()
+                        }
+                        title={`${selectedProject.title} pitch video`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <a
+                      href={selectedProject.youtubeUrl || selectedProject.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono text-red-600 dark:text-red-400 hover:underline"
+                    >
+                      <ExternalLink size={12} /> Watch on YouTube — https://youtu.be/M1adKEKeFLo
+                    </a>
                   </div>
                 )}
 
