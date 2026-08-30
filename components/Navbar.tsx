@@ -70,10 +70,27 @@ export default function Navbar() {
         )}
       >
         <div className={cn(
-          "flex items-center justify-between w-full max-w-6xl rounded-full px-4 sm:px-5 py-2 transition-all duration-300",
-          scrolled 
-            ? "glass shadow-lg border-slate-200/80 dark:border-white/10" 
-            : "bg-white/70 dark:bg-black/40 backdrop-blur-md border border-slate-200/60 dark:border-white/5 shadow-sm"
+          "relative flex items-center justify-between w-full max-w-6xl rounded-full px-4 sm:px-5 py-2 transition-all duration-500 overflow-hidden",
+          // liquid glass base — ultra translucent, high blur + saturation, inner highlight
+          "border supports-[backdrop-filter]:backdrop-blur-2xl supports-[backdrop-filter]:backdrop-saturate-150",
+          // fallback solid for browsers without backdrop-filter, liquid translucent when supported — MAX glassy
+          scrolled
+            ? [
+                // — Scrolled: max glassy, barely visible tint —
+                "bg-white/35 supports-[backdrop-filter]:bg-white/12 supports-[backdrop-filter]:bg-gradient-to-b supports-[backdrop-filter]:from-white/10 supports-[backdrop-filter]:via-white/2 supports-[backdrop-filter]:to-transparent",
+                "dark:bg-zinc-900/35 supports-[backdrop-filter]:dark:bg-white/[0.02] supports-[backdrop-filter]:dark:from-white/[0.03] supports-[backdrop-filter]:dark:via-white/[0.005] supports-[backdrop-filter]:dark:to-transparent",
+                "border-white/10 dark:border-white/06",
+                "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),0_8px_32px_rgba(0,0,0,0.02),0_1px_3px_rgba(0,0,0,0.01)]",
+                "supports-[backdrop-filter]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),0_8px_32px_rgba(0,0,0,0.02),0_4px_16px_rgba(0,0,0,0.01)]",
+              ].join(" ")
+            : [
+                // — Top / unscrolled: pure glass, almost invisible —
+                "bg-white/15 supports-[backdrop-filter]:bg-white/05 supports-[backdrop-filter]:bg-gradient-to-b supports-[backdrop-filter]:from-white/08 supports-[backdrop-filter]:via-white/1 supports-[backdrop-filter]:to-transparent",
+                "dark:bg-zinc-900/15 supports-[backdrop-filter]:dark:bg-white/[0.008] supports-[backdrop-filter]:dark:from-white/[0.015] supports-[backdrop-filter]:dark:via-white/[0.004] supports-[backdrop-filter]:dark:to-transparent",
+                "border-white/08 dark:border-white/[0.02]",
+                "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.14),0_4px_24px_rgba(0,0,0,0.01),0_1px_2px_rgba(0,0,0,0.005)]",
+                "supports-[backdrop-filter]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.01),0_2px_8px_rgba(0,0,0,0.005)]",
+              ].join(" ")
         )}>
           {/* Logo with Easter Egg */}
           <button 
@@ -102,38 +119,38 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right Action Buttons */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Theme Toggle Button */}
+          {/* Right Action Buttons — iOS Liquid Glass */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Theme Toggle Button — liquid glass subtle */}
             <button
               onClick={toggleTheme}
-              className="relative p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white transition-all cursor-pointer"
+              className="liquid-glass rounded-full w-9 h-9 flex items-center justify-center text-slate-700 dark:text-white cursor-pointer shrink-0"
               title={theme === 'dark' ? "Switch to Light theme" : "Switch to Dark theme"}
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
-                <Sun size={15} className="text-amber-400 rotate-0 transition-transform duration-300" />
+                <Sun size={15} className="text-amber-400" />
               ) : (
-                <Moon size={15} className="text-indigo-600 rotate-0 transition-transform duration-300" />
+                <Moon size={15} className="text-indigo-600" />
               )}
             </button>
 
-            {/* Quick Command Palette Button */}
+            {/* Quick Command Palette Button — liquid glass */}
             <button
               onClick={() => setCommandOpen(true)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-xs text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
+              className="liquid-glass rounded-full flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-white/80 cursor-pointer shrink-0"
               title="Command Palette (⌘K)"
             >
               <CommandIcon size={13} />
-              <span className="hidden md:inline">Search</span>
-              <kbd className="text-[10px] font-mono bg-slate-200/80 dark:bg-white/10 px-1.5 py-0.5 rounded text-slate-700 dark:text-white/70">⌘K</kbd>
+              <span className="hidden md:inline font-medium">Search</span>
+              <kbd className="hidden sm:inline-flex text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-white/50 dark:bg-white/10 border border-white/30 dark:border-white/10 text-slate-700 dark:text-white/70">⌘K</kbd>
             </button>
 
             <a 
               href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/20 text-slate-800 dark:text-white rounded-full transition-all duration-200 border border-slate-200 dark:border-white/10"
+              className="liquid-glass hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-slate-800 dark:text-white cursor-pointer shrink-0"
               title="View Resume on Google Drive"
             >
               <FileText size={12} className="text-primary" />
@@ -142,18 +159,18 @@ export default function Navbar() {
 
             <Link 
               href="#contact" 
-              className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider bg-slate-900 text-white dark:bg-white dark:text-black rounded-full hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+              className="liquid-glass-strong inline-flex items-center justify-center px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider cursor-pointer shrink-0"
             >
-              Contact
+              <span>Contact</span>
             </Link>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle — liquid glass */}
             <button 
-              className="lg:hidden text-slate-900 dark:text-white p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+              className="liquid-glass lg:hidden w-9 h-9 rounded-full flex items-center justify-center text-slate-900 dark:text-white cursor-pointer shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
@@ -186,7 +203,7 @@ export default function Navbar() {
           <div className="pt-6 flex flex-col items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="flex items-center gap-2 px-5 py-2 rounded-full bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white text-sm font-medium border border-slate-200 dark:border-white/10"
+              className="liquid-glass flex items-center gap-2 px-5 py-2.5 rounded-full text-slate-800 dark:text-white text-sm font-medium cursor-pointer"
             >
               {theme === 'dark' ? <Sun size={16} className="text-amber-400" /> : <Moon size={16} className="text-indigo-600" />}
               <span>{theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}</span>
@@ -196,10 +213,10 @@ export default function Navbar() {
               href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-sm"
+              className="liquid-glass-strong flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm cursor-pointer"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <FileText size={16} /> View Resume (PDF)
+              <FileText size={16} /> <span>View Resume (PDF)</span>
             </a>
 
             <button
@@ -207,9 +224,9 @@ export default function Navbar() {
                 setMobileMenuOpen(false);
                 setCommandOpen(true);
               }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 dark:bg-white/10 text-sm text-slate-800 dark:text-white"
+              className="liquid-glass flex items-center gap-2 px-5 py-2.5 rounded-full text-sm text-slate-800 dark:text-white cursor-pointer"
             >
-              <CommandIcon size={16} /> Search & Actions (⌘K)
+              <CommandIcon size={16} /> <span>Search & Actions (⌘K)</span>
             </button>
           </div>
         </motion.div>
