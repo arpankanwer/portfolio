@@ -67,8 +67,8 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
-            Get In Touch
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+            <span>Get In Touch</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
             Let&apos;s Build Something <span className="text-gradient">Extraordinary</span>.
@@ -106,7 +106,7 @@ export default function Contact() {
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="p-2 rounded-lg bg-slate-200/70 hover:bg-slate-300 dark:bg-white/5 dark:hover:bg-white/15 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
+                  className="liquid-glass w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 dark:text-white/70 cursor-pointer shrink-0"
                   title="Copy email to clipboard"
                 >
                   {copiedEmail ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
@@ -128,7 +128,7 @@ export default function Contact() {
                 </div>
                 <button
                   onClick={copyPhone}
-                  className="p-2 rounded-lg bg-slate-200/70 hover:bg-slate-300 dark:bg-white/5 dark:hover:bg-white/15 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
+                  className="liquid-glass w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 dark:text-white/70 cursor-pointer shrink-0"
                   title="Copy phone to clipboard"
                 >
                   {copiedPhone ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
@@ -148,7 +148,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Social Channels */}
+              {/* Social Channels — liquid glass */}
               <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between">
                 <span className="text-xs font-mono text-slate-500 dark:text-white/50">Online Profiles:</span>
                 <div className="flex gap-2">
@@ -156,7 +156,7 @@ export default function Contact() {
                     href="https://github.com/arpankanwer" 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                    className="liquid-glass w-10 h-10 rounded-xl flex items-center justify-center text-slate-800 dark:text-white cursor-pointer"
                     title="GitHub Profile"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
@@ -165,7 +165,7 @@ export default function Contact() {
                     href="https://linkedin.com/in/arpankanwer" 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-800 dark:text-white hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all"
+                    className="liquid-glass w-10 h-10 rounded-xl flex items-center justify-center text-slate-800 dark:text-white cursor-pointer"
                     title="LinkedIn Profile"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
@@ -259,7 +259,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-sm hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer shadow-sm dark:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
+                className="liquid-glass-strong w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer min-h-[48px]"
               >
                 {isSubmitting ? (
                   <span>Sending Message...</span>

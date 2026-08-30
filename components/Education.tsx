@@ -15,8 +15,8 @@ export default function Education() {
           viewport={{ once: true }}
           className="mb-14 text-center md:text-left"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
-            Credentials & Recognition
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+            <span>Credentials & Recognition</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
             Education & <span className="text-gradient">Honors</span>.
@@ -45,8 +45,8 @@ export default function Education() {
                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary border border-primary/30">
                   <GraduationCap size={24} />
                 </div>
-                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan">
-                  <Calendar size={13} /> Jan 2022 – Dec 2024
+                <span className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan">
+                  <Calendar size={13} /> <span>Jan 2022 – Dec 2024</span>
                 </span>
               </div>
               
@@ -90,8 +90,8 @@ export default function Education() {
                   'Data Structures & Algorithms',
                   'Full-Stack Web & Mobile'
                 ].map((course) => (
-                  <span key={course} className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-[11px] text-slate-700 dark:text-white/75 font-mono border border-slate-200/50 dark:border-transparent">
-                    {course}
+                  <span key={course} className="liquid-glass-subtle px-2.5 py-1 rounded-md text-[11px] text-slate-700 dark:text-white/75 font-mono">
+                    <span>{course}</span>
                   </span>
                 ))}
               </div>

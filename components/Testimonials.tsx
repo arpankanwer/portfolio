@@ -33,8 +33,8 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
-            Peer Endorsements
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+            <span>Peer Endorsements</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">
             Trusted by Teams & <span className="text-gradient">Collaborators</span>.
@@ -62,8 +62,8 @@ export default function Testimonials() {
                       <Star key={i} size={14} className="fill-amber-400" />
                     ))}
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 text-[10px] font-mono text-cyan border border-slate-200 dark:border-white/10">
-                    {item.tag}
+                  <span className="liquid-glass-subtle px-2.5 py-0.5 rounded-full text-[10px] font-mono text-cyan">
+                    <span>{item.tag}</span>
                   </span>
                 </div>
 

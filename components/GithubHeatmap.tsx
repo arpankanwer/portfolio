@@ -142,17 +142,17 @@ export default function GithubHeatmap() {
               </div>
             </div>
 
-            {/* Quick stats chips */}
+            {/* Quick stats chips — liquid glass */}
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan">
+              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan">
                 <Flame size={13} className="text-orange-500" />
                 <span>{streakLabel}</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary">
+              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-primary">
                 <GitPullRequest size={13} />
                 <span>{prsLabel}</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-secondary">
+              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-secondary">
                 <GitBranch size={13} />
                 <span>{reposLabel}</span>
               </div>
