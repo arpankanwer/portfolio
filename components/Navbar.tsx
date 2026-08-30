@@ -165,7 +165,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="fixed inset-0 z-40 bg-white/95 dark:bg-background/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-6 lg:hidden"
+          className="fixed inset-0 z-40 bg-white dark:bg-[#050507] supports-[backdrop-filter]:bg-white/95 supports-[backdrop-filter]:dark:bg-[#050507]/95 supports-[backdrop-filter]:backdrop-blur-2xl flex flex-col items-center justify-center gap-6 lg:hidden"
         >
           {navLinks.map((link, i) => (
             <motion.div

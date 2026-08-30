@@ -100,7 +100,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
       {showModal && (
         <div
           data-lenis-prevent
-          className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 md:p-20 overflow-y-auto overscroll-contain"
+          className="fixed inset-0 z-[120] flex items-start justify-center p-4 sm:p-6 pt-16 sm:pt-20 md:pt-24 overflow-y-auto overscroll-contain"
           onWheel={(e) => e.stopPropagation()}
           onTouchMove={(e) => e.stopPropagation()}
         >
