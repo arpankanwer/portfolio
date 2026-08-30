@@ -271,8 +271,8 @@ export default function Projects() {
           className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary uppercase tracking-wider mb-3">
-              Portfolio Showcase
+            <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-primary uppercase tracking-wider mb-3">
+              <span>Portfolio Showcase</span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
               Featured <span className="text-gradient">Engineering Work</span>.
@@ -283,7 +283,7 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* Category Tabs */}
+        {/* Category Tabs — liquid glass */}
         <div className="flex flex-wrap gap-2 mb-12">
           {categoryTabs.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -293,11 +293,11 @@ export default function Projects() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer ${
                   isActive 
-                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black font-semibold shadow-sm dark:shadow-[0_0_20px_rgba(255,255,255,0.2)]' 
-                    : 'bg-slate-100 hover:bg-slate-200/80 text-slate-600 hover:text-slate-900 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white/70 dark:hover:text-white border border-slate-200 dark:border-white/10'
+                    ? 'liquid-glass-strong' 
+                    : 'liquid-glass text-slate-600 dark:text-white/75'
                 }`}
               >
-                {tab.label}
+                <span>{tab.label}</span>
               </button>
             );
           })}
@@ -376,14 +376,14 @@ export default function Projects() {
                       {project.description}
                     </p>
 
-                    {/* Tech Stack Chips */}
+                    {/* Tech Stack Chips — liquid glass subtle */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-medium text-slate-700 dark:text-white/80"
+                          className="liquid-glass-subtle px-3 py-1 rounded-full text-xs font-medium text-slate-700 dark:text-white/80"
                         >
-                          {tag}
+                          <span>{tag}</span>
                         </span>
                       ))}
                     </div>
@@ -399,22 +399,22 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Actions Bar */}
+                  {/* Actions Bar — liquid glass buttons */}
                   <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-200/80 dark:border-white/10">
                     <button
                       onClick={() => setSelectedProject(project)}
-                      className="flex-1 min-w-[170px] py-2.5 px-4 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-xs sm:text-sm hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm dark:shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                      className="liquid-glass-strong flex-1 min-w-[170px] py-2.5 px-4 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <Layers size={15} /> System Architecture
+                      <Layers size={15} /> <span>System Architecture</span>
                     </button>
                     
-                    {/* YouTube / Demo Link — GigJet Pitch Video */}
+                    {/* YouTube / Demo Link — GigJet Pitch Video — glass red */}
                     {(project.youtubeUrl || project.demoUrl) && (
                       <a
                         href={project.youtubeUrl || project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2.5 px-4 rounded-full bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm"
+                        className="relative overflow-hidden backdrop-blur-xl backdrop-saturate-150 bg-red-600 hover:bg-red-500 border border-white/20 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.32),0_4px_12px_rgba(220,38,38,0.22)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.38),0_8px_20px_rgba(220,38,38,0.28)] transition-all py-2.5 px-4 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
                         title="Watch pitch video on YouTube"
                       >
                         <Play size={14} className="fill-white" />
@@ -422,13 +422,13 @@ export default function Projects() {
                       </a>
                     )}
 
-                    {/* Apple App Store Link */}
+                    {/* Apple App Store Link — liquid glass */}
                     {project.appStoreUrl && (
                       <a
                         href={project.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2.5 px-3 rounded-full bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5"
+                        className="liquid-glass py-2.5 px-3 rounded-full text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5 cursor-pointer"
                         title="View on Apple App Store"
                       >
                         <Smartphone size={14} className="text-primary" />
@@ -436,13 +436,13 @@ export default function Projects() {
                       </a>
                     )}
 
-                    {/* Google Play Link */}
+                    {/* Google Play Link — liquid glass */}
                     {project.playStoreUrl && (
                       <a
                         href={project.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2.5 px-3 rounded-full bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5"
+                        className="liquid-glass py-2.5 px-3 rounded-full text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5 cursor-pointer"
                         title="View on Google Play Store"
                       >
                         <Radio size={14} className="text-emerald-500 dark:text-emerald-400" />
@@ -450,13 +450,13 @@ export default function Projects() {
                       </a>
                     )}
 
-                    {/* GitHub Link */}
+                    {/* GitHub Link — liquid glass */}
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white transition-all"
+                        className="liquid-glass p-2.5 rounded-full text-slate-800 dark:text-white transition-all flex items-center justify-center cursor-pointer"
                         title="View Source on GitHub"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
@@ -497,10 +497,10 @@ export default function Projects() {
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
+              {/* Close Button — liquid glass */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-white/10 dark:hover:bg-white/20 flex items-center justify-center dark:text-white transition-colors cursor-pointer"
+                className="liquid-glass absolute top-6 right-6 w-9 h-9 rounded-full flex items-center justify-center text-slate-700 dark:text-white cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -545,16 +545,16 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Live App Store Links if available */}
+                {/* Live App Store Links if available — liquid glass */}
                 {(selectedProject.appStoreUrl || selectedProject.playStoreUrl || selectedProject.githubUrl || selectedProject.youtubeUrl || selectedProject.demoUrl) && (
-                  <div className="flex flex-wrap items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
+                  <div className="liquid-glass-subtle flex flex-wrap items-center gap-3 p-4 rounded-2xl">
                     <span className="text-xs text-slate-600 dark:text-white/60 font-mono">Live Access:</span>
                     {(selectedProject.youtubeUrl || selectedProject.demoUrl) && (
                       <a
                         href={selectedProject.youtubeUrl || selectedProject.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
+                        className="relative overflow-hidden backdrop-blur-xl bg-red-600 hover:bg-red-500 border border-white/20 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.32)] px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
                       >
                         <Play size={13} className="fill-white" />
                         <span>Pitch Video on YouTube</span>
@@ -566,7 +566,7 @@ export default function Projects() {
                         href={selectedProject.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-slate-200/70 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 transition-all"
+                        className="liquid-glass px-3.5 py-1.5 rounded-full text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
                       >
                         <Smartphone size={13} className="text-primary" />
                         <span>Apple App Store</span>
@@ -578,7 +578,7 @@ export default function Projects() {
                         href={selectedProject.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-slate-200/70 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 transition-all"
+                        className="liquid-glass px-3.5 py-1.5 rounded-full text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
                       >
                         <Radio size={13} className="text-emerald-500 dark:text-emerald-400" />
                         <span>Google Play Store</span>
@@ -590,7 +590,7 @@ export default function Projects() {
                         href={selectedProject.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-1.5 rounded-full bg-slate-200/70 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 transition-all"
+                        className="liquid-glass px-3.5 py-1.5 rounded-full text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         <span>GitHub Repository</span>
@@ -689,11 +689,11 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Tech Stack Chips */}
+                {/* Tech Stack Chips — liquid glass subtle */}
                 <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-2">
                   {selectedProject.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-mono text-slate-800 dark:text-white/90 border border-slate-200/50 dark:border-transparent">
-                      {tag}
+                    <span key={tag} className="liquid-glass-subtle px-3 py-1 rounded-full text-xs font-mono text-slate-800 dark:text-white/90">
+                      <span>{tag}</span>
                     </span>
                   ))}
                 </div>

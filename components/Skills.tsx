@@ -101,7 +101,7 @@ export default function Skills() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-primary uppercase tracking-wider mb-3">
+            <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-primary uppercase tracking-wider mb-3">
               <Layers size={13} />
               Technical Arsenal
             </div>
@@ -113,14 +113,14 @@ export default function Skills() {
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 self-start md:self-auto overflow-x-auto max-w-full">
+          {/* Filter Pills — iOS Liquid Glass */}
+          <div className="liquid-glass-subtle flex items-center gap-1.5 p-1 rounded-full self-start md:self-auto overflow-x-auto max-w-full">
             <button
               onClick={() => setSelectedTab('all')}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer border ${
                 selectedTab === 'all'
-                  ? 'bg-primary text-white shadow-sm font-semibold'
-                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-primary text-white border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.30),0_4px_12px_rgba(59,130,246,0.25)] backdrop-blur-xl font-semibold'
+                  : 'liquid-glass-subtle text-slate-600 dark:text-white/70 border-transparent hover:border-white/15'
               }`}
             >
               All Domains
@@ -129,10 +129,10 @@ export default function Skills() {
               <button
                 key={domain.id}
                 onClick={() => setSelectedTab(domain.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer border ${
                   selectedTab === domain.id
-                    ? 'bg-primary text-white shadow-sm font-semibold'
-                    : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-primary text-white border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.30),0_4px_12px_rgba(59,130,246,0.25)] backdrop-blur-xl font-semibold'
+                    : 'liquid-glass-subtle text-slate-600 dark:text-white/70 border-transparent hover:border-white/15'
                 }`}
               >
                 {domain.label.split(' ')[0]}
@@ -172,12 +172,12 @@ export default function Skills() {
                       </div>
                     </div>
 
-                    {/* Tech Badges List */}
+                    {/* Tech Badges List — liquid glass subtle chips */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5">
                       {domain.items.map((tech) => (
                         <div 
                           key={tech.name}
-                          className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200/60 dark:border-white/5 hover:border-primary/30 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all group"
+                          className="liquid-glass-subtle p-2.5 rounded-xl hover:border-primary/25 transition-all group"
                         >
                           <div className="flex items-center justify-between gap-1 mb-1">
                             <span className="text-xs font-semibold text-slate-800 dark:text-white/90 group-hover:text-primary transition-colors line-clamp-1">

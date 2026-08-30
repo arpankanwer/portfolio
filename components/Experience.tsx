@@ -80,8 +80,8 @@ export default function Experience() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-cyan uppercase tracking-wider mb-3">
-            Career Progression
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+            <span>Career Progression</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
             Professional <span className="text-gradient">Experience</span>.
@@ -117,13 +117,13 @@ export default function Experience() {
                     className={`w-full pl-10 md:pl-0 md:w-[46%] ${isEven ? 'md:mr-auto md:text-left' : 'md:ml-auto md:text-left'}`}
                   >
                     <div className="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden group hover:border-primary/40 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all duration-300">
-                      {/* Top Bar */}
+                      {/* Top Bar — liquid glass pills */}
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                        <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-cyan">
-                          {exp.date}
+                        <span className="liquid-glass-subtle px-3 py-1 rounded-full text-xs font-mono text-cyan">
+                          <span>{exp.date}</span>
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 text-[11px] font-medium text-slate-600 dark:text-white/60">
-                          {exp.badge}
+                        <span className="liquid-glass-subtle px-2.5 py-0.5 rounded-full text-[11px] font-medium text-slate-600 dark:text-white/60">
+                          <span>{exp.badge}</span>
                         </span>
                       </div>
 
@@ -151,11 +151,11 @@ export default function Experience() {
                         ))}
                       </div>
 
-                      {/* Tech Chips */}
+                      {/* Tech Chips — liquid glass subtle */}
                       <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-1.5">
                         {exp.stack.map((tech) => (
-                          <span key={tech} className="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-[11px] font-mono text-slate-700 dark:text-white/70 border border-slate-200/50 dark:border-transparent">
-                            {tech}
+                          <span key={tech} className="liquid-glass-subtle px-2.5 py-0.5 rounded-md text-[11px] font-mono text-slate-700 dark:text-white/70">
+                            <span>{tech}</span>
                           </span>
                         ))}
                       </div>

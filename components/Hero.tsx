@@ -46,12 +46,12 @@ export default function Hero() {
         style={{ y, opacity }}
         className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto"
       >
-        {/* Status Pill */}
+        {/* Status Pill — liquid glass subtle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-6 px-4 py-1.5 rounded-full border border-slate-200/80 dark:border-white/15 bg-white/80 dark:bg-white/5 backdrop-blur-xl inline-flex items-center gap-2.5 shadow-sm dark:shadow-[0_0_20px_rgba(79,140,255,0.15)]"
+          className="liquid-glass-subtle mb-6 px-4 py-1.5 rounded-full inline-flex items-center gap-2.5"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
@@ -112,26 +112,26 @@ export default function Hero() {
         >
           <Link 
             href="#projects"
-            className="px-7 py-3.5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-md dark:shadow-[0_0_30px_rgba(255,255,255,0.25)]"
+            className="liquid-glass-strong px-7 py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
           >
-            View Projects <ArrowRight size={16} />
+            <span>View Projects</span> <ArrowRight size={16} />
           </Link>
 
           <a 
             href="mailto:birarpanjot@gmail.com?subject=Portfolio%20Inquiry%20-%20Birarpanjot%20Singh%20Kanwer"
-            className="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-95 text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-md dark:shadow-[0_0_25px_rgba(79,140,255,0.3)]"
+            className="liquid-glass-gradient px-7 py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
           >
-            Contact Me <Mail size={16} />
+            <span>Contact Me</span> <Mail size={16} />
           </a>
 
           <a 
             href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-3.5 rounded-full glass hover:bg-slate-100 dark:hover:bg-white/10 text-slate-800 dark:text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 border border-slate-200/80 dark:border-white/15"
+            className="liquid-glass px-7 py-3.5 rounded-full text-slate-800 dark:text-white font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
           >
-            View Resume 
-            <ExternalLink size={16} className="text-slate-500 dark:text-white/70" />
+            <span>View Resume</span> 
+            <ExternalLink size={16} />
           </a>
         </motion.div>
       </motion.div>
