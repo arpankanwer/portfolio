@@ -104,7 +104,7 @@ export async function getGithubData(): Promise<GithubData | null> {
         query: GITHUB_GRAPHQL_QUERY,
         variables: { username },
       }),
-      next: { revalidate: 3600 },
+      cache: "no-store", // app/api/github/route.ts owns caching
     });
 
     if (!res.ok) {

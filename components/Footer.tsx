@@ -14,6 +14,7 @@ export default function Footer() {
         minute: '2-digit',
         second: '2-digit',
         hour12: true,
+        timeZoneName: 'short',
       }).format(new Date());
       setTorontoTime(timeString);
     };
@@ -45,7 +46,7 @@ export default function Footer() {
           {torontoTime && (
             <div className="liquid-glass-subtle flex items-center gap-2 mt-1 px-3 py-1 rounded-full text-[11px] font-mono text-primary dark:text-cyan">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Toronto (EST): {torontoTime}</span>
+              <span>Toronto: {torontoTime}</span>
             </div>
           )}
         </div>
@@ -56,6 +57,7 @@ export default function Footer() {
           <Link href="#skills" className="hover:text-primary dark:hover:text-white transition-colors">Skills</Link>
           <Link href="#experience" className="hover:text-primary dark:hover:text-white transition-colors">Experience</Link>
           <Link href="#projects" className="hover:text-primary dark:hover:text-white transition-colors">Projects</Link>
+          <Link href="#open-source" className="hover:text-primary dark:hover:text-white transition-colors">Open Source</Link>
           <Link href="#education" className="hover:text-primary dark:hover:text-white transition-colors">Education</Link>
           <Link href="#contact" className="hover:text-primary dark:hover:text-white transition-colors">Contact</Link>
         </div>
@@ -96,7 +98,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-slate-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-white/40 gap-4">
         <span>© {new Date().getFullYear()} Birarpanjot Singh Kanwer. All rights reserved.</span>
         <div className="flex items-center gap-2">
-          <span>Crafted with Next.js 15, TypeScript & Tailwind CSS</span>
+          <span>Crafted with Next.js, TypeScript & Tailwind CSS</span>
         </div>
       </div>
     </footer>
