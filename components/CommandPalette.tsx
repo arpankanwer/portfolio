@@ -164,6 +164,13 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
                     <span>Technical Arsenal & Skills</span>
                   </Command.Item>
                   <Command.Item 
+                    onSelect={() => handleNavigation('activity')}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-white/80 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer transition-colors data-[selected=true]:bg-slate-100 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white"
+                  >
+                    <Sparkles size={16} className="text-primary" />
+                    <span>GitHub Activity</span>
+                  </Command.Item>
+                  <Command.Item 
                     onSelect={() => handleNavigation('experience')}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-white/80 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer transition-colors data-[selected=true]:bg-slate-100 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white"
                   >

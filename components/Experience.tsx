@@ -25,9 +25,9 @@ const experiences: ExperienceItem[] = [
     bullets: [
       'Build and maintain the Paige™ app, which keeps seniors in touch with family through one-touch video calls, using React Native, Expo, Next.js, Node.js, and Firebase. It is live on the App Store and Google Play.',
       "Work on the native video bridging behind Paige's calls on iOS and Android.",
-      "Integrated Amplifier Health's Apex voice AI model into our Next.js app to analyze vocal health signals from recordings.",
+      "Integrated Amplifier Health's Apex voice AI model into our Next.js app. It screens each recording for vocal health signals such as stress, fatigue, cognitive load, dehydration, and cardiovascular strain.",
       'Built an automated cron-job pipeline that submits new recordings for analysis on a schedule, plus a dashboard for reviewing the results.',
-      "Integrated Amplifier Health's Longitudinal API so each user's vocal health shows as a trend over time, with per-user deltas, rather than one-off readings."
+      "Integrated Amplifier Health's Longitudinal API, which compares each new recording with the same person's history, so every user gets a baseline, per-recording deltas, and a trend over time instead of one-off readings."
     ],
     links: [
       { label: 'App Store', url: 'https://apps.apple.com/ca/app/paige-connect/id6744338186' },

@@ -10,6 +10,7 @@ import { useTheme } from '@/components/ThemeProvider';
 const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Activity', href: '#activity' },
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Open Source', href: '#open-source' },
@@ -109,7 +110,7 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           {/* Contact is omitted here — the Contact button on the right covers it */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
             {navLinks.filter((link) => link.href !== '#contact').map((link) => (
               <Link 
                 key={link.name} 

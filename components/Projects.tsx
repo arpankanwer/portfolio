@@ -58,9 +58,9 @@ const projects: Project[] = [
       'Companion app for the Paige one-touch video-calling frame, on iOS and Android',
       'Frame setup, plus inviting and managing the contacts who can call the frame',
       'Native video bridging for calls',
-      "Amplifier Health's Apex voice AI model integrated into Next.js to analyze vocal health signals",
+      "Amplifier Health's Apex voice AI model integrated into Next.js, screening recordings for signals like stress, fatigue, and cognitive load",
       'Automated cron-job pipeline that submits recordings for analysis, plus a results dashboard',
-      "Amplifier Health's Longitudinal API for per-user deltas and vocal health trends over time"
+      "Amplifier Health's Longitudinal API, comparing each recording with the person's history: baseline, deltas, and trend"
     ],
     results: 'Live on the Apple App Store and Google Play Store.',
     metrics: [
