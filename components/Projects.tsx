@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ExternalLink, 
@@ -196,6 +197,9 @@ const linkClass = 'liquid-glass py-2 px-3 rounded-full text-slate-800 dark:text-
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   // Lock background scroll when modal is open and allow modal inner scroll with Lenis
   useEffect(() => {
@@ -377,7 +381,9 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Project Deep-Dive Modal */}
+      {/* Project Deep-Dive Modal — portalled to <body> so it stacks above the fixed navbar
+          (layout's <main> is its own z-10 stacking context) */}
+      {mounted && createPortal(
       <AnimatePresence>
         {selectedProject && (
           <div
@@ -407,14 +413,14 @@ export default function Projects() {
               {/* Close Button — liquid glass */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="liquid-glass absolute top-6 right-6 w-9 h-9 rounded-full flex items-center justify-center text-slate-700 dark:text-white cursor-pointer"
+                className="liquid-glass absolute! top-4 right-4 sm:top-6 sm:right-6 z-10 w-9 h-9 rounded-full flex items-center justify-center text-slate-700 dark:text-white cursor-pointer"
               >
                 <X size={18} />
               </button>
 
               <div className="space-y-6">
                 {/* Header */}
-                <div>
+                <div className="pr-10">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     {selectedProject.award && (
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 dark:bg-secondary/20 text-primary dark:text-cyan text-xs font-semibold">
@@ -617,7 +623,9 @@ export default function Projects() {
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
     </section>
   );
 }
