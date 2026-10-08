@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { GitCommit, GitPullRequest, GitBranch, Flame } from 'lucide-react';
 
@@ -76,6 +76,13 @@ export default function GithubHeatmap() {
   const [hoveredCell, setHoveredCell] = useState<{ count: number; date?: string; week: number; day: number } | null>(null);
   const [data, setData] = useState<GithubApiData | null>(null);
   const [loading, setLoading] = useState(true);
+  const gridScrollRef = useRef<HTMLDivElement>(null);
+
+  // On narrow screens the grid overflows; show the most recent weeks first
+  useEffect(() => {
+    const el = gridScrollRef.current;
+    if (el) el.scrollLeft = el.scrollWidth;
+  }, [data]);
 
   useEffect(() => {
     let cancelled = false;
@@ -160,7 +167,7 @@ export default function GithubHeatmap() {
           </div>
 
           {/* Heatmap Grid */}
-          <div className="overflow-x-auto pb-3 pt-2" data-lenis-prevent>
+          <div ref={gridScrollRef} className="overflow-x-auto pb-3 pt-2" data-lenis-prevent>
             <div className={`min-w-[700px] flex gap-1.5 ${loading ? 'opacity-90' : ''}`}>
               {data?.weeks && data.weeks.length > 0 ? (
                 data.weeks.map((week, wIdx) => (
@@ -229,7 +236,7 @@ export default function GithubHeatmap() {
                   {hoveredCell.date ? ` on ${hoveredCell.date}` : ` on Day ${hoveredCell.day + 1}`}
                 </span>
               ) : (
-                <span>Hover over squares to inspect daily velocity</span>
+                <span className="hidden sm:inline">Hover over squares to inspect daily velocity</span>
               )}
             </div>
 

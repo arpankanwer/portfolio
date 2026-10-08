@@ -6,7 +6,7 @@ const stats = [
   { label: 'Years Experience', value: '3+', icon: Terminal },
   { label: 'Selenium Tests Automated', value: '50+', icon: Code },
   { label: 'Merged OSS PR', value: 'VS Code', icon: GitPullRequest },
-  { label: 'Awards Won', value: 'Top 1/40+', icon: Award },
+  { label: 'Best Innovation 2024', value: '1st of 40+', icon: Award },
   { label: 'Students Mentored', value: '125+', icon: Users },
   { label: 'GPA at Sheridan', value: '3.52', icon: Trophy },
 ];
@@ -36,7 +36,7 @@ export default function About() {
             </h2>
             
             <p className="text-slate-700 dark:text-white/80 text-base sm:text-lg leading-relaxed">
-              I am a Full-Stack Developer specializing in <strong className="text-slate-900 dark:text-white">React, Next.js, and React Native</strong>, with apps live on the App Store and Google Play. I build production AI features, from voice health analysis to real-time voice agents, and also work in PHP/MySQL.
+              I'm a full-stack developer based in Ontario, working across <strong className="text-slate-900 dark:text-white">React Native apps, Next.js dashboards, Node.js and Firebase backends</strong>, and PHP/MySQL systems.
             </p>
             
             <div className="space-y-3 text-slate-600 dark:text-white/70 text-sm sm:text-base leading-relaxed border-l-2 border-primary/40 pl-5">

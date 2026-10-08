@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, Trophy, Star, CheckCircle, Calendar, Sparkles, FileText, ExternalLink } from 'lucide-react';
+import { GraduationCap, Award, Trophy, Star, CheckCircle, Calendar, FileText, ExternalLink } from 'lucide-react';
 
 export default function Education() {
   return (
@@ -36,10 +36,6 @@ export default function Education() {
             transition={{ duration: 0.6 }}
             className="glass-card p-8 rounded-3xl glow-border relative overflow-hidden flex flex-col justify-between"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-              <GraduationCap size={160} />
-            </div>
-            
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary border border-primary/30">
@@ -61,9 +57,9 @@ export default function Education() {
               </p>
 
               <div className="space-y-3.5 bg-slate-50 dark:bg-white/[0.03] p-5 rounded-2xl border border-slate-200/60 dark:border-white/5 mb-6">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-4">
                   <span className="text-xs sm:text-sm text-slate-500 dark:text-white/60">Institution</span>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Sheridan College (Oakville, ON)</span>
+                  <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white text-right">Sheridan College (Oakville, ON)</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-xs sm:text-sm text-slate-500 dark:text-white/60">Cumulative GPA</span>
@@ -121,11 +117,6 @@ export default function Education() {
                 </span>
               </div>
               
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 dark:bg-secondary/20 text-primary dark:text-cyan text-xs font-mono mb-3">
-                <Sparkles size={13} className="text-amber-500 dark:text-yellow-400" />
-                1st Place Capstone Innovation Award
-              </div>
-
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white mb-2">
                 Best Innovation Award 2024
               </h3>
@@ -136,11 +127,6 @@ export default function Education() {
               <p className="text-sm sm:text-base text-slate-600 dark:text-white/75 leading-relaxed mb-6">
                 Awarded top rank among <strong className="text-slate-900 dark:text-white">40+ competing engineering teams</strong> for building <strong className="text-slate-900 dark:text-white">GigJet</strong>, a full-stack mobile app with chat and job postings that connects service seekers and providers.
               </p>
-            </div>
-
-            <div className="relative z-10 pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-white/60">
-              <span>Verified Award Recipient</span>
-              <span className="font-mono text-primary dark:text-cyan font-semibold">Top 1 / 40+ Teams</span>
             </div>
           </motion.div>
 

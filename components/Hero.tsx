@@ -141,7 +141,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-white/40"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-slate-400 dark:text-white/40"
       >
         <span className="text-[10px] font-mono tracking-widest uppercase">Scroll to explore</span>
         <div className="w-4 h-7 rounded-full border border-slate-300 dark:border-white/20 flex justify-center p-1">
