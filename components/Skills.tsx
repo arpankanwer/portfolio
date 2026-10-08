@@ -10,7 +10,8 @@ import {
   Cpu,
   Layers,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Code2
 } from 'lucide-react';
 
 interface TechCategory {
@@ -20,66 +21,95 @@ interface TechCategory {
   description: string;
   items: {
     name: string;
-    level: 'Production Core' | 'Advanced' | 'Proficient';
     highlight?: string;
   }[];
 }
 
 const techDomains: TechCategory[] = [
   {
-    id: 'backend',
-    label: 'Backend & Systems',
-    icon: Server,
-    description: 'Scalable services, REST/GraphQL APIs, and low-latency native video bridging.',
+    id: 'languages',
+    label: 'Languages',
+    icon: Code2,
+    description: 'The languages I write production and project code in.',
     items: [
-      { name: 'Node.js & Express / NestJS', level: 'Production Core', highlight: 'REST & Event Pipelines' },
-      { name: 'Java & Spring Boot', level: 'Production Core', highlight: 'Enterprise Microservices' },
-      { name: 'TypeScript / JavaScript (ES6+)', level: 'Production Core', highlight: 'Strict Type Systems' },
-      { name: 'Python & Django', level: 'Advanced', highlight: 'Data & Scripting Services' },
-      { name: 'Native Module Bridging', level: 'Production Core', highlight: 'Objective-C / Java / Video' },
-      { name: 'RESTful & GraphQL API Architecture', level: 'Production Core', highlight: 'Clean Contract Design' },
+      { name: 'JavaScript', highlight: 'React, Next.js & Node.js' },
+      { name: 'TypeScript', highlight: 'Merged PR in Microsoft VS Code' },
+      { name: 'PHP', highlight: 'PHP/MySQL backends' },
+      { name: 'Java', highlight: 'Spring Boot' },
+      { name: 'Dart', highlight: 'Flutter apps' },
+      { name: 'Python', highlight: 'Django' },
+      { name: 'SQL', highlight: 'MySQL & SQL Server' },
+      { name: 'C#' },
     ]
   },
   {
-    id: 'mobile-frontend',
-    label: 'Mobile & Frontend',
+    id: 'frontend-mobile',
+    label: 'Frontend & Mobile',
     icon: Smartphone,
-    description: 'Cross-platform mobile applications and modern SSR web interfaces.',
+    description: 'Cross-platform mobile apps and modern web interfaces.',
     items: [
-      { name: 'React Native & Expo', level: 'Production Core', highlight: 'Published to App Store / Play' },
-      { name: 'Flutter & Dart', level: 'Advanced', highlight: 'Cross-Platform Android / iOS' },
-      { name: 'Next.js 15 & React.js', level: 'Production Core', highlight: 'App Router & SSR Architecture' },
-      { name: 'Tailwind CSS & Design Systems', level: 'Production Core', highlight: 'Accessible Modern UI' },
-      { name: 'Zustand / Redux State Engines', level: 'Production Core', highlight: 'Predictable Global State' },
-      { name: 'Framer Motion & Micro-interactions', level: 'Advanced', highlight: '60fps GPU Animations' },
+      { name: 'React Native', highlight: 'Paige & Skillkoo, live on both stores' },
+      { name: 'Expo', highlight: 'iOS & Android apps' },
+      { name: 'Next.js', highlight: 'Voice AI integration & this site' },
+      { name: 'React.js', highlight: 'Web interfaces' },
+      { name: 'Flutter', highlight: 'Eduwings Android app' },
+      { name: 'Tailwind CSS', highlight: 'This portfolio' },
+      { name: 'HTML/CSS' },
+    ]
+  },
+  {
+    id: 'backend',
+    label: 'Backend',
+    icon: Server,
+    description: 'APIs, services, and scheduled jobs.',
+    items: [
+      { name: 'Node.js', highlight: 'Paige & GigJet' },
+      { name: 'Express', highlight: 'Skillkoo backend' },
+      { name: 'RESTful API Design' },
+      { name: 'Scheduled Jobs (cron)', highlight: 'Voice AI analysis pipeline' },
+      { name: 'Spring Boot', highlight: 'Tutored at Sheridan' },
+      { name: 'Django', highlight: 'Tutored at Sheridan' },
+    ]
+  },
+  {
+    id: 'databases',
+    label: 'Databases',
+    icon: Database,
+    description: 'Document and relational data stores.',
+    items: [
+      { name: 'Firebase (Firestore)', highlight: 'Paige, Eduwings & Chatie' },
+      { name: 'MySQL (phpMyAdmin)', highlight: 'PHP/MySQL work' },
+      { name: 'MongoDB' },
+      { name: 'SQL Server' },
     ]
   },
   {
     id: 'cloud-devops',
-    label: 'Cloud & Infrastructure',
+    label: 'Cloud & DevOps',
     icon: Cloud,
-    description: 'Containerized deployment pipelines, cloud functions, and CI/CD automation.',
+    description: 'Cloud services, containers, and CI/CD.',
     items: [
-      { name: 'AWS (EC2, S3, RDS, Lambda)', level: 'Advanced', highlight: 'Cloud Hosting & Storage' },
-      { name: 'Docker & Containerization', level: 'Advanced', highlight: 'Reproducible Build Envs' },
-      { name: 'GitHub Actions & CI/CD', level: 'Production Core', highlight: 'Automated Test & Deploy' },
-      { name: 'Firebase & Google Cloud Platform', level: 'Production Core', highlight: 'Auth, Firestore, Hosting' },
-      { name: 'Expo Application Services (EAS)', level: 'Production Core', highlight: 'Over-the-Air iOS/Android Builds' },
-      { name: 'Vercel Edge Platform', level: 'Production Core', highlight: 'Serverless Edge Functions' },
+      { name: 'AWS (EC2, S3, RDS, Lambda)', highlight: 'S3 storage for Skillkoo' },
+      { name: 'Docker' },
+      { name: 'GitHub Actions' },
+      { name: 'Jenkins' },
+      { name: 'Vercel' },
+      { name: 'CI/CD' },
     ]
   },
   {
-    id: 'data-qa',
-    label: 'Databases & QA Automation',
-    icon: Database,
-    description: 'NoSQL & Relational databases, regression testing suites, and agile workflows.',
+    id: 'ai-tools',
+    label: 'AI & Tools',
+    icon: Sparkles,
+    description: 'AI agents, developer tooling, and team workflow.',
     items: [
-      { name: 'Firebase Firestore & Realtime DB', level: 'Production Core', highlight: 'Real-time WebSocket Sync' },
-      { name: 'PostgreSQL & MS SQL Server', level: 'Advanced', highlight: 'Complex Queries & Indexing' },
-      { name: 'MongoDB & Document Modeling', level: 'Advanced', highlight: 'Schema Design & Aggregations' },
-      { name: 'Selenium WebDriver Automation', level: 'Production Core', highlight: '50+ Evertz Test Suites' },
-      { name: 'Regression & Integration Testing', level: 'Production Core', highlight: 'Cut Test Cycles by 25%' },
-      { name: 'Jira, Agile / Scrum & Git', level: 'Production Core', highlight: 'Iterative Sprint Delivery' },
+      { name: 'ElevenLabs Agents', highlight: 'Skillkoo voice agents' },
+      { name: 'Eleven v3 Conversational', highlight: 'Real-time voice counseling' },
+      { name: 'Claude Code' },
+      { name: 'Selenium', highlight: '50+ tests automated at Evertz' },
+      { name: 'Git' },
+      { name: 'Jira' },
+      { name: 'Agile/Scrum' },
     ]
   }
 ];
@@ -106,10 +136,10 @@ export default function Skills() {
               Technical Arsenal
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Production-Tested <span className="text-gradient">Core Tech Stack</span>.
+              Core <span className="text-gradient">Tech Stack</span>.
             </h2>
             <p className="text-slate-600 dark:text-white/70 text-sm sm:text-base max-w-xl mt-2">
-              Clean architectural competencies spanning backend microservices, published mobile applications, and automated CI/CD infrastructure.
+              Languages, frameworks, and tools I use across mobile, web, backend, and AI work.
             </p>
           </div>
 

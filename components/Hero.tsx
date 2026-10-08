@@ -5,10 +5,10 @@ import { ArrowRight, Download, ExternalLink, FileText, Mail, Sparkles, Terminal 
 import Link from 'next/link';
 
 const roles = [
-  "Software Developer",
-  "Backend Engineer",
-  "Mobile Developer",
-  "Cloud Enthusiast"
+  "Full-Stack Developer",
+  "React & Next.js Developer",
+  "React Native Developer",
+  "Open-Source Contributor"
 ];
 
 export default function Hero() {
@@ -100,7 +100,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-white/70 font-normal max-w-3xl mb-10 leading-relaxed"
         >
-          Specializing in scalable distributed systems, high-performance backends, and modern mobile & web experiences using <span className="text-slate-900 dark:text-white font-medium">Node.js, React Native, Next.js, AWS, and Cloud Architecture</span>.
+          Full-stack developer specializing in <span className="text-slate-900 dark:text-white font-medium">React, Next.js, and React Native</span>, with apps live on the App Store & Google Play, production AI features from voice health analysis to real-time voice agents, and merged open-source PRs, including one in Microsoft VS Code.
         </motion.p>
 
         {/* 3 Call-To-Action Buttons */}
@@ -125,7 +125,7 @@ export default function Hero() {
           </a>
 
           <a 
-            href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
+            href="https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="liquid-glass px-7 py-3.5 rounded-full text-slate-800 dark:text-white font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"

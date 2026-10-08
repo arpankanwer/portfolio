@@ -40,7 +40,7 @@ export default function Footer() {
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
           </div>
           <p className="text-xs text-slate-600 dark:text-white/50 max-w-sm">
-            Software Developer • Full-Stack & Mobile Engineer • Based in Ontario, Canada
+            Full-Stack Developer • React, Next.js & React Native • Based in Ontario, Canada
           </p>
           {torontoTime && (
             <div className="liquid-glass-subtle flex items-center gap-2 mt-1 px-3 py-1 rounded-full text-[11px] font-mono text-primary dark:text-cyan">

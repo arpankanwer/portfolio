@@ -1,21 +1,36 @@
 'use client';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Briefcase, Building2, MapPin, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Briefcase, Building2, MapPin, Sparkles, CheckCircle2, ExternalLink } from 'lucide-react';
 
-const experiences = [
+interface ExperienceItem {
+  role: string;
+  company: string;
+  location: string;
+  date: string;
+  badge: string;
+  stack: string[];
+  bullets: string[];
+  links: { label: string; url: string }[];
+}
+
+const experiences: ExperienceItem[] = [
   {
     role: 'Software Developer',
     company: 'KiloBryte',
     location: 'Guelph, ON, Canada',
     date: 'August 2025 – Present',
     badge: 'Current Role',
-    stack: ['React', 'React Native', 'Next.js', 'Node.js', 'Firebase', 'Expo', 'Vercel', 'Native Modules'],
+    stack: ['React Native', 'Next.js', 'Node.js', 'Firebase', 'Expo', 'Native Video Bridging', 'Apex Voice AI', 'Cron Jobs'],
     bullets: [
-      'Developing accessible, high-performance cross-platform applications tailored for senior citizens across iOS and Android.',
-      'Architecting core features for the Paige™ ecosystem with responsive state synchronization and low-latency cloud data persistence.',
-      'Engineering custom native module bridges for video streaming capabilities, optimizing hardware rendering pipelines.',
-      'Spearheading production deployment pipelines to both Apple App Store and Google Play Store.'
+      'Build and maintain the Paige™ app for seniors with React Native, Next.js, Node.js, Firebase, Expo, and native video bridging; live on the App Store and Play Store.',
+      "Integrated Amplifier Health's Apex voice AI model into Next.js to analyze vocal health signals.",
+      'Built an automated cron-job pipeline that submits recordings for analysis, plus a dashboard for results.',
+      "Integrated Amplifier Health's Longitudinal API to surface per-user deltas and vocal health trends over time."
+    ],
+    links: [
+      { label: 'App Store', url: 'https://apps.apple.com/ca/app/paige-connect/id6744338186' },
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA' }
     ]
   },
   {
@@ -23,26 +38,27 @@ const experiences = [
     company: 'Evertz Microsystems Ltd',
     location: 'Burlington, ON, Canada',
     date: 'May 2024 – August 2024',
-    badge: 'Enterprise QA',
-    stack: ['Selenium WebDriver', 'Java', 'Python', 'IoT Monitoring', 'CI/CD', 'Regression Testing'],
+    badge: 'QA Automation',
+    stack: ['Selenium', 'Test Automation', 'Regression Testing', 'IoT'],
     bullets: [
-      'Engineered and deployed 50+ automated Selenium end-to-end test suites for enterprise broadcast hardware and web dashboards.',
-      'Reduced overall regression testing execution cycle time by 25%, drastically accelerating release cadence for firmware builds.',
-      'Collaborated with cross-functional hardware/software teams to validate IoT-plant monitoring systems (Smart Garden) under live operating conditions.'
+      'Automated 50+ Selenium tests, reducing regression testing time by 25% and enabling faster releases.',
+      'Collaborated across teams to improve Smart Garden, an IoT plant-monitoring app.'
+    ],
+    links: [
+      { label: 'Smart Garden', url: 'https://github.com/Evertz-Garden/SmartGarden/tree/WebUIChange' }
     ]
   },
   {
-    role: 'Programming Tutor & Mentor',
+    role: 'Programming Tutor',
     company: 'Sheridan College',
     location: 'Oakville, ON, Canada',
-    date: 'Jan 2023 – Dec 2023',
+    date: 'Jan 2023 – Apr 2023; Sep 2023 – Dec 2023',
     badge: 'Academic Mentorship',
-    stack: ['Spring Boot', 'Java', 'AngularJS', 'Django', 'Data Structures & Algorithms', 'SQL'],
+    stack: ['Spring Boot', 'AngularJS', 'Django', 'Mentoring'],
     bullets: [
-      'Mentored over 125+ computer science undergraduate students in modern software engineering principles, backend patterns, and algorithm design.',
-      'Conducted weekly hands-on code reviews and debugging sessions focusing on Spring Boot REST architectures, Django MVC, and relational schema normalization.',
-      'Authored supplementary coding problem sets and architecture cheat-sheets to improve student pass rates in advanced programming courses.'
-    ]
+      'Mentored 125+ students in programming and frameworks such as Spring Boot, AngularJS, and Django.'
+    ],
+    links: []
   },
   {
     role: 'Application Developer',
@@ -50,11 +66,13 @@ const experiences = [
     location: 'Ludhiana, Punjab, India',
     date: 'April 2021 – November 2021',
     badge: 'Mobile Engineering',
-    stack: ['Flutter', 'Dart', 'PHP', 'Firebase', 'Google Play Console', 'REST APIs'],
+    stack: ['Flutter', 'PHP', 'Firebase', 'Android'],
     bullets: [
-      'Developed and deployed production Android ERP mobile applications using Flutter and PHP web services to the Google Play Store.',
-      'Streamlined cloud backend operations with Google Firebase to enable instant synchronization, user auth, and real-time push announcements.',
-      'Integrated payment gateways and dynamic student document submission pipelines.'
+      'Built an Android app with Flutter, PHP, and Firebase, published on the Play Store.'
+    ],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/arpankanwer/eduwings_global' },
+      { label: 'Android App', url: 'https://apkpure.com/eduwings-global/com.eduwingserp.studentapp' }
     ]
   }
 ];
@@ -87,7 +105,7 @@ export default function Experience() {
             Professional <span className="text-gradient">Experience</span>.
           </h2>
           <p className="text-slate-600 dark:text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
-            A track record of engineering scalable applications, automating test workflows, and driving high-impact technical initiatives.
+            Shipping production mobile and web apps, integrating AI features, and automating test workflows.
           </p>
         </motion.div>
 
@@ -150,6 +168,24 @@ export default function Experience() {
                           </div>
                         ))}
                       </div>
+
+                      {/* Resume Links — liquid glass */}
+                      {exp.links.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {exp.links.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="liquid-glass px-3 py-1 rounded-full text-xs font-medium text-slate-800 dark:text-white flex items-center gap-1.5 cursor-pointer"
+                            >
+                              <span>{link.label}</span>
+                              <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
+                            </a>
+                          ))}
+                        </div>
+                      )}
 
                       {/* Tech Chips — liquid glass subtle */}
                       <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-1.5">

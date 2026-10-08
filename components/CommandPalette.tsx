@@ -13,7 +13,8 @@ import {
   Check, 
   ExternalLink,
   Code2,
-  Sparkles
+  Sparkles,
+  GitPullRequest
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -177,6 +178,13 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
                     <span>Featured Projects</span>
                   </Command.Item>
                   <Command.Item 
+                    onSelect={() => handleNavigation('open-source')}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-white/80 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer transition-colors data-[selected=true]:bg-slate-100 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white"
+                  >
+                    <GitPullRequest size={16} className="text-secondary" />
+                    <span>Open Source Contributions</span>
+                  </Command.Item>
+                  <Command.Item 
                     onSelect={() => handleNavigation('education')}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-white/80 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer transition-colors data-[selected=true]:bg-slate-100 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white"
                   >
@@ -206,7 +214,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
 
                   <Command.Item 
                     onSelect={() => {
-                      window.open('https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing', '_blank');
+                      window.open('https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing', '_blank');
                       handleClose();
                     }}
                     className="flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-700 dark:text-white/80 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer transition-colors data-[selected=true]:bg-slate-100 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white"

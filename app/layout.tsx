@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Birarpanjot Singh Kanwer | Software Developer',
-  description: 'Portfolio of Birarpanjot Singh Kanwer, a Backend Engineer, Mobile Developer, and Cloud Enthusiast based in Canada.',
+  title: 'Birarpanjot Singh Kanwer | Full-Stack Developer',
+  description: 'Portfolio of Birarpanjot Singh Kanwer, a full-stack developer specializing in React, Next.js, and React Native, with apps live on the App Store and Google Play, production AI features, and merged open-source PRs.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

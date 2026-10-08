@@ -8,13 +8,13 @@ import {
   X, 
   CheckCircle2, 
   Cpu, 
-  ShieldAlert, 
   Trophy,
   Smartphone,
-  Download,
   Flame,
   Radio,
-  Play
+  Play,
+  Globe,
+  PenTool
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -22,23 +22,23 @@ interface Project {
   id: string;
   title: string;
   subtitle: string;
-  category: 'production' | 'featured' | 'iot' | 'opensource';
+  category: 'production' | 'featured' | 'web' | 'iot';
   tags: string[];
   description: string;
   award?: string;
   badge?: string;
-  downloads?: string;
   image: string;
   appStoreUrl?: string;
   playStoreUrl?: string;
   demoUrl?: string;
   youtubeUrl?: string;
   githubUrl?: string;
+  websiteUrl?: string;
+  figmaUrl?: string;
   overview: string;
   architecture: string;
   features: string[];
-  challenges: string;
-  results: string;
+  results?: string;
   metrics: { label: string; value: string }[];
 }
 
@@ -46,176 +46,166 @@ const projects: Project[] = [
   {
     id: 'paige-connect',
     title: 'Paige Connect',
-    subtitle: 'Senior Companion & Healthcare Video Bridge (KiloBryte)',
+    subtitle: 'Paige™ App for Seniors (KiloBryte)',
     category: 'production',
-    tags: ['React Native', 'iOS', 'Android', 'WebRTC Video Bridge', 'TypeScript', 'Redux', 'REST API'],
-    description: 'Production companion mobile application built for senior care connectivity and video calling with dedicated hardware hubs, featuring custom native module bridging, real-time presence, and accessible UI.',
+    tags: ['React Native', 'Expo', 'Next.js', 'Node.js', 'Firebase', 'Native Video Bridging'],
+    description: 'The Paige™ app for seniors, which I build and maintain at KiloBryte with React Native, Next.js, Node.js, Firebase, Expo, and native video bridging. Live on the App Store and Google Play.',
     badge: 'Live on App Store & Google Play',
     image: '/projects/paigeconnect.png',
     appStoreUrl: 'https://apps.apple.com/ca/app/paige-connect/id6744338186',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA',
-    overview: 'Engineered as a core mobile companion for KiloBryte\'s senior telehealth system. Paige Connect enables family members and caregivers to bridge crystal-clear video calls, monitor device heartbeats, and exchange secure check-in updates.',
-    architecture: 'React Native cross-platform client with custom Native Objective-C/Swift and Java module bridges for low-overhead audio/video streaming, background push notification orchestration, and bi-directional WebSocket telemetry.',
+    overview: "Paige™ is KiloBryte's app for seniors. I build and maintain it across iOS and Android, and I extended the platform with Amplifier Health's voice AI to analyze vocal health signals.",
+    architecture: "React Native (Expo) mobile client with native video bridging, backed by Node.js and Firebase. A Next.js layer integrates Amplifier Health's Apex voice AI model and Longitudinal API, and an automated cron-job pipeline submits recordings for analysis and feeds a results dashboard.",
     features: [
-      'Low-latency 1-tap video calling with native WebRTC hardware decoding',
-      'Background call alerts and persistent caregiver notification priority',
-      'Live hardware hub status monitoring & connection diagnostics',
-      'Accessible, high-contrast UI tailored for multi-generational families',
-      'Cross-platform parity across iOS (App Store) and Android (Google Play)'
+      'Cross-platform app for seniors on iOS and Android',
+      'Native video bridging',
+      "Amplifier Health's Apex voice AI model integrated into Next.js to analyze vocal health signals",
+      'Automated cron-job pipeline that submits recordings for analysis, plus a results dashboard',
+      "Amplifier Health's Longitudinal API for per-user deltas and vocal health trends over time"
     ],
-    challenges: 'Maintaining reliable background video wake-ups across battery-optimized Android devices and strict iOS VoIP push constraints.',
-    results: 'Successfully deployed to Apple App Store and Google Play Store with active daily users across North American care facilities.',
+    results: 'Live on the Apple App Store and Google Play Store.',
     metrics: [
       { label: 'Platforms', value: 'iOS & Android' },
       { label: 'Store Status', value: 'Live' },
-      { label: 'Audio Latency', value: '<120ms' }
+      { label: 'Voice AI', value: 'Apex' }
+    ]
+  },
+  {
+    id: 'skillkoo',
+    title: 'Skillkoo / Eduwings',
+    subtitle: 'Education Platform with AI Career-Counseling Voice Agents',
+    category: 'production',
+    tags: ['React Native', 'Expo', 'Express.js', 'AWS S3', 'ElevenLabs Agents', 'Eleven v3 Conversational'],
+    description: 'An education platform shipped on iOS, Android, and the web, with student profiles, document uploads, and real-time AI career-counseling voice agents.',
+    badge: 'Live on iOS, Android & Web',
+    image: '/projects/skillkoo.png',
+    appStoreUrl: 'https://apps.apple.com/us/app/skillkoo/id6761086381',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.eduwings.global&hl=en_CA',
+    websiteUrl: 'https://www.learn.skillkoo.com/',
+    overview: 'Skillkoo is an education platform available on iOS, Android, and the web. Students build profiles, upload documents, and talk with real-time AI career-counseling voice agents.',
+    architecture: 'React Native (Expo) mobile clients, an Express.js backend, and AWS S3 storage. The real-time career-counseling voice agents are built with ElevenLabs Agents, powered by Eleven v3 Conversational.',
+    features: [
+      'Shipped on iOS, Android, and the web',
+      'Student profiles and document uploads',
+      'Real-time AI career-counseling voice agents built with ElevenLabs Agents',
+      'Voice agents powered by Eleven v3 Conversational'
+    ],
+    results: 'Live on the App Store, Google Play, and the web.',
+    metrics: [
+      { label: 'Platforms', value: 'iOS, Android & Web' },
+      { label: 'Voice AI', value: 'ElevenLabs' },
+      { label: 'Backend', value: 'Express.js' }
     ]
   },
   {
     id: 'gigjet',
     title: 'GigJet',
-    subtitle: 'On-Demand Service Marketplace & Real-Time Chat Platform',
+    subtitle: 'Service Marketplace with Real-Time Chat',
     category: 'featured',
-    tags: ['React Native', 'Node.js', 'Express', 'Firebase', 'Expo', 'REST API'],
-    description: 'Full-stack mobile platform engineered to connect freelance service seekers and verified providers with real-time bidirectional chat, geo-location job postings, and instant quote dispatching.',
-    award: 'Awarded "Best Innovation 2024" (Top 1/40+ Capstone Teams)',
+    tags: ['React Native', 'Node.js'],
+    description: 'A full-stack mobile app with chat and job postings, connecting service seekers and providers.',
+    award: 'Awarded "Best Innovation 2024" (1st of 40+)',
     image: '/projects/gigjet.png',
     youtubeUrl: 'https://youtu.be/M1adKEKeFLo',
     demoUrl: 'https://youtu.be/M1adKEKeFLo',
-    overview: 'GigJet is an end-to-end gig economy platform designed to eliminate friction in hiring local trades and technical specialists. It features a reactive mobile frontend in React Native with a high-throughput Node.js/Express API layer and Firebase real-time sync.',
-    architecture: 'Microservice-ready REST API with modular controllers, JWT authentication, Firebase Firestore listeners for low-latency messaging, and cloud-hosted object buckets for portfolio image uploads.',
+    figmaUrl: 'https://www.figma.com/design/czmfCp4NJjOQn1y6MknLjz/Capstone?node-id=0-1&t=mgfBlIu44I6F7Afq-1',
+    overview: 'GigJet connects people looking for services with the providers who offer them. Seekers post jobs, and both sides talk through built-in chat.',
+    architecture: 'React Native mobile client backed by a Node.js server, covering job postings and in-app chat between service seekers and providers. Designed in Figma.',
     features: [
-      'Bidirectional real-time messaging with attachment support',
-      'Geolocated service request creation and smart proximity filtering',
-      'Provider quote bidding with instant push notification delivery',
-      'In-app rating, review, and verification badge system',
-      'End-to-end responsive UI optimized for iOS and Android'
+      'Job postings from service seekers',
+      'In-app chat between seekers and providers',
+      'Full-stack mobile app built with React Native and Node.js',
+      'UI designed in Figma'
     ],
-    challenges: 'Ensuring sub-100ms real-time chat latency across diverse mobile device connections and preventing race conditions during concurrent job bids.',
-    results: 'Won "Best Innovation 2024" at Sheridan College among 40+ competitor teams, recognized for superior software architecture, clean user experience, and robust API design.',
+    results: 'Won "Best Innovation 2024" at Sheridan College, ranking 1st among 40+ teams.',
     metrics: [
       { label: 'Award Standing', value: '1st Place' },
-      { label: 'Chat Latency', value: '<80ms' },
-      { label: 'Competitor Teams', value: '40+' }
+      { label: 'Competing Teams', value: '40+' },
+      { label: 'Year', value: '2024' }
     ]
   },
   {
-    id: 'skillkoo',
-    title: 'SkillKoo (Eduwings)',
-    subtitle: 'Global EdTech Mobile Learning Ecosystem (100+ Downloads)',
-    category: 'production',
-    tags: ['Flutter', 'iOS', 'Android', 'Firebase', 'EdTech', 'REST APIs'],
-    description: 'Global educational mobile platform connecting learners and mentors with interactive course catalogs, personalized learning roadmaps, real-time assessment tracking, and multi-region localization.',
-    badge: 'Live App',
-    downloads: '100+',
-    image: '/projects/skillkoo.png',
-    appStoreUrl: 'https://apps.apple.com/us/app/eduwings/id6761086381',
-    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.eduwings.global&hl=en',
-    overview: 'SkillKoo transforms mobile education with rich multimedia course materials, structured module progress tracking, and instant mentor notifications. Engineered for high performance across diverse smartphone tiers.',
-    architecture: 'Modular mobile client architecture with reactive state management, asynchronous offline-first course caching, Firebase authentication, and scalable media streaming CDN.',
+    id: 'portfolio',
+    title: 'Portfolio',
+    subtitle: 'This Site, with a Live GitHub Heatmap',
+    category: 'web',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GitHub GraphQL API'],
+    description: "The site you're on, built with Next.js, React, TypeScript, Tailwind CSS, and Framer Motion. It includes a live GitHub heatmap served by a Next.js API route that queries GitHub's GraphQL API, cached hourly.",
+    image: '/projects/portfolio.png',
+    githubUrl: 'https://github.com/arpankanwer/portfolio',
+    websiteUrl: 'https://arpankanwer.ai.studio/',
+    overview: 'My personal portfolio. It presents my experience, projects, and open-source work, and pulls my GitHub contribution activity live.',
+    architecture: "Next.js App Router with React and TypeScript, styled with Tailwind CSS and animated with Framer Motion. A Next.js API route queries GitHub's GraphQL API for the contribution calendar and caches the result for an hour.",
     features: [
-      'Multi-category course browsing with smooth video stream playback',
-      'Offline module progress persistence and cloud synchronization',
-      'Push notifications for upcoming live sessions & quiz deadlines',
-      'Multi-lingual support and adaptive theme rendering',
-      'Dual platform availability on iOS App Store & Google Play'
+      'Live GitHub contribution heatmap',
+      "Next.js API route backed by GitHub's GraphQL API",
+      'Hourly caching of GitHub data',
+      'Framer Motion animations with light and dark themes'
     ],
-    challenges: 'Optimizing media caching to support smooth playback in low-bandwidth network zones across various international regions.',
-    results: 'Surpassed 100+ downloads with positive feedback across both major mobile application marketplaces.',
     metrics: [
-      { label: 'Downloads', value: '100+' },
-      { label: 'Ecosystem', value: 'iOS & Android' },
-      { label: 'Uptime', value: '99.9%' }
+      { label: 'Framework', value: 'Next.js' },
+      { label: 'Data Source', value: 'GitHub GraphQL' },
+      { label: 'Cache', value: 'Hourly' }
     ]
   },
   {
     id: 'smart-garden',
     title: 'Smart Garden (IoT)',
-    subtitle: 'Automated Soil & Environmental Plant Telemetry Platform',
+    subtitle: 'IoT Plant-Monitoring App at Evertz',
     category: 'iot',
-    tags: ['Python', 'Hardware Sensors', 'IoT Telemetry', 'Actuators', 'Embedded Systems'],
-    description: 'An automated intelligent botanical monitoring system utilizing environmental sensors, automated moisture detection, automated watering triggers, and real-time telemetry analytics.',
-    badge: 'Embedded Systems & Automation',
+    tags: ['IoT', 'Microcontroller', 'C / C++', 'JavaScript', 'Python'],
+    description: 'An IoT plant-monitoring app built by a team at Evertz. During my internship I collaborated across teams to improve it.',
+    badge: 'Evertz Team Project',
     image: '/projects/smartgarden.png',
-    githubUrl: 'https://github.com/arpankanwer/SmartGarden',
-    overview: 'Smart Garden automates precision horticulture by continuously streaming soil moisture, ambient humidity, temperature, and light levels into an event processing engine that dynamically manages hydration and lighting cycles.',
-    architecture: 'Hardware sensor grid connected to embedded micro-controllers running Python firmware, transmitting JSON telemetry over MQTT/HTTP to a centralized dashboard with automated threshold actuators.',
+    githubUrl: 'https://github.com/Evertz-Garden/SmartGarden/tree/WebUIChange',
+    overview: 'Smart Garden is a team project at Evertz Microsystems. A raised garden bed is divided into zones, each watered through motorized valves, and the system is operated from an internally hosted website.',
+    architecture: 'Microcontroller firmware (C/C++) drives the motorized valves for each garden zone, and an internally hosted website is used to operate the system.',
     features: [
-      'Real-time sensor data acquisition (Moisture, Temp, Humidity, Light)',
-      'Automated pump and solenoid valve actuation based on PID thresholds',
-      'Historical climate trend analysis and moisture depletion charting',
-      'Configurable alert notifications when parameters cross safety limits',
-      'Power-efficient sleep cycles and sensor calibration algorithms'
+      'Zone-divided raised garden bed',
+      'Motorized valves controlled by a microcontroller',
+      'Internally hosted website for operating the garden',
+      'Cross-team collaboration during my Evertz internship'
     ],
-    challenges: 'Calibrating analog moisture sensor degradation and preventing over-watering cycles during rapid temperature fluctuations.',
-    results: 'Achieved 100% plant hydration consistency with zero manual intervention over a 60-day continuous testing cycle.',
     metrics: [
-      { label: 'Sensor Polling', value: 'Real-Time' },
-      { label: 'Water Efficiency', value: '+45%' },
-      { label: 'Platform', value: 'Python / IoT' }
-    ]
-  },
-  {
-    id: 'oh-my-opencode-slim',
-    title: 'oh-my-opencode-slim',
-    subtitle: 'High-Performance Streamlined Dev Environment Configuration',
-    category: 'opensource',
-    tags: ['Open Source', 'Shell', 'Zsh / Bash', 'DevOps', 'Productivity', 'Automation'],
-    description: 'Lightweight, ultra-fast developer shell environment and toolkit designed to minimize terminal latency, optimize plugin loading sequences, and standardize engineering workflows.',
-    badge: 'Open Source Contribution',
-    image: '/projects/ohmyopencode.webp',
-    githubUrl: 'https://github.com/arpankanwer/oh-my-opencode-slim',
-    overview: 'A community-driven open-source project focused on shaving hundreds of milliseconds off interactive shell startup times while maintaining rich autocomplete, git prompt decorations, and aliases.',
-    architecture: 'Asynchronous lazy-loading architecture with modular prompt engines, caching layers for git status evaluation, and zero-dependency POSIX fallback routines.',
-    features: [
-      'Sub-15ms terminal startup and prompt evaluation latency',
-      'Asynchronous Git status daemon avoiding large repository lag',
-      'Zero-bloat configuration syntax with pluggable alias modules',
-      'Cross-platform compatibility across macOS, Linux, and WSL2',
-      'Active open-source community contributions and updates'
-    ],
-    challenges: 'Eliminating synchronous fork-exec overhead during deep git status checks in multi-gigabyte monorepos.',
-    results: 'Reduced prompt rendering time by over 70% compared to standard monolithic terminal frameworks.',
-    metrics: [
-      { label: 'Startup Time', value: '<15ms' },
-      { label: 'Lag Reduction', value: '70% Faster' },
-      { label: 'License', value: 'MIT Open Source' }
+      { label: 'Context', value: 'Evertz Internship' },
+      { label: 'Type', value: 'IoT' },
+      { label: 'Year', value: '2024' }
     ]
   },
   {
     id: 'chatie',
     title: 'Chatie',
-    subtitle: 'Cross-Platform Real-Time Group Chat with Cloud Media Storage',
+    subtitle: 'Real-Time Group Chat App',
     category: 'featured',
-    tags: ['Flutter', 'Dart', 'Azure Blob Storage', 'Cloud Firestore', 'Mobile'],
-    description: 'A cross-platform mobile messenger featuring encrypted group rooms, instant multimedia sharing, media pipeline compression, and scalable Azure Blob storage.',
+    tags: ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Firebase Storage'],
+    description: 'A real-time group chat app built with Flutter and Firebase. Users create or search for groups, send messages and file attachments, and group admins manage members.',
     image: '/projects/chatie.png',
     githubUrl: 'https://github.com/arpankanwer/chatie',
-    overview: 'Chatie provides seamless group collaboration with instant media streaming. Built natively with Flutter and Dart, the application offloads heavy multimedia payloads to Azure Blob Storage while maintaining live state and presence in Cloud Firestore.',
-    architecture: 'Hybrid multi-cloud architecture pairing Google Firebase (Authentication & Realtime Firestore) with Microsoft Azure (Blob Storage with SAS token security) to minimize latency and optimize media ingestion costs.',
+    websiteUrl: 'https://chatie1.web.app/',
+    overview: 'Chatie is a group chat app in the spirit of Telegram. Users sign up, create their own groups or search for existing ones to join, and chat in real time.',
+    architecture: 'Flutter client with Firebase Authentication for accounts, Cloud Firestore for real-time messages and chat data, and Firebase Storage for images, videos, and other attachments.',
     features: [
-      'Real-time group channels and direct 1-on-1 private messaging',
-      'High-resolution photo and video compression pipeline',
-      'Azure Blob Storage integration with secure temporary access tokens',
-      'Online/offline presence indicators and read receipts',
-      'Smooth 60fps animations with Flutter Material 3 design'
+      'User authentication and account management',
+      'Create groups and become the group admin',
+      'Search for groups by name and join them',
+      'Real-time messaging',
+      'Image, video, and file attachments',
+      'Admin tools to manage group members and permissions'
     ],
-    challenges: 'Handling large video uploads over fluctuating mobile networks without blocking UI rendering or causing out-of-memory crashes on budget Android devices.',
-    results: 'Successfully handled concurrent group streams with zero dropped frames, achieving over 99.8% message delivery reliability.',
     metrics: [
-      { label: 'Frame Rate', value: '60 FPS' },
-      { label: 'Media Compression', value: '65% Reduction' },
-      { label: 'Delivery Rate', value: '99.8%' }
+      { label: 'Framework', value: 'Flutter' },
+      { label: 'Realtime', value: 'Firestore' },
+      { label: 'Storage', value: 'Firebase' }
     ]
   }
 ];
 
 const categoryTabs = [
   { id: 'all', label: 'All Projects' },
-  { id: 'production', label: 'Production Mobile Apps' },
-  { id: 'featured', label: 'Award & Enterprise' },
-  { id: 'iot', label: 'IoT & Embedded' },
-  { id: 'opensource', label: 'Open Source' },
+  { id: 'production', label: 'Production Apps' },
+  { id: 'featured', label: 'Award & Personal' },
+  { id: 'web', label: 'Web' },
+  { id: 'iot', label: 'IoT' },
 ];
 
 export default function Projects() {
@@ -278,7 +268,7 @@ export default function Projects() {
               Featured <span className="text-gradient">Engineering Work</span>.
             </h2>
             <p className="text-slate-600 dark:text-white/70 text-base sm:text-lg max-w-2xl">
-              Live mobile apps published on the App Store & Google Play, award-winning capstones, IoT systems, and open-source contributions.
+              Apps live on the App Store & Google Play, AI-powered platforms, an award-winning capstone, and full-stack web work.
             </p>
           </div>
         </motion.div>
@@ -359,12 +349,6 @@ export default function Projects() {
                         </div>
                       )}
 
-                      {project.downloads && (
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
-                          <Download size={12} />
-                          <span>{project.downloads} Downloads</span>
-                        </div>
-                      )}
                     </div>
 
                     <h3 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-white mb-2">
@@ -450,6 +434,34 @@ export default function Projects() {
                       </a>
                     )}
 
+                    {/* Website Link — liquid glass */}
+                    {project.websiteUrl && (
+                      <a
+                        href={project.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="liquid-glass py-2.5 px-3 rounded-full text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5 cursor-pointer"
+                        title="Visit Website"
+                      >
+                        <Globe size={14} className="text-cyan" />
+                        <span>Website</span>
+                      </a>
+                    )}
+
+                    {/* Figma Link — liquid glass */}
+                    {project.figmaUrl && (
+                      <a
+                        href={project.figmaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="liquid-glass py-2.5 px-3 rounded-full text-slate-800 dark:text-white transition-all text-xs font-mono flex items-center gap-1.5 cursor-pointer"
+                        title="View Designs on Figma"
+                      >
+                        <PenTool size={14} className="text-secondary" />
+                        <span>Figma</span>
+                      </a>
+                    )}
+
                     {/* GitHub Link — liquid glass */}
                     {project.githubUrl && (
                       <a
@@ -521,12 +533,6 @@ export default function Projects() {
                         <span>{selectedProject.badge}</span>
                       </div>
                     )}
-                    {selectedProject.downloads && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
-                        <Download size={12} />
-                        <span>{selectedProject.downloads} Downloads</span>
-                      </div>
-                    )}
                   </div>
 
                   <h3 className="text-3xl font-display font-bold text-slate-900 dark:text-white">
@@ -546,7 +552,7 @@ export default function Projects() {
                 </div>
 
                 {/* Live App Store Links if available — liquid glass */}
-                {(selectedProject.appStoreUrl || selectedProject.playStoreUrl || selectedProject.githubUrl || selectedProject.youtubeUrl || selectedProject.demoUrl) && (
+                {(selectedProject.appStoreUrl || selectedProject.playStoreUrl || selectedProject.githubUrl || selectedProject.youtubeUrl || selectedProject.demoUrl || selectedProject.websiteUrl || selectedProject.figmaUrl) && (
                   <div className="liquid-glass-subtle flex flex-wrap items-center gap-3 p-4 rounded-2xl">
                     <span className="text-xs text-slate-600 dark:text-white/60 font-mono">Live Access:</span>
                     {(selectedProject.youtubeUrl || selectedProject.demoUrl) && (
@@ -582,6 +588,30 @@ export default function Projects() {
                       >
                         <Radio size={13} className="text-emerald-500 dark:text-emerald-400" />
                         <span>Google Play Store</span>
+                        <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
+                      </a>
+                    )}
+                    {selectedProject.websiteUrl && (
+                      <a
+                        href={selectedProject.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="liquid-glass px-3.5 py-1.5 rounded-full text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+                      >
+                        <Globe size={13} className="text-cyan" />
+                        <span>Website</span>
+                        <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
+                      </a>
+                    )}
+                    {selectedProject.figmaUrl && (
+                      <a
+                        href={selectedProject.figmaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="liquid-glass px-3.5 py-1.5 rounded-full text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+                      >
+                        <PenTool size={13} className="text-secondary" />
+                        <span>Figma Designs</span>
                         <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
                       </a>
                     )}
@@ -653,17 +683,8 @@ export default function Projects() {
                   </p>
                 </div>
 
-                {/* Challenges & Results */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
-                    <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
-                      <ShieldAlert size={14} className="text-amber-500 dark:text-amber-400" /> Engineering Challenges
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed">
-                      {selectedProject.challenges}
-                    </p>
-                  </div>
-
+                {/* Results */}
+                {selectedProject.results && (
                   <div className="space-y-2 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
                     <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-white/50 flex items-center gap-2">
                       <Trophy size={14} className="text-emerald-500 dark:text-emerald-400" /> Outcomes & Impact
@@ -672,7 +693,7 @@ export default function Projects() {
                       {selectedProject.results}
                     </p>
                   </div>
-                </div>
+                )}
 
                 {/* Complete Feature Breakdown */}
                 <div className="space-y-3">

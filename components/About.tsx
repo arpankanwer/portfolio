@@ -1,11 +1,11 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Code, Terminal, Trophy, Users, Layers, Award } from 'lucide-react';
+import { Code, Terminal, Trophy, Users, GitPullRequest, Award } from 'lucide-react';
 
 const stats = [
   { label: 'Years Experience', value: '3+', icon: Terminal },
-  { label: 'Projects Built', value: '15+', icon: Code },
-  { label: 'Core Technologies', value: '20+', icon: Layers },
+  { label: 'Selenium Tests Automated', value: '50+', icon: Code },
+  { label: 'Merged OSS PR', value: 'VS Code', icon: GitPullRequest },
   { label: 'Awards Won', value: 'Top 1/40+', icon: Award },
   { label: 'Students Mentored', value: '125+', icon: Users },
   { label: 'GPA at Sheridan', value: '3.52', icon: Trophy },
@@ -32,22 +32,25 @@ export default function About() {
             </div>
 
             <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-              Engineering scalable systems with <span className="text-gradient">precision & craft</span>.
+              Building full-stack products with <span className="text-gradient">precision & craft</span>.
             </h2>
             
             <p className="text-slate-700 dark:text-white/80 text-base sm:text-lg leading-relaxed">
-              I am a Backend & Full-Stack Engineer with deep experience building scalable applications using <strong className="text-slate-900 dark:text-white">Node.js, React Native, Next.js, Spring Boot, Flutter, AWS, Firebase</strong>, and cloud infrastructure.
+              I am a Full-Stack Developer specializing in <strong className="text-slate-900 dark:text-white">React, Next.js, and React Native</strong>, with apps live on the App Store and Google Play. I build production AI features, from voice health analysis to real-time voice agents, and also work in PHP/MySQL.
             </p>
             
             <div className="space-y-3 text-slate-600 dark:text-white/70 text-sm sm:text-base leading-relaxed border-l-2 border-primary/40 pl-5">
               <p>
-                At <strong className="text-slate-900 dark:text-white font-medium">KiloBryte</strong>, I develop accessible cross-platform mobile apps for seniors, engineering native module bridging for low-latency video streaming and publishing core features to the App Store and Google Play.
+                At <strong className="text-slate-900 dark:text-white font-medium">KiloBryte</strong>, I build and maintain the Paige™ app for seniors, live on the App Store and Play Store, and integrated Amplifier Health's Apex voice AI model and Longitudinal API to surface vocal health signals and trends over time.
               </p>
               <p>
-                During my engineering tenure at <strong className="text-slate-900 dark:text-white font-medium">Evertz Microsystems</strong>, I automated 50+ Selenium test suites, slashing regression cycles by 25% for mission-critical broadcast and IoT systems.
+                At <strong className="text-slate-900 dark:text-white font-medium">Evertz Microsystems</strong>, I automated 50+ Selenium tests, reducing regression testing time by 25% and enabling faster releases.
               </p>
               <p>
-                As a designated Programming Tutor at <strong className="text-slate-900 dark:text-white font-medium">Sheridan College</strong>, I have mentored over 125+ aspiring developers in software architecture, Spring Boot, AngularJS, and Django.
+                As a Programming Tutor at <strong className="text-slate-900 dark:text-white font-medium">Sheridan College</strong>, I mentored 125+ students in programming and frameworks such as Spring Boot, AngularJS, and Django.
+              </p>
+              <p>
+                In open source, I've had PRs merged in <strong className="text-slate-900 dark:text-white font-medium">Microsoft VS Code</strong> and <strong className="text-slate-900 dark:text-white font-medium">oh-my-opencode-slim</strong>.
               </p>
             </div>
           </div>

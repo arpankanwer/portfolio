@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, Trophy, Star, CheckCircle, Calendar, Sparkles } from 'lucide-react';
+import { GraduationCap, Award, Trophy, Star, CheckCircle, Calendar, Sparkles, FileText, ExternalLink } from 'lucide-react';
 
 export default function Education() {
   return (
@@ -51,7 +51,7 @@ export default function Education() {
               </div>
               
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white mb-1">
-                Three-Year Advanced Diploma
+                Advanced Diploma
               </h3>
               <p className="text-base font-semibold text-primary mb-2">
                 Computer Systems Technology
@@ -72,27 +72,27 @@ export default function Education() {
                     <span className="font-display font-bold text-lg text-slate-900 dark:text-white">3.52 / 4.0</span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs sm:text-sm text-slate-500 dark:text-white/60">Academic Standing</span>
-                  <span className="text-xs sm:text-sm font-medium text-emerald-600 dark:text-emerald-400">High Academic Standing</span>
-                </div>
               </div>
             </div>
 
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-wider font-bold text-slate-400 dark:text-white/40">Core Coursework</p>
-              <div className="flex flex-wrap gap-1.5">
+              <p className="text-xs uppercase tracking-wider font-bold text-slate-400 dark:text-white/40">Documents</p>
+              <div className="flex flex-wrap gap-2">
                 {[
-                  'Enterprise Java & Spring',
-                  'Distributed Systems',
-                  'Database Management & SQL',
-                  'Cloud Architecture',
-                  'Data Structures & Algorithms',
-                  'Full-Stack Web & Mobile'
-                ].map((course) => (
-                  <span key={course} className="liquid-glass-subtle px-2.5 py-1 rounded-md text-[11px] text-slate-700 dark:text-white/75 font-mono">
-                    <span>{course}</span>
-                  </span>
+                  { label: 'Transcript', url: 'https://drive.google.com/file/d/1-DUNNecbY5FBdIuXnokwd5Od-4ix-tAC/view?usp=drive_link' },
+                  { label: 'Completion Letter', url: 'https://drive.google.com/file/d/17yx50Fusmxrj6mQPiAtRyobTxbxIjltm/view?usp=sharing' }
+                ].map((doc) => (
+                  <a
+                    key={doc.label}
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="liquid-glass px-3.5 py-1.5 rounded-full text-slate-900 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <FileText size={13} className="text-primary" />
+                    <span>{doc.label}</span>
+                    <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
+                  </a>
                 ))}
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Education() {
               </p>
               
               <p className="text-sm sm:text-base text-slate-600 dark:text-white/75 leading-relaxed mb-6">
-                Awarded top rank among <strong className="text-slate-900 dark:text-white">40+ competing engineering teams</strong> for building <strong className="text-slate-900 dark:text-white">GigJet</strong>. Recognized by industry judges for superior mobile architecture, real-time communication protocols, clean UI execution, and full-stack reliability.
+                Awarded top rank among <strong className="text-slate-900 dark:text-white">40+ competing engineering teams</strong> for building <strong className="text-slate-900 dark:text-white">GigJet</strong>, a full-stack mobile app with chat and job postings that connects service seekers and providers.
               </p>
             </div>
 
