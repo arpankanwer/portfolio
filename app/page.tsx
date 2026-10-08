@@ -3,9 +3,9 @@ import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
+import OpenSource from '@/components/OpenSource';
 import GithubHeatmap from '@/components/GithubHeatmap';
 import Education from '@/components/Education';
-import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 
 export default function Home() {
@@ -17,8 +17,8 @@ export default function Home() {
       <GithubHeatmap />
       <Experience />
       <Projects />
+      <OpenSource />
       <Education />
-      <Testimonials />
       <Contact />
     </>
   );

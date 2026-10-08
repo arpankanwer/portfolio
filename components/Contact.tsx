@@ -30,17 +30,16 @@ export default function Contact() {
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormData) => {
-    // Mock smooth async network dispatch
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    console.log("Contact submission:", data);
+  // No backend: hand the message to the visitor's email app as a pre-filled draft
+  const onSubmit = (data: FormData) => {
+    const body = `${data.message}\n\n— ${data.name} (${data.email})`;
+    window.location.href = `mailto:birarpanjot@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
     setIsSuccess(true);
-    reset();
-    setTimeout(() => setIsSuccess(false), 5000);
+    setTimeout(() => setIsSuccess(false), 8000);
   };
 
   const copyEmail = () => {
@@ -193,7 +192,7 @@ export default function Contact() {
                     className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm flex items-center gap-3"
                   >
                     <MessageSquareCheck size={20} className="shrink-0" />
-                    <span>Message received! Thank you for reaching out — I will respond shortly.</span>
+                    <span>Your email app should open with this message ready to send. If it didn&apos;t, email me at birarpanjot@gmail.com.</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -258,18 +257,14 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="liquid-glass-strong w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer min-h-[48px]"
+                className="liquid-glass-strong w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
               >
-                {isSubmitting ? (
-                  <span>Sending Message...</span>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <Send size={15} />
-                  </>
-                )}
+                <span>Send via Email</span>
+                <Send size={15} />
               </button>
+              <p className="text-center text-xs text-slate-500 dark:text-white/50">
+                Opens your email app with this message filled in.
+              </p>
             </form>
           </motion.div>
           

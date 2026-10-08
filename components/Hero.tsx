@@ -5,10 +5,10 @@ import { ArrowRight, Download, ExternalLink, FileText, Mail, Sparkles, Terminal 
 import Link from 'next/link';
 
 const roles = [
-  "Software Developer",
-  "Backend Engineer",
-  "Mobile Developer",
-  "Cloud Enthusiast"
+  "Full-Stack Developer",
+  "React & Next.js Developer",
+  "React Native Developer",
+  "Open-Source Contributor"
 ];
 
 export default function Hero() {
@@ -57,7 +57,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan"></span>
           </span>
-          <span className="text-xs font-medium text-slate-800 dark:text-white/90 tracking-wide">Available for Full-time</span>
+          <span className="text-xs font-medium text-slate-800 dark:text-white/90 tracking-wide">Software Developer @ KiloBryte</span>
           <Sparkles size={13} className="text-amber-500 dark:text-yellow-400" />
         </motion.div>
 
@@ -100,7 +100,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-white/70 font-normal max-w-3xl mb-10 leading-relaxed"
         >
-          Specializing in scalable distributed systems, high-performance backends, and modern mobile & web experiences using <span className="text-slate-900 dark:text-white font-medium">Node.js, React Native, Next.js, AWS, and Cloud Architecture</span>.
+          I build full-stack products with <span className="text-slate-900 dark:text-white font-medium">React, Next.js, and React Native</span>: an app for seniors that's live on the App Store and Google Play, AI features that analyze vocal health and power real-time voice agents, and bug fixes merged into tools like Microsoft VS Code.
         </motion.p>
 
         {/* 3 Call-To-Action Buttons */}
@@ -125,7 +125,7 @@ export default function Hero() {
           </a>
 
           <a 
-            href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
+            href="https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="liquid-glass px-7 py-3.5 rounded-full text-slate-800 dark:text-white font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
@@ -141,7 +141,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-white/40"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-slate-400 dark:text-white/40"
       >
         <span className="text-[10px] font-mono tracking-widest uppercase">Scroll to explore</span>
         <div className="w-4 h-7 rounded-full border border-slate-300 dark:border-white/20 flex justify-center p-1">

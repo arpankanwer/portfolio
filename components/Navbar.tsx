@@ -10,8 +10,10 @@ import { useTheme } from '@/components/ThemeProvider';
 const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Activity', href: '#activity' },
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Open Source', href: '#open-source' },
   { name: 'Education', href: '#education' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -107,12 +109,13 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
-            {navLinks.map((link) => (
+          {/* Contact is omitted here — the Contact button on the right covers it */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+            {navLinks.filter((link) => link.href !== '#contact').map((link) => (
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="text-xs uppercase tracking-wider font-semibold text-slate-600 dark:text-white/70 hover:text-slate-950 dark:hover:text-white transition-colors"
+                className="text-xs uppercase tracking-wider font-semibold whitespace-nowrap text-slate-600 dark:text-white/70 hover:text-slate-950 dark:hover:text-white transition-colors"
               >
                 {link.name}
               </Link>
@@ -147,7 +150,7 @@ export default function Navbar() {
             </button>
 
             <a 
-              href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
+              href="https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="liquid-glass hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-slate-800 dark:text-white cursor-pointer shrink-0"
@@ -210,7 +213,7 @@ export default function Navbar() {
             </button>
 
             <a
-              href="https://drive.google.com/file/d/1WySmgzMxBNcgSk7RdIkixkCUsp8PCf9d/view?usp=sharing"
+              href="https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="liquid-glass-strong flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm cursor-pointer"

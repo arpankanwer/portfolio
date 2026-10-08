@@ -1,60 +1,84 @@
 'use client';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Briefcase, Building2, MapPin, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Briefcase, Building2, MapPin, Sparkles, CheckCircle2, ExternalLink } from 'lucide-react';
 
-const experiences = [
+interface ExperienceItem {
+  role: string;
+  company: string;
+  location: string;
+  date: string;
+  badge: string;
+  stack: string[];
+  bullets: string[];
+  links: { label: string; url: string }[];
+}
+
+const experiences: ExperienceItem[] = [
   {
     role: 'Software Developer',
     company: 'KiloBryte',
     location: 'Guelph, ON, Canada',
-    date: 'August 2025 – Present',
+    date: 'Aug 2025 – Present',
     badge: 'Current Role',
-    stack: ['React', 'React Native', 'Next.js', 'Node.js', 'Firebase', 'Expo', 'Vercel', 'Native Modules'],
+    stack: ['React Native', 'Next.js', 'Node.js', 'Firebase', 'Expo', 'Native Video Bridging', 'Apex Voice AI', 'Cron Jobs'],
     bullets: [
-      'Developing accessible, high-performance cross-platform applications tailored for senior citizens across iOS and Android.',
-      'Architecting core features for the Paige™ ecosystem with responsive state synchronization and low-latency cloud data persistence.',
-      'Engineering custom native module bridges for video streaming capabilities, optimizing hardware rendering pipelines.',
-      'Spearheading production deployment pipelines to both Apple App Store and Google Play Store.'
+      'Build and maintain the Paige™ app, which keeps seniors in touch with family through one-touch video calls, using React Native, Expo, Next.js, Node.js, and Firebase. It is live on the App Store and Google Play.',
+      "Work on the native video bridging behind Paige's calls on iOS and Android.",
+      "Integrated Amplifier Health's Apex voice AI model into our Next.js app. It screens each recording for vocal health signals such as stress, fatigue, cognitive load, dehydration, and cardiovascular strain.",
+      'Built an automated cron-job pipeline that submits new recordings for analysis on a schedule, plus a dashboard for reviewing the results.',
+      "Integrated Amplifier Health's Longitudinal API, which compares each new recording with the same person's history, so every user gets a baseline, per-recording deltas, and a trend over time instead of one-off readings."
+    ],
+    links: [
+      { label: 'App Store', url: 'https://apps.apple.com/ca/app/paige-connect/id6744338186' },
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA' }
     ]
   },
   {
     role: 'Software QA Engineering Intern',
     company: 'Evertz Microsystems Ltd',
     location: 'Burlington, ON, Canada',
-    date: 'May 2024 – August 2024',
-    badge: 'Enterprise QA',
-    stack: ['Selenium WebDriver', 'Java', 'Python', 'IoT Monitoring', 'CI/CD', 'Regression Testing'],
+    date: 'May 2024 – Aug 2024',
+    badge: 'QA Automation',
+    stack: ['Selenium WebDriver', 'Java', 'Python', 'Regression Testing', 'CI/CD', 'IoT'],
     bullets: [
-      'Engineered and deployed 50+ automated Selenium end-to-end test suites for enterprise broadcast hardware and web dashboards.',
-      'Reduced overall regression testing execution cycle time by 25%, drastically accelerating release cadence for firmware builds.',
-      'Collaborated with cross-functional hardware/software teams to validate IoT-plant monitoring systems (Smart Garden) under live operating conditions.'
+      "Automated 50+ Selenium end-to-end tests for Evertz's enterprise broadcast hardware and its web dashboards.",
+      'Cut regression testing time by 25%, which sped up the release cadence for firmware builds.',
+      'Worked with hardware and software teams to improve Smart Garden, an IoT plant-monitoring app, and validate it under live operating conditions.'
+    ],
+    links: [
+      { label: 'Smart Garden', url: 'https://github.com/Evertz-Garden/SmartGarden/tree/WebUIChange' }
     ]
   },
   {
-    role: 'Programming Tutor & Mentor',
+    role: 'Programming Tutor',
     company: 'Sheridan College',
     location: 'Oakville, ON, Canada',
-    date: 'Jan 2023 – Dec 2023',
+    date: 'Jan–Apr 2023 · Sep–Dec 2023',
     badge: 'Academic Mentorship',
     stack: ['Spring Boot', 'Java', 'AngularJS', 'Django', 'Data Structures & Algorithms', 'SQL'],
     bullets: [
-      'Mentored over 125+ computer science undergraduate students in modern software engineering principles, backend patterns, and algorithm design.',
-      'Conducted weekly hands-on code reviews and debugging sessions focusing on Spring Boot REST architectures, Django MVC, and relational schema normalization.',
-      'Authored supplementary coding problem sets and architecture cheat-sheets to improve student pass rates in advanced programming courses.'
-    ]
+      'Mentored 125+ computer science students across two terms in programming fundamentals and frameworks including Spring Boot, AngularJS, and Django.',
+      'Ran weekly hands-on code reviews and debugging sessions covering Spring Boot REST APIs, Django MVC, and relational schema normalization.',
+      'Wrote supplementary coding problem sets and architecture cheat sheets for students in advanced programming courses.'
+    ],
+    links: []
   },
   {
     role: 'Application Developer',
     company: 'Eduwings Global',
     location: 'Ludhiana, Punjab, India',
-    date: 'April 2021 – November 2021',
+    date: 'Apr 2021 – Nov 2021',
     badge: 'Mobile Engineering',
-    stack: ['Flutter', 'Dart', 'PHP', 'Firebase', 'Google Play Console', 'REST APIs'],
+    stack: ['Flutter', 'Dart', 'PHP', 'Firebase', 'REST APIs', 'Google Play Console'],
     bullets: [
-      'Developed and deployed production Android ERP mobile applications using Flutter and PHP web services to the Google Play Store.',
-      'Streamlined cloud backend operations with Google Firebase to enable instant synchronization, user auth, and real-time push announcements.',
-      'Integrated payment gateways and dynamic student document submission pipelines.'
+      "Built and published Eduwings' Android ERP app on the Google Play Store, with a Flutter front end and PHP web services behind it.",
+      'Used Firebase for real-time data sync, user authentication, and push announcements to students.',
+      'Integrated payment gateways and a student document submission flow.'
+    ],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/arpankanwer/eduwings_global' },
+      { label: 'Android App', url: 'https://apkpure.com/eduwings-global/com.eduwingserp.studentapp' }
     ]
   }
 ];
@@ -73,12 +97,12 @@ export default function Experience() {
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cyan/10 blur-[130px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-12 text-center"
         >
           <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
             <span>Career Progression</span>
@@ -87,36 +111,35 @@ export default function Experience() {
             Professional <span className="text-gradient">Experience</span>.
           </h2>
           <p className="text-slate-600 dark:text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
-            A track record of engineering scalable applications, automating test workflows, and driving high-impact technical initiatives.
+            Shipping production mobile and web apps, integrating AI features, and automating test workflows.
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Central spine line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-white/10 -translate-x-1/2" />
+          {/* Timeline spine line */}
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-200 dark:bg-white/10 -translate-x-1/2" />
           <motion.div 
-            className="absolute left-4 md:left-1/2 top-0 w-[2px] bg-gradient-to-b from-primary via-cyan to-secondary -translate-x-1/2"
+            className="absolute left-4 top-0 w-[2px] bg-gradient-to-b from-primary via-cyan to-secondary -translate-x-1/2"
             style={{ height: lineHeight }}
           />
 
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-8">
             {experiences.map((exp, index) => {
-              const isEven = index % 2 === 0;
               return (
-                <div key={index} className="relative flex flex-col md:flex-row items-start md:items-center justify-between w-full">
+                <div key={index} className="relative w-full">
                   
                   {/* Timeline Dot with Pulse */}
-                  <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-slate-50 dark:border-[#050505] -translate-x-1/2 z-20 shadow-[0_0_12px_rgba(79,140,255,0.8)] mt-1.5 md:mt-0" />
+                  <div className="absolute left-4 top-8 w-4 h-4 rounded-full bg-primary border-4 border-slate-50 dark:border-[#050505] -translate-x-1/2 z-20 shadow-[0_0_12px_rgba(79,140,255,0.8)]" />
                   
                   {/* Experience Card */}
                   <motion.div 
-                    initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className={`w-full pl-10 md:pl-0 md:w-[46%] ${isEven ? 'md:mr-auto md:text-left' : 'md:ml-auto md:text-left'}`}
+                    className="w-full pl-10 sm:pl-12"
                   >
-                    <div className="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden group hover:border-primary/40 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all duration-300">
+                    <div className="glass-card p-5 sm:p-8 rounded-3xl relative overflow-hidden group hover:border-primary/40 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all duration-300">
                       {/* Top Bar — liquid glass pills */}
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                         <span className="liquid-glass-subtle px-3 py-1 rounded-full text-xs font-mono text-cyan">
@@ -131,11 +154,11 @@ export default function Experience() {
                         {exp.role}
                       </h3>
                       
-                      <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-600 dark:text-white/70 mb-4 font-medium">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm text-slate-600 dark:text-white/70 mb-4 font-medium">
                         <span className="flex items-center gap-1.5 text-slate-900 dark:text-white">
                           <Building2 size={14} className="text-primary" /> {exp.company}
                         </span>
-                        <span>•</span>
+                        <span className="hidden sm:inline">•</span>
                         <span className="flex items-center gap-1.5 text-slate-500 dark:text-white/50">
                           <MapPin size={13} /> {exp.location}
                         </span>
@@ -144,12 +167,30 @@ export default function Experience() {
                       {/* Bullets */}
                       <div className="space-y-2.5 mb-5">
                         {exp.bullets.map((bullet, bIdx) => (
-                          <div key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-white/75 leading-relaxed">
+                          <div key={bIdx} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-white/75 leading-relaxed">
                             <CheckCircle2 size={14} className="text-cyan shrink-0 mt-1" />
                             <span>{bullet}</span>
                           </div>
                         ))}
                       </div>
+
+                      {/* Resume Links — liquid glass */}
+                      {exp.links.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {exp.links.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="liquid-glass px-3 py-1 rounded-full text-xs font-medium text-slate-800 dark:text-white flex items-center gap-1.5 cursor-pointer"
+                            >
+                              <span>{link.label}</span>
+                              <ExternalLink size={11} className="text-slate-400 dark:text-white/40" />
+                            </a>
+                          ))}
+                        </div>
+                      )}
 
                       {/* Tech Chips — liquid glass subtle */}
                       <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-1.5">
