@@ -22,7 +22,7 @@ const contributions: Contribution[] = [
     prUrl: 'https://github.com/microsoft/vscode/pull/334129',
     status: 'Merged',
     date: 'Sep 2026',
-    summary: 'Fixed a Copilot Chat bug where an expired pasted image broke all later requests; added regression tests.'
+    summary: 'Once a pasted image expired, Copilot Chat got stuck: every later request failed with a 400 error, even text-only ones, and the chat kept auto-retrying the same broken payload. I stopped the retries for that error, replaced them with a clear message telling users to remove the image or start a new chat, and added regression tests.'
   },
   {
     project: 'OpenUsage',
@@ -32,7 +32,7 @@ const contributions: Contribution[] = [
     prUrl: 'https://github.com/robinebers/openusage/pull/1323',
     status: 'Co-authored',
     date: 'Sep 2026',
-    summary: 'Diagnosed why the OpenCode usage card stopped working after the OpenCode 2 upgrade (new session_message schema and credential table) in PR #1243; the fix was merged in #1323 with me as co-author.'
+    summary: "OpenUsage tracks spending across AI subscriptions. After the OpenCode 2 upgrade, its OpenCode card stopped reporting spend correctly and missed Go logins. In PR #1243 I traced it to OpenCode 2's new session_message table and credential store, and the maintainers merged the fix in #1323 with me as co-author."
   },
   {
     project: 'oh-my-opencode-slim',
@@ -42,7 +42,7 @@ const contributions: Contribution[] = [
     prUrl: 'https://github.com/alvinunreal/oh-my-opencode-slim/pull/1058',
     status: 'Merged',
     date: 'Aug 2026',
-    summary: 'Fixed plugin load failure on the OpenCode v2 beta with a dual-contract TUI module supporting v1 and v2.'
+    summary: 'oh-my-opencode-slim is a lean multi-agent suite for OpenCode. On the OpenCode v2 beta it failed to load at all, because v2 expects a different plugin shape. I shipped a dual-contract TUI module that works with both v1 and v2, with tests covering both.'
   }
 ];
 

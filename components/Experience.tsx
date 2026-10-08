@@ -23,10 +23,11 @@ const experiences: ExperienceItem[] = [
     badge: 'Current Role',
     stack: ['React Native', 'Next.js', 'Node.js', 'Firebase', 'Expo', 'Native Video Bridging', 'Apex Voice AI', 'Cron Jobs'],
     bullets: [
-      'Build and maintain the Paige™ app for seniors with React Native, Next.js, Node.js, Firebase, Expo, and native video bridging; live on the App Store and Play Store.',
-      "Integrated Amplifier Health's Apex voice AI model into Next.js to analyze vocal health signals.",
-      'Built an automated cron-job pipeline that submits recordings for analysis, plus a dashboard for results.',
-      "Integrated Amplifier Health's Longitudinal API to surface per-user deltas and vocal health trends over time."
+      'Build and maintain the Paige™ app, which keeps seniors in touch with family through one-touch video calls, using React Native, Expo, Next.js, Node.js, and Firebase. It is live on the App Store and Google Play.',
+      "Work on the native video bridging behind Paige's calls on iOS and Android.",
+      "Integrated Amplifier Health's Apex voice AI model into our Next.js app to analyze vocal health signals from recordings.",
+      'Built an automated cron-job pipeline that submits new recordings for analysis on a schedule, plus a dashboard for reviewing the results.',
+      "Integrated Amplifier Health's Longitudinal API so each user's vocal health shows as a trend over time, with per-user deltas, rather than one-off readings."
     ],
     links: [
       { label: 'App Store', url: 'https://apps.apple.com/ca/app/paige-connect/id6744338186' },
@@ -39,10 +40,11 @@ const experiences: ExperienceItem[] = [
     location: 'Burlington, ON, Canada',
     date: 'May 2024 – Aug 2024',
     badge: 'QA Automation',
-    stack: ['Selenium', 'Test Automation', 'Regression Testing', 'IoT'],
+    stack: ['Selenium WebDriver', 'Java', 'Python', 'Regression Testing', 'CI/CD', 'IoT'],
     bullets: [
-      'Automated 50+ Selenium tests, reducing regression testing time by 25% and enabling faster releases.',
-      'Collaborated across teams to improve Smart Garden, an IoT plant-monitoring app.'
+      "Automated 50+ Selenium end-to-end tests for Evertz's enterprise broadcast hardware and its web dashboards.",
+      'Cut regression testing time by 25%, which sped up the release cadence for firmware builds.',
+      'Worked with hardware and software teams to improve Smart Garden, an IoT plant-monitoring app, and validate it under live operating conditions.'
     ],
     links: [
       { label: 'Smart Garden', url: 'https://github.com/Evertz-Garden/SmartGarden/tree/WebUIChange' }
@@ -54,9 +56,11 @@ const experiences: ExperienceItem[] = [
     location: 'Oakville, ON, Canada',
     date: 'Jan–Apr 2023 · Sep–Dec 2023',
     badge: 'Academic Mentorship',
-    stack: ['Spring Boot', 'AngularJS', 'Django', 'Mentoring'],
+    stack: ['Spring Boot', 'Java', 'AngularJS', 'Django', 'Data Structures & Algorithms', 'SQL'],
     bullets: [
-      'Mentored 125+ students in programming and frameworks such as Spring Boot, AngularJS, and Django.'
+      'Mentored 125+ computer science students across two terms in programming fundamentals and frameworks including Spring Boot, AngularJS, and Django.',
+      'Ran weekly hands-on code reviews and debugging sessions covering Spring Boot REST APIs, Django MVC, and relational schema normalization.',
+      'Wrote supplementary coding problem sets and architecture cheat sheets for students in advanced programming courses.'
     ],
     links: []
   },
@@ -66,9 +70,11 @@ const experiences: ExperienceItem[] = [
     location: 'Ludhiana, Punjab, India',
     date: 'Apr 2021 – Nov 2021',
     badge: 'Mobile Engineering',
-    stack: ['Flutter', 'PHP', 'Firebase', 'Android'],
+    stack: ['Flutter', 'Dart', 'PHP', 'Firebase', 'REST APIs', 'Google Play Console'],
     bullets: [
-      'Built an Android app with Flutter, PHP, and Firebase, published on the Play Store.'
+      "Built and published Eduwings' Android ERP app on the Google Play Store, with a Flutter front end and PHP web services behind it.",
+      'Used Firebase for real-time data sync, user authentication, and push announcements to students.',
+      'Integrated payment gateways and a student document submission flow.'
     ],
     links: [
       { label: 'GitHub', url: 'https://github.com/arpankanwer/eduwings_global' },

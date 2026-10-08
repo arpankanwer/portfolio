@@ -100,7 +100,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-white/70 font-normal max-w-3xl mb-10 leading-relaxed"
         >
-          Full-stack developer specializing in <span className="text-slate-900 dark:text-white font-medium">React, Next.js, and React Native</span>, with apps live on the App Store & Google Play, production AI features from voice health analysis to real-time voice agents, and merged open-source PRs, including one in Microsoft VS Code.
+          I build full-stack products with <span className="text-slate-900 dark:text-white font-medium">React, Next.js, and React Native</span>: an app for seniors that's live on the App Store and Google Play, AI features that analyze vocal health and power real-time voice agents, and bug fixes merged into tools like Microsoft VS Code.
         </motion.p>
 
         {/* 3 Call-To-Action Buttons */}
