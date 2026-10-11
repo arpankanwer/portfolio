@@ -271,10 +271,13 @@
     .dark .liquid-glass-strong { background-color: #fafafa; }
   }
 
-  /* iOS touch target — ensure 44px min on coarse pointers */
+  /* iOS touch target — ensure 44px min on coarse pointers.
+     Interactive variants only: .liquid-glass-subtle is used for static chips/badges,
+     and min-width keeps fixed-size icon buttons (w-9 h-9) circular. */
   @media (pointer: coarse) {
-    .liquid-glass, .liquid-glass-strong, .liquid-glass-subtle {
+    .liquid-glass, .liquid-glass-strong {
       min-height: 44px;
+      min-width: 44px;
     }
   }
 }
