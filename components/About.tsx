@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Code, Terminal, Trophy, Users, GitPullRequest, Award } from 'lucide-react';
 
@@ -27,8 +28,21 @@ export default function About() {
         >
           {/* Left Side: Editorial Story */}
           <div className="flex-1 space-y-6">
-            <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan uppercase tracking-wider">
-              About The Developer
+            <div className="flex items-center gap-4">
+              {/* Headshot inside a brand-gradient ring */}
+              <div className="shrink-0 rounded-full p-[3px] bg-gradient-to-br from-primary via-secondary to-cyan shadow-[0_8px_30px_-8px_rgba(59,130,246,0.55)]">
+                <Image
+                  src="/birarpanjot.jpg"
+                  alt="Birarpanjot Singh Kanwer"
+                  width={112}
+                  height={112}
+                  sizes="(min-width: 640px) 112px, 80px"
+                  className="w-20 h-20 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-white dark:border-[#050507]"
+                />
+              </div>
+              <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan uppercase tracking-wider">
+                About The Developer
+              </div>
             </div>
 
             <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
