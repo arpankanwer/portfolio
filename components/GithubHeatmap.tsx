@@ -174,28 +174,28 @@ export default function GithubHeatmap() {
 
             {/* Quick stats chips — liquid glass */}
             {status === 'ready' ? (
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 {streakLabel && (
-                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan">
+                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap text-xs font-mono text-cyan-700 dark:text-cyan">
                     <Flame size={13} className="text-orange-500" />
                     <span>{streakLabel}</span>
                   </div>
                 )}
                 {prsLabel && (
-                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-primary">
+                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap text-xs font-mono text-primary">
                     <GitPullRequest size={13} />
                     <span>{prsLabel}</span>
                   </div>
                 )}
                 {reposLabel && (
-                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-secondary">
+                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap text-xs font-mono text-secondary">
                     <GitBranch size={13} />
                     <span>{reposLabel}</span>
                   </div>
                 )}
               </div>
             ) : status === 'loading' ? (
-              <div aria-hidden className="flex items-center gap-3 animate-pulse">
+              <div aria-hidden className="flex flex-wrap items-center gap-2 sm:gap-3 animate-pulse">
                 <div className="h-6 w-24 rounded-full bg-slate-200 dark:bg-white/10" />
                 <div className="h-6 w-28 rounded-full bg-slate-200 dark:bg-white/10" />
                 <div className="h-6 w-20 rounded-full bg-slate-200 dark:bg-white/10" />
