@@ -185,52 +185,56 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="fixed inset-0 z-40 bg-white dark:bg-[#050507] supports-[backdrop-filter]:bg-white/95 supports-[backdrop-filter]:dark:bg-[#050507]/95 supports-[backdrop-filter]:backdrop-blur-2xl flex flex-col items-center justify-center gap-6 lg:hidden"
+          data-lenis-prevent
+          className="fixed inset-0 z-40 bg-white dark:bg-[#050507] supports-[backdrop-filter]:bg-white/95 supports-[backdrop-filter]:dark:bg-[#050507]/95 supports-[backdrop-filter]:backdrop-blur-2xl overflow-y-auto overscroll-contain lg:hidden"
         >
-          {navLinks.map((link, i) => (
-            <motion.div
-              key={link.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.06 }}
-            >
-              <Link 
-                href={link.href}
-                className="text-2xl font-display font-semibold text-slate-800 dark:text-white/80 hover:text-primary transition-colors"
+          {/* Top padding clears the fixed navbar; scrolls instead of spilling under it on short screens */}
+          <div className="min-h-full flex flex-col items-center justify-center gap-5 px-6 pt-28 pb-12">
+            {navLinks.map((link, i) => (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.06 }}
+              >
+                <Link 
+                  href={link.href}
+                  className="text-2xl font-display font-semibold text-slate-800 dark:text-white/80 hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
+            ))}
+            <div className="pt-6 flex flex-col items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="liquid-glass flex items-center gap-2 px-5 py-2.5 rounded-full text-slate-800 dark:text-white text-sm font-medium cursor-pointer"
+              >
+                {theme === 'dark' ? <Sun size={16} className="text-amber-400" /> : <Moon size={16} className="text-indigo-600" />}
+                <span>{theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}</span>
+              </button>
+
+              <a
+                href="https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="liquid-glass-strong flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm cursor-pointer"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.name}
-              </Link>
-            </motion.div>
-          ))}
-          <div className="pt-6 flex flex-col items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="liquid-glass flex items-center gap-2 px-5 py-2.5 rounded-full text-slate-800 dark:text-white text-sm font-medium cursor-pointer"
-            >
-              {theme === 'dark' ? <Sun size={16} className="text-amber-400" /> : <Moon size={16} className="text-indigo-600" />}
-              <span>{theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}</span>
-            </button>
+                <FileText size={16} /> <span>View Resume (PDF)</span>
+              </a>
 
-            <a
-              href="https://drive.google.com/file/d/1rzbi-38XBH-C3YE_Fyy9Zqeu8jqtrkhv/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass-strong flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm cursor-pointer"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <FileText size={16} /> <span>View Resume (PDF)</span>
-            </a>
-
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setCommandOpen(true);
-              }}
-              className="liquid-glass flex items-center gap-2 px-5 py-2.5 rounded-full text-sm text-slate-800 dark:text-white cursor-pointer"
-            >
-              <CommandIcon size={16} /> <span>Search & Actions (⌘K)</span>
-            </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCommandOpen(true);
+                }}
+                className="liquid-glass flex items-center gap-2 px-5 py-2.5 rounded-full text-sm text-slate-800 dark:text-white cursor-pointer"
+              >
+                <CommandIcon size={16} /> <span>Search & Actions (⌘K)</span>
+              </button>
+            </div>
           </div>
         </motion.div>
       )}

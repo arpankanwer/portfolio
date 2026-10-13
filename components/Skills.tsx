@@ -15,14 +15,16 @@ const skillGroups = [
 // Highlighted as the primary stack
 const coreStack = new Set(['TypeScript', 'React.js', 'Next.js', 'React Native', 'Node.js']);
 
-const coreChip = 'px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-primary/10 dark:bg-primary/20 border border-primary/40 text-primary dark:text-cyan';
-const chip = 'liquid-glass-subtle px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium text-slate-700 dark:text-white/80';
+const coreChip = 'liquid-glass-chip-tint px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-primary dark:text-cyan';
+const chip = 'liquid-glass-chip px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium text-slate-700 dark:text-white/80';
 
 export default function Skills() {
   return (
     <section id="skills" className="py-20 sm:py-24 px-6 sm:px-12 relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 right-0 w-[450px] h-[450px] bg-primary/10 dark:bg-secondary/15 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/2" />
+      {/* Second light source so the glass panel has color to refract on narrow screens */}
+      <div className="absolute top-1/4 left-0 w-[380px] h-[380px] bg-cyan/10 dark:bg-primary/15 blur-[110px] rounded-full pointer-events-none -translate-x-1/3" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
@@ -57,14 +59,14 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
-          className="glass-card rounded-3xl glow-border divide-y divide-slate-200/80 dark:divide-white/10"
+          className="liquid-glass-panel rounded-3xl divide-y divide-slate-200/70 dark:divide-white/[0.07]"
         >
           {skillGroups.map((group) => {
             const Icon = group.icon;
             return (
               <div key={group.label} className="flex flex-col md:flex-row md:items-start gap-3 md:gap-8 px-5 sm:px-8 py-5">
                 <div className="flex items-center gap-3 md:w-52 shrink-0 md:pt-1">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center border border-primary/20 shrink-0">
+                  <div className="liquid-glass-chip-tint w-8 h-8 rounded-lg text-primary flex items-center justify-center shrink-0">
                     <Icon size={16} />
                   </div>
                   <h3 className="font-display font-semibold text-sm sm:text-base text-slate-900 dark:text-white">

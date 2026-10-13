@@ -2,6 +2,8 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Let phones on the local network use dev resources (HMR) when testing via the LAN IP.
+  allowedDevOrigins: ['10.0.0.*'],
   typescript: {
     ignoreBuildErrors: false,
   },
