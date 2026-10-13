@@ -69,7 +69,7 @@ const GITHUB_GRAPHQL_QUERY = `
           }
         }
       }
-      pullRequests(first: 1) {
+      pullRequests(states: MERGED, first: 1) {
         totalCount
       }
       repositories(first: 1, ownerAffiliations: OWNER) {
