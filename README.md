@@ -17,12 +17,13 @@ It's a single page: Hero, About, Tech Stack, GitHub Activity, Experience, Projec
 
 ### Live GitHub activity (GitHub GraphQL API)
 
-The Activity section ("Continuous Engineering Activity") gets its data from `app/api/github/route.ts`. That route calls GitHub's GraphQL API through `lib/github.ts` for the last year's contribution calendar, PR count and repo count, and works out the current and longest streaks.
+The Activity section ("Continuous Engineering Activity") gets its data from `app/api/github/route.ts`. That route calls GitHub's GraphQL API through `lib/github.ts` for the last year's contribution calendar and the account's creation date, and works out the current and longest streaks.
 
 - **Caching:** responses are cached in memory for an hour. If a refresh fails, the last good response keeps being served.
 - **Always fresh:** the route is `force-dynamic`, so a snapshot taken at build time can't go stale on hosts that scale to zero.
 - **Year-in-review tiles:** active days, longest streak, busiest weekday and best month are calculated in the browser from the same calendar, so they cost no extra requests.
 - **No made-up numbers:** while loading, the section shows a skeleton. If GitHub can't be reached, it says so and links to the GitHub profile.
+- **PR and repo totals are a dated snapshot.** Most merged PRs are in private repos, many of them at work, and counting those live would need a token that can read private code. Instead, `npm run github:snapshot` uses your local GitHub CLI login to write `lib/github-snapshot.json` (merged PRs and owned repos, public and private, plus the date). The chips show the totals, and hovering or tapping one shows the public/private split and the snapshot date. Re-run the script and commit the file to refresh it.
 
 The totals come from GitHub's API, which can be a few contributions lower than the number on the GitHub profile page.
 
@@ -61,7 +62,7 @@ Then open http://localhost:3000.
 
 | Variable | Used by | Notes |
 | --- | --- | --- |
-| `GITHUB_TOKEN` | Activity section | Classic personal access token with `read:user`. Add `repo` to include private contribution counts. |
+| `GITHUB_TOKEN` | Activity section | Only needs `read:user`; don't give it `repo`. Private contributions still appear as counts when "Include private contributions on my profile" is on in your GitHub settings. |
 | `GITHUB_USERNAME` | Activity section | Defaults to `arpankanwer`. |
 | `GEMINI_API_KEY`, `APP_URL` | (none) | AI Studio injects these. The code doesn't use them today. |
 
@@ -75,6 +76,7 @@ Without `GITHUB_TOKEN` the site still runs, and the Activity section shows its "
 | `npm run build` | Production build (standalone output) |
 | `npm run start` | Serves the production build |
 | `npm run lint` | ESLint |
+| `npm run github:snapshot` | Refreshes the PR and repo totals in `lib/github-snapshot.json` (needs `gh auth login`) |
 
 ### Testing on a phone
 
@@ -103,6 +105,8 @@ app/
 components/           one file per section, plus Navbar, CommandPalette,
                       ThemeProvider, SmoothScroll, CustomCursor and Footer
 lib/github.ts         GitHub GraphQL query, contribution levels, streaks
+lib/github-snapshot.json  dated PR and repo totals (public and private)
+scripts/github-snapshot.mjs  refreshes the snapshot with the GitHub CLI
 public/               project images, icons, web manifest, resume
 ```
 
