@@ -20,6 +20,7 @@ export interface GithubData {
   longestStreak: number;
   prs: number;
   repos: number;
+  createdAt: string; // ISO date the GitHub account was created
 }
 
 function levelFromCount(count: number): number {
@@ -57,6 +58,7 @@ function computeStreaks(days: { date: string; count: number }[]): {
 const GITHUB_GRAPHQL_QUERY = `
   query($username: String!) {
     user(login: $username) {
+      createdAt
       contributionsCollection {
         contributionCalendar {
           totalContributions
@@ -159,6 +161,7 @@ export async function getGithubData(): Promise<GithubData | null> {
       longestStreak,
       prs,
       repos,
+      createdAt: user.createdAt ?? "",
     };
   } catch (err) {
     console.error("[lib/github] Unexpected error fetching GitHub data:", err);

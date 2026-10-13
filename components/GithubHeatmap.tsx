@@ -22,6 +22,7 @@ type GithubApiData = {
   longestStreak: number;
   prs: number;
   repos: number;
+  createdAt?: string;
 };
 
 const GITHUB_PROFILE_URL = 'https://github.com/arpankanwer';
@@ -126,6 +127,10 @@ export default function GithubHeatmap() {
 
   const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : null;
 
+  const joinedLabel = data?.createdAt
+    ? new Date(data.createdAt).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+    : null;
+
   const summary = useMemo(() => (data?.weeks?.length ? summarize(data.weeks) : null), [data]);
   const statTiles = summary && summary.total > 0 && data
     ? [
@@ -169,6 +174,9 @@ export default function GithubHeatmap() {
                     'Live GitHub stats are unavailable right now'
                   )}
                 </p>
+                {status === 'ready' && joinedLabel && (
+                  <p className="text-xs text-slate-500 dark:text-white/40 font-mono mt-0.5">On GitHub since {joinedLabel}</p>
+                )}
               </div>
             </div>
 
