@@ -1,7 +1,8 @@
 'use client';
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { GitCommit, GitPullRequest, GitBranch, Flame, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { GitCommit, GitPullRequest, GitBranch, Flame, ExternalLink, Info } from 'lucide-react';
+import snapshot from '@/lib/github-snapshot.json';
 
 // Types mirroring lib/github.ts (client-safe copy, no env access)
 type GithubApiDay = {
@@ -20,8 +21,6 @@ type GithubApiData = {
   weeks: GithubApiWeek[];
   streak: number;
   longestStreak: number;
-  prs: number;
-  repos: number;
   createdAt?: string;
 };
 
@@ -29,6 +28,32 @@ const GITHUB_PROFILE_URL = 'https://github.com/arpankanwer';
 
 // Neutral grid shown while loading or when GitHub is unavailable; never fake activity
 const PLACEHOLDER_WEEKS = Array.from({ length: 53 });
+
+// Totals that include private repos come from a dated snapshot (npm run github:snapshot), so the
+// deployed site never needs a token that can read private code. Details show on hover or tap.
+const SNAPSHOT_DATE = new Date(`${snapshot.asOf}T00:00:00Z`).toLocaleDateString('en-US', {
+  day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC',
+});
+const SNAPSHOT_CHIPS = [
+  {
+    id: 'prs',
+    Icon: GitPullRequest,
+    tone: 'text-primary',
+    label: `${(snapshot.prsMerged.public + snapshot.prsMerged.private).toLocaleString('en-US')} PRs Merged`,
+    title: 'Merged pull requests',
+    rows: [['In public repos', snapshot.prsMerged.public], ['In private repos', snapshot.prsMerged.private]] as const,
+    note: 'Private ones include work repos, so only the count is shown.',
+  },
+  {
+    id: 'repos',
+    Icon: GitBranch,
+    tone: 'text-secondary',
+    label: `${snapshot.repos.public + snapshot.repos.private} Repos`,
+    title: 'Repositories I own',
+    rows: [['Public', snapshot.repos.public], ['Private', snapshot.repos.private]] as const,
+    note: null,
+  },
+];
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -82,6 +107,27 @@ export default function GithubHeatmap() {
   const [data, setData] = useState<GithubApiData | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const gridScrollRef = useRef<HTMLDivElement>(null);
+  // Snapshot chip details: hover (mouse only) previews, click/tap pins until tapping elsewhere or Escape
+  const [pinnedChip, setPinnedChip] = useState<string | null>(null);
+  const [hoveredChip, setHoveredChip] = useState<string | null>(null);
+  const chipsRef = useRef<HTMLDivElement>(null);
+  const activeChip = SNAPSHOT_CHIPS.find((c) => c.id === (hoveredChip ?? pinnedChip)) ?? null;
+
+  useEffect(() => {
+    if (!pinnedChip) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (!chipsRef.current?.contains(e.target as Node)) setPinnedChip(null);
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setPinnedChip(null);
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [pinnedChip]);
 
   // On narrow screens the grid overflows; show the most recent weeks first
   useEffect(() => {
@@ -121,11 +167,6 @@ export default function GithubHeatmap() {
     }
     return `${data.streak} Day Streak`;
   })();
-
-  const prsLabel =
-    data && typeof data.prs === 'number' ? `${data.prs.toLocaleString()} PRs Merged` : null;
-
-  const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : null;
 
   const joinedLabel = data?.createdAt
     ? new Date(data.createdAt).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
@@ -180,45 +221,80 @@ export default function GithubHeatmap() {
               </div>
             </div>
 
-            {/* Quick stats chips — liquid glass */}
-            {status === 'ready' ? (
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                {streakLabel && (
-                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap text-xs font-mono text-cyan-700 dark:text-cyan">
-                    <Flame size={13} className="text-orange-500" />
-                    <span>{streakLabel}</span>
-                  </div>
+            {/* Quick stats chips — liquid glass. Streak is live; PRs/repos come from the snapshot */}
+            <div ref={chipsRef} className="relative flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
+              {status === 'ready' && streakLabel && (
+                <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 pointer-coarse:py-2 rounded-full whitespace-nowrap text-xs font-mono text-cyan-700 dark:text-cyan">
+                  <Flame size={13} className="text-orange-500" />
+                  <span>{streakLabel}</span>
+                </div>
+              )}
+              {status === 'loading' && (
+                <div aria-hidden className="h-6 w-24 rounded-full bg-slate-200 dark:bg-white/10 animate-pulse" />
+              )}
+
+              {SNAPSHOT_CHIPS.map(({ id, Icon, tone, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  aria-expanded={activeChip?.id === id}
+                  aria-controls="activity-chip-details"
+                  onPointerEnter={(e) => e.pointerType === 'mouse' && setHoveredChip(id)}
+                  onPointerLeave={(e) => e.pointerType === 'mouse' && setHoveredChip(null)}
+                  onClick={() => setPinnedChip((cur) => (cur === id ? null : id))}
+                  className={`liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 pointer-coarse:py-2 rounded-full whitespace-nowrap text-xs font-mono cursor-pointer ${tone}`}
+                >
+                  <Icon size={13} />
+                  <span>{label}</span>
+                  <Info size={11} aria-hidden className="opacity-60" />
+                </button>
+              ))}
+
+              {status === 'error' && (
+                <a
+                  href={GITHUB_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="liquid-glass py-2 px-4 rounded-full text-slate-800 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>View on GitHub</span>
+                  <ExternalLink size={13} />
+                </a>
+              )}
+
+              <AnimatePresence>
+                {activeChip && (
+                  <motion.div
+                    key={activeChip.id}
+                    id="activity-chip-details"
+                    role="status"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute z-20 top-full mt-2 left-0 sm:left-auto sm:right-0 w-64 max-w-full rounded-2xl p-4 bg-white dark:bg-[#0d0e17] border border-slate-200 dark:border-white/10 shadow-xl"
+                  >
+                    <p className="text-xs font-semibold text-slate-900 dark:text-white">{activeChip.title}</p>
+                    <dl className="mt-2 space-y-1 text-xs font-mono">
+                      {activeChip.rows.map(([name, count]) => (
+                        <div key={name} className="flex justify-between gap-4">
+                          <dt className="text-slate-500 dark:text-white/50">{name}</dt>
+                          <dd className="text-slate-900 dark:text-white">{count.toLocaleString('en-US')}</dd>
+                        </div>
+                      ))}
+                      <div className="flex justify-between gap-4 pt-1 mt-1 border-t border-slate-200 dark:border-white/10">
+                        <dt className="text-slate-500 dark:text-white/50">Total</dt>
+                        <dd className="font-semibold text-slate-900 dark:text-white">
+                          {activeChip.rows.reduce((sum, [, count]) => sum + count, 0).toLocaleString('en-US')}
+                        </dd>
+                      </div>
+                    </dl>
+                    {activeChip.note && <p className="mt-2 text-[11px] text-slate-500 dark:text-white/40">{activeChip.note}</p>}
+                    <p className="mt-2 text-[11px] text-slate-500 dark:text-white/40">Snapshot as of {SNAPSHOT_DATE}</p>
+                  </motion.div>
                 )}
-                {prsLabel && (
-                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap text-xs font-mono text-primary">
-                    <GitPullRequest size={13} />
-                    <span>{prsLabel}</span>
-                  </div>
-                )}
-                {reposLabel && (
-                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap text-xs font-mono text-secondary">
-                    <GitBranch size={13} />
-                    <span>{reposLabel}</span>
-                  </div>
-                )}
-              </div>
-            ) : status === 'loading' ? (
-              <div aria-hidden className="flex flex-wrap items-center gap-2 sm:gap-3 animate-pulse">
-                <div className="h-6 w-24 rounded-full bg-slate-200 dark:bg-white/10" />
-                <div className="h-6 w-28 rounded-full bg-slate-200 dark:bg-white/10" />
-                <div className="h-6 w-20 rounded-full bg-slate-200 dark:bg-white/10" />
-              </div>
-            ) : (
-              <a
-                href={GITHUB_PROFILE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="liquid-glass py-2 px-4 rounded-full text-slate-800 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>View on GitHub</span>
-                <ExternalLink size={13} />
-              </a>
-            )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Heatmap Grid */}

@@ -18,8 +18,6 @@ export interface GithubData {
   weeks: GithubWeek[];
   streak: number; // current streak in days
   longestStreak: number;
-  prs: number;
-  repos: number;
   createdAt: string; // ISO date the GitHub account was created
 }
 
@@ -70,12 +68,6 @@ const GITHUB_GRAPHQL_QUERY = `
             }
           }
         }
-      }
-      pullRequests(states: MERGED, first: 1) {
-        totalCount
-      }
-      repositories(first: 1, ownerAffiliations: OWNER) {
-        totalCount
       }
     }
   }
@@ -151,16 +143,12 @@ export async function getGithubData(): Promise<GithubData | null> {
     const flatDays = weeks.flatMap((w) => w.contributionDays);
     const { streak, longestStreak } = computeStreaks(flatDays);
 
-    const prs: number = user.pullRequests?.totalCount ?? 0;
-    const repos: number = user.repositories?.totalCount ?? 0;
 
     return {
       totalContributions,
       weeks,
       streak,
       longestStreak,
-      prs,
-      repos,
       createdAt: user.createdAt ?? "",
     };
   } catch (err) {
