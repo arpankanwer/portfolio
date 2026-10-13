@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { GitCommit, GitPullRequest, GitBranch, Flame, ExternalLink } from 'lucide-react';
 
@@ -28,6 +28,37 @@ const GITHUB_PROFILE_URL = 'https://github.com/arpankanwer';
 
 // Neutral grid shown while loading or when GitHub is unavailable; never fake activity
 const PLACEHOLDER_WEEKS = Array.from({ length: 53 });
+
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+// Year-in-review numbers derived from the calendar the API already returns.
+// Dates are plain YYYY-MM-DD, so they're read as UTC to keep the weekday/month exact.
+function summarize(weeks: GithubApiWeek[]) {
+  const days = weeks.flatMap((w) => w.contributionDays);
+  const total = days.reduce((sum, d) => sum + d.count, 0);
+  const activeDays = days.filter((d) => d.count > 0).length;
+  const byWeekday = Array<number>(7).fill(0);
+  const byMonth = new Map<string, number>();
+  for (const d of days) {
+    byWeekday[new Date(`${d.date}T00:00:00Z`).getUTCDay()] += d.count;
+    const month = d.date.slice(0, 7);
+    byMonth.set(month, (byMonth.get(month) ?? 0) + d.count);
+  }
+  const busiest = byWeekday.indexOf(Math.max(...byWeekday));
+  const [bestMonthKey, bestMonthCount] = [...byMonth].reduce((best, m) => (m[1] > best[1] ? m : best), ['', 0]);
+  return {
+    total,
+    activeDays,
+    totalDays: days.length,
+    avgPerActiveDay: activeDays ? total / activeDays : 0,
+    busiestWeekday: WEEKDAYS[busiest],
+    busiestWeekdayCount: byWeekday[busiest],
+    bestMonth: bestMonthKey
+      ? new Date(`${bestMonthKey}-01T00:00:00Z`).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+      : '',
+    bestMonthCount,
+  };
+}
 
 const levelColorsDark = [
   'bg-white/5',           // Level 0
@@ -94,6 +125,17 @@ export default function GithubHeatmap() {
     data && typeof data.prs === 'number' ? `${data.prs.toLocaleString()} PRs Merged` : null;
 
   const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : null;
+
+  const summary = useMemo(() => (data?.weeks?.length ? summarize(data.weeks) : null), [data]);
+  const statTiles = summary && summary.total > 0 && data
+    ? [
+        { label: 'Active days', value: `${summary.activeDays} / ${summary.totalDays}`, sub: `~${Math.round(summary.avgPerActiveDay)} per active day` },
+        { label: 'Longest streak', value: `${data.longestStreak} ${data.longestStreak === 1 ? 'day' : 'days'}`, sub: 'in a row' },
+        // busiestWeekdayCount is the sum over every such weekday in the year, so show it as a share, not a raw count
+        { label: 'Busiest weekday', value: `${summary.busiestWeekday}s`, sub: `${Math.round((summary.busiestWeekdayCount / summary.total) * 100)}% of activity` },
+        { label: 'Best month', value: summary.bestMonth, sub: `${summary.bestMonthCount.toLocaleString()} contributions` },
+      ]
+    : null;
 
   return (
     <section id="activity" className="py-16 px-6 sm:px-12 relative overflow-hidden">
@@ -239,6 +281,25 @@ export default function GithubHeatmap() {
               <span>More</span>
             </div>
           </div>
+
+          {/* Year in review — live data only; skeleton while loading, hidden if GitHub is unavailable */}
+          {status === 'ready' && statTiles ? (
+            <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+              {statTiles.map((t) => (
+                <div key={t.label} className="px-3 py-3 sm:p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 min-w-0">
+                  <p className="text-xs text-slate-500 dark:text-white/50">{t.label}</p>
+                  <p className="text-[15px] sm:text-lg font-display font-bold text-slate-900 dark:text-white mt-1">{t.value}</p>
+                  <p className="text-[11px] text-slate-500 dark:text-white/40 mt-0.5">{t.sub}</p>
+                </div>
+              ))}
+            </div>
+          ) : status === 'loading' ? (
+            <div aria-hidden className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-3 mt-6 animate-pulse">
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="h-[78px] sm:h-[86px] rounded-xl bg-slate-100 dark:bg-white/5" />
+              ))}
+            </div>
+          ) : null}
         </motion.div>
       </div>
     </section>
