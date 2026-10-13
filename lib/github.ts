@@ -44,8 +44,12 @@ function computeStreaks(days: { date: string; count: number }[]): {
     }
   }
 
+  // The last calendar day is today, which isn't over yet: no contributions so far today
+  // keeps the streak from yesterday instead of resetting it to 0 every morning.
   let streak = 0;
-  for (let i = days.length - 1; i >= 0; i--) {
+  let i = days.length - 1;
+  if (i >= 0 && days[i].count === 0) i -= 1;
+  for (; i >= 0; i--) {
     if (days[i].count > 0) streak += 1;
     else break;
   }

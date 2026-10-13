@@ -157,12 +157,11 @@ export default function GithubHeatmap() {
   }, []);
 
   // Labels only exist for live data; loading and error states render placeholders instead.
-  // For streak, show weeks derived from days (Math.ceil(streak/7)) when >=7, else days.
+  // For streak, show whole weeks (rounded down, so it never overstates) when >= 7 days, else days.
   const streakLabel = (() => {
     if (!data || typeof data.streak !== 'number') return null;
-    if (data.streak === 0) return '0 Day Streak';
     if (data.streak >= 7) {
-      const weeks = Math.ceil(data.streak / 7);
+      const weeks = Math.floor(data.streak / 7);
       return `${weeks} Week Streak`;
     }
     return `${data.streak} Day Streak`;
