@@ -1,10 +1,12 @@
 # Birarpanjot Singh Kanwer's Portfolio
 
+<img src="docs/images/birarpanjot.jpg" alt="Birarpanjot Singh Kanwer" width="200">
+
+Welcome to my portfolio! I'm Birarpanjot Singh Kanwer, a full-stack developer based in Ontario, Canada. I build full-stack products with React, Next.js and React Native: an app for seniors that's live on the App Store and Google Play, AI features that analyze vocal health and power real-time voice agents, and bug fixes merged into tools like Microsoft VS Code. I care about clean code and polished, user-friendly apps on both web and mobile.
+
 [![The portfolio's home page](docs/screenshots/desktop-hero.jpg)](https://arpankanwer.ai.studio)
 
 **Live site: [arpankanwer.ai.studio](https://arpankanwer.ai.studio)**
-
-Welcome to my portfolio! I'm Birarpanjot Singh Kanwer, a full-stack developer based in Ontario, Canada. I build full-stack products with React, Next.js and React Native: an app for seniors that's live on the App Store and Google Play, AI features that analyze vocal health and power real-time voice agents, and bug fixes merged into tools like Microsoft VS Code. I care about clean code and polished, user-friendly apps on both web and mobile.
 
 ## About Me
 
@@ -196,7 +198,7 @@ components/                    one file per section, plus Navbar, CommandPalette
 lib/github.ts                  GitHub GraphQL query, contribution levels, streaks
 lib/github-snapshot.json       dated PR and repo totals (public and private)
 scripts/github-snapshot.mjs    refreshes the snapshot with the GitHub CLI
-docs/                          snapshot how-to and README screenshots
+docs/                          snapshot how-to, README photo and screenshots
 public/                        project images, icons, web manifest
 ```
 
