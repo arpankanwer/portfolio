@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Let phones on the local network use dev resources (HMR) when testing via the LAN IP.
   allowedDevOrigins: ['10.0.0.*'],
+  // Stop `next dev` from generating AGENTS.md / CLAUDE.md in the repo root.
+  agentRules: false,
   typescript: {
     ignoreBuildErrors: false,
   },
