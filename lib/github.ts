@@ -18,8 +18,7 @@ export interface GithubData {
   weeks: GithubWeek[];
   streak: number; // current streak in days
   longestStreak: number;
-  prs: number;
-  repos: number;
+  createdAt: string; // ISO date the GitHub account was created
 }
 
 function levelFromCount(count: number): number {
@@ -45,8 +44,12 @@ function computeStreaks(days: { date: string; count: number }[]): {
     }
   }
 
+  // The last calendar day is today, which isn't over yet: no contributions so far today
+  // keeps the streak from yesterday instead of resetting it to 0 every morning.
   let streak = 0;
-  for (let i = days.length - 1; i >= 0; i--) {
+  let i = days.length - 1;
+  if (i >= 0 && days[i].count === 0) i -= 1;
+  for (; i >= 0; i--) {
     if (days[i].count > 0) streak += 1;
     else break;
   }
@@ -57,6 +60,7 @@ function computeStreaks(days: { date: string; count: number }[]): {
 const GITHUB_GRAPHQL_QUERY = `
   query($username: String!) {
     user(login: $username) {
+      createdAt
       contributionsCollection {
         contributionCalendar {
           totalContributions
@@ -69,12 +73,6 @@ const GITHUB_GRAPHQL_QUERY = `
           }
         }
       }
-      pullRequests(first: 1) {
-        totalCount
-      }
-      repositories(first: 1, ownerAffiliations: OWNER) {
-        totalCount
-      }
     }
   }
 `;
@@ -84,7 +82,7 @@ export async function getGithubData(): Promise<GithubData | null> {
   const username = process.env.GITHUB_USERNAME || "arpankanwer";
 
   if (!token) {
-    console.warn("[lib/github] GITHUB_TOKEN is missing — returning null (fallback to mock)");
+    console.warn("[lib/github] GITHUB_TOKEN is missing — returning null (Activity section shows its unavailable state)");
     return null;
   }
 
@@ -149,16 +147,13 @@ export async function getGithubData(): Promise<GithubData | null> {
     const flatDays = weeks.flatMap((w) => w.contributionDays);
     const { streak, longestStreak } = computeStreaks(flatDays);
 
-    const prs: number = user.pullRequests?.totalCount ?? 0;
-    const repos: number = user.repositories?.totalCount ?? 0;
 
     return {
       totalContributions,
       weeks,
       streak,
       longestStreak,
-      prs,
-      repos,
+      createdAt: user.createdAt ?? "",
     };
   } catch (err) {
     console.error("[lib/github] Unexpected error fetching GitHub data:", err);
