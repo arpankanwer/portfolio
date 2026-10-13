@@ -85,9 +85,9 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
               exit={{ y: -30, opacity: 0, filter: "blur(6px)" }}
               transition={{ duration: 0.45, ease: "easeInOut" }}
-              className="flex items-center gap-2 text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-cyan"
+              className="flex items-center gap-2 whitespace-nowrap text-[clamp(1.125rem,5.4vw,1.5rem)] sm:text-3xl md:text-4xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-cyan"
             >
-              <Terminal size={26} className="text-cyan inline-block mr-1" />
+              <Terminal size={26} className="text-cyan inline-block mr-1 shrink-0 w-5 h-5 sm:w-[26px] sm:h-[26px]" />
               <span>{roles[currentRoleIndex]}</span>
             </motion.div>
           </AnimatePresence>
