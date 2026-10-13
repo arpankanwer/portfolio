@@ -104,7 +104,7 @@ export default function Experience() {
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan uppercase tracking-wider mb-3">
             <span>Career Progression</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
@@ -142,7 +142,7 @@ export default function Experience() {
                     <div className="glass-card p-5 sm:p-8 rounded-3xl relative overflow-hidden group hover:border-primary/40 hover:bg-slate-100/80 dark:hover:bg-white/[0.06] transition-all duration-300">
                       {/* Top Bar — liquid glass pills */}
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                        <span className="liquid-glass-subtle px-3 py-1 rounded-full text-xs font-mono text-cyan">
+                        <span className="liquid-glass-subtle px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan">
                           <span>{exp.date}</span>
                         </span>
                         <span className="liquid-glass-subtle px-2.5 py-0.5 rounded-full text-[11px] font-medium text-slate-600 dark:text-white/60">

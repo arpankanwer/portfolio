@@ -151,7 +151,7 @@ export default function GithubHeatmap() {
 
             {/* Quick stats chips — liquid glass */}
             <div className="flex items-center gap-3">
-              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan">
+              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan">
                 <Flame size={13} className="text-orange-500" />
                 <span>{streakLabel}</span>
               </div>
