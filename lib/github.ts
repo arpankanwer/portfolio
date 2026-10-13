@@ -84,7 +84,7 @@ export async function getGithubData(): Promise<GithubData | null> {
   const username = process.env.GITHUB_USERNAME || "arpankanwer";
 
   if (!token) {
-    console.warn("[lib/github] GITHUB_TOKEN is missing — returning null (fallback to mock)");
+    console.warn("[lib/github] GITHUB_TOKEN is missing — returning null (Activity section shows its unavailable state)");
     return null;
   }
 
