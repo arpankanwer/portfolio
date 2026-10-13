@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { GitCommit, GitPullRequest, GitBranch, Flame } from 'lucide-react';
+import { GitCommit, GitPullRequest, GitBranch, Flame, ExternalLink } from 'lucide-react';
 
 // Types mirroring lib/github.ts (client-safe copy, no env access)
 type GithubApiDay = {
@@ -24,37 +24,10 @@ type GithubApiData = {
   repos: number;
 };
 
-// Generates a mock realistic GitHub heatmap matrix for the last 52 weeks
-const generateHeatmap = () => {
-  const weeks = 52;
-  const daysPerWeek = 7;
-  const matrix = [];
-  
-  for (let w = 0; w < weeks; w++) {
-    const week = [];
-    for (let d = 0; d < daysPerWeek; d++) {
-      // Deterministic pseudo-randomness for high activity aesthetic
-      const seed = Math.sin(w * 7 + d) * 10000;
-      const rand = seed - Math.floor(seed);
-      let level = 0;
-      if (rand > 0.75) level = 4;
-      else if (rand > 0.5) level = 3;
-      else if (rand > 0.3) level = 2;
-      else if (rand > 0.15) level = 1;
-      
-      week.push({
-        day: d,
-        week: w,
-        level,
-        count: level === 0 ? 0 : Math.floor(rand * 8) + 1,
-      });
-    }
-    matrix.push(week);
-  }
-  return matrix;
-};
+const GITHUB_PROFILE_URL = 'https://github.com/arpankanwer';
 
-const heatmapData = generateHeatmap();
+// Neutral grid shown while loading or when GitHub is unavailable; never fake activity
+const PLACEHOLDER_WEEKS = Array.from({ length: 53 });
 
 const levelColorsDark = [
   'bg-white/5',           // Level 0
@@ -73,16 +46,16 @@ const levelColorsLight = [
 ];
 
 export default function GithubHeatmap() {
-  const [hoveredCell, setHoveredCell] = useState<{ count: number; date?: string; week: number; day: number } | null>(null);
+  const [hoveredCell, setHoveredCell] = useState<{ count: number; date: string } | null>(null);
   const [data, setData] = useState<GithubApiData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const gridScrollRef = useRef<HTMLDivElement>(null);
 
   // On narrow screens the grid overflows; show the most recent weeks first
   useEffect(() => {
     const el = gridScrollRef.current;
     if (el) el.scrollLeft = el.scrollWidth;
-  }, [data]);
+  }, [status]);
 
   useEffect(() => {
     let cancelled = false;
@@ -92,25 +65,23 @@ export default function GithubHeatmap() {
         if (cancelled) return;
         if (d && !d.error && typeof d.totalContributions === 'number') {
           setData(d as GithubApiData);
+          setStatus('ready');
+        } else {
+          setStatus('error');
         }
       })
       .catch(() => {
-        // keep mock fallback
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) setStatus('error');
       });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  // Header total: live or fallback mock "3,399"
-  const totalLabel = data ? data.totalContributions.toLocaleString() : '3,399';
-
-  // Chips: live or fallback hardcoded. For streak, show weeks derived from days (Math.ceil(streak/7)) when >=7, else days.
+  // Labels only exist for live data; loading and error states render placeholders instead.
+  // For streak, show weeks derived from days (Math.ceil(streak/7)) when >=7, else days.
   const streakLabel = (() => {
-    if (!data || typeof data.streak !== 'number') return '38 Week Streak';
+    if (!data || typeof data.streak !== 'number') return null;
     if (data.streak === 0) return '0 Day Streak';
     if (data.streak >= 7) {
       const weeks = Math.ceil(data.streak / 7);
@@ -120,9 +91,9 @@ export default function GithubHeatmap() {
   })();
 
   const prsLabel =
-    data && typeof data.prs === 'number' ? `${data.prs.toLocaleString()} PRs Merged` : '120+ PRs Merged';
+    data && typeof data.prs === 'number' ? `${data.prs.toLocaleString()} PRs Merged` : null;
 
-  const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : '50+ Repos';
+  const reposLabel = data && typeof data.repos === 'number' ? `${data.repos} Repos` : null;
 
   return (
     <section id="activity" className="py-16 px-6 sm:px-12 relative overflow-hidden">
@@ -132,6 +103,7 @@ export default function GithubHeatmap() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="glass-card p-6 sm:p-8 rounded-3xl glow-border"
+          aria-busy={status === 'loading'}
         >
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
@@ -144,32 +116,65 @@ export default function GithubHeatmap() {
                   Continuous Engineering Activity
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-white/60 font-mono">
-                  {totalLabel} contributions in the last year
+                  {status === 'ready' && data ? (
+                    `${data.totalContributions.toLocaleString()} contributions in the last year`
+                  ) : status === 'loading' ? (
+                    <>
+                      <span aria-hidden className="inline-block h-3 w-44 rounded bg-slate-200 dark:bg-white/10 animate-pulse align-middle" />
+                      <span className="sr-only">Loading GitHub activity</span>
+                    </>
+                  ) : (
+                    'Live GitHub stats are unavailable right now'
+                  )}
                 </p>
               </div>
             </div>
 
             {/* Quick stats chips — liquid glass */}
-            <div className="flex items-center gap-3">
-              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan">
-                <Flame size={13} className="text-orange-500" />
-                <span>{streakLabel}</span>
+            {status === 'ready' ? (
+              <div className="flex items-center gap-3">
+                {streakLabel && (
+                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan">
+                    <Flame size={13} className="text-orange-500" />
+                    <span>{streakLabel}</span>
+                  </div>
+                )}
+                {prsLabel && (
+                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-primary">
+                    <GitPullRequest size={13} />
+                    <span>{prsLabel}</span>
+                  </div>
+                )}
+                {reposLabel && (
+                  <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-secondary">
+                    <GitBranch size={13} />
+                    <span>{reposLabel}</span>
+                  </div>
+                )}
               </div>
-              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-primary">
-                <GitPullRequest size={13} />
-                <span>{prsLabel}</span>
+            ) : status === 'loading' ? (
+              <div aria-hidden className="flex items-center gap-3 animate-pulse">
+                <div className="h-6 w-24 rounded-full bg-slate-200 dark:bg-white/10" />
+                <div className="h-6 w-28 rounded-full bg-slate-200 dark:bg-white/10" />
+                <div className="h-6 w-20 rounded-full bg-slate-200 dark:bg-white/10" />
               </div>
-              <div className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-secondary">
-                <GitBranch size={13} />
-                <span>{reposLabel}</span>
-              </div>
-            </div>
+            ) : (
+              <a
+                href={GITHUB_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="liquid-glass py-2 px-4 rounded-full text-slate-800 dark:text-white text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>View on GitHub</span>
+                <ExternalLink size={13} />
+              </a>
+            )}
           </div>
 
           {/* Heatmap Grid */}
           <div ref={gridScrollRef} className="overflow-x-auto pb-3 pt-2" data-lenis-prevent>
-            <div className={`min-w-[700px] flex gap-1.5 ${loading ? 'opacity-90' : ''}`}>
-              {data?.weeks && data.weeks.length > 0 ? (
+            <div className={`min-w-[700px] flex gap-1.5 ${status === 'loading' ? 'animate-pulse' : ''} ${status === 'error' ? 'opacity-60' : ''}`}>
+              {status === 'ready' && data?.weeks && data.weeks.length > 0 ? (
                 data.weeks.map((week, wIdx) => (
                   <div key={wIdx} className="flex flex-col gap-1.5">
                     {week.contributionDays.map((day, dIdx) => {
@@ -187,7 +192,7 @@ export default function GithubHeatmap() {
                         <div
                           key={dIdx}
                           onMouseEnter={() =>
-                            setHoveredCell({ count: day.count, date: day.date, week: wIdx, day: dIdx })
+                            setHoveredCell({ count: day.count, date: day.date })
                           }
                           onMouseLeave={() => setHoveredCell(null)}
                           className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${bgClass} hover:scale-125 hover:z-10`}
@@ -198,29 +203,11 @@ export default function GithubHeatmap() {
                   </div>
                 ))
               ) : (
-                // Fallback mock heatmap (also shown during loading)
-                heatmapData.map((week, wIdx) => (
-                  <div key={wIdx} className="flex flex-col gap-1.5">
-                    {week.map((cell, dIdx) => {
-                      const bgClass =
-                        cell.level === 0
-                          ? 'bg-slate-200 dark:bg-white/5'
-                          : cell.level === 1
-                            ? 'bg-primary/30'
-                            : cell.level === 2
-                              ? 'bg-primary/60'
-                              : cell.level === 3
-                                ? 'bg-primary'
-                                : 'bg-cyan shadow-sm dark:shadow-[0_0_8px_rgba(6,182,212,0.6)]';
-                      return (
-                        <div
-                          key={dIdx}
-                          onMouseEnter={() => setHoveredCell({ count: cell.count, week: wIdx, day: dIdx })}
-                          onMouseLeave={() => setHoveredCell(null)}
-                          className={`w-3 h-3 rounded-[3px] transition-all duration-150 cursor-pointer ${bgClass} hover:scale-125 hover:z-10`}
-                        />
-                      );
-                    })}
+                PLACEHOLDER_WEEKS.map((_, wIdx) => (
+                  <div key={wIdx} aria-hidden className="flex flex-col gap-1.5">
+                    {Array.from({ length: 7 }, (_, dIdx) => (
+                      <div key={dIdx} className="w-3 h-3 rounded-[3px] bg-slate-200 dark:bg-white/5" />
+                    ))}
                   </div>
                 ))
               )}
@@ -233,7 +220,7 @@ export default function GithubHeatmap() {
               {hoveredCell ? (
                 <span className="text-slate-900 dark:text-white font-medium">
                   {hoveredCell.count === 0 ? 'No' : hoveredCell.count} contributions
-                  {hoveredCell.date ? ` on ${hoveredCell.date}` : ` on Day ${hoveredCell.day + 1}`}
+                  {` on ${hoveredCell.date}`}
                 </span>
               ) : (
                 <span className="hidden sm:inline">Hover over squares to inspect daily velocity</span>
