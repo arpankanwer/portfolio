@@ -23,7 +23,7 @@ The Activity section ("Continuous Engineering Activity") gets its data from `app
 - **Always fresh:** the route is `force-dynamic`, so a snapshot taken at build time can't go stale on hosts that scale to zero.
 - **Year-in-review tiles:** active days, longest streak, busiest weekday and best month are calculated in the browser from the same calendar, so they cost no extra requests.
 - **No made-up numbers:** while loading, the section shows a skeleton. If GitHub can't be reached, it says so and links to the GitHub profile.
-- **PR and repo totals are a dated snapshot.** Most merged PRs are in private repos, many of them at work, and counting those live would need a token that can read private code. Instead, `npm run github:snapshot` uses your local GitHub CLI login to write `lib/github-snapshot.json` (merged PRs and owned repos, public and private, plus the date). The chips show the totals, and hovering or tapping one shows the public/private split and the snapshot date. Re-run the script and commit the file to refresh it.
+- **PR and repo totals are a dated snapshot.** Most merged PRs are in private repos, many of them at work, and counting those live would need a token that can read private code. Instead, `npm run github:snapshot` uses your local GitHub CLI login to write `lib/github-snapshot.json` (merged PRs and owned repos, public and private, plus the date). The chips show the totals, and hovering or tapping one shows the public/private split and the snapshot date. Re-run the script and commit the file to refresh it; see [docs/github-snapshot.md](docs/github-snapshot.md).
 
 The totals come from GitHub's API, which can be a few contributions lower than the number on the GitHub profile page.
 
@@ -76,7 +76,7 @@ Without `GITHUB_TOKEN` the site still runs, and the Activity section shows its "
 | `npm run build` | Production build (standalone output) |
 | `npm run start` | Serves the production build |
 | `npm run lint` | ESLint |
-| `npm run github:snapshot` | Refreshes the PR and repo totals in `lib/github-snapshot.json` (needs `gh auth login`) |
+| `npm run github:snapshot` | Refreshes the PR and repo totals in `lib/github-snapshot.json` (needs `gh auth login`; see [docs/github-snapshot.md](docs/github-snapshot.md)) |
 
 ### Testing on a phone
 
