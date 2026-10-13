@@ -409,7 +409,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full max-w-3xl my-4 sm:my-8 max-h-[90vh] bg-white dark:bg-[#0b0b10] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-y-auto overscroll-contain z-10 p-6 sm:p-8"
+              className="relative w-full max-w-3xl my-4 sm:my-8 max-h-[calc(100dvh-4rem)] sm:max-h-[calc(100dvh-7rem)] flex flex-col bg-white dark:bg-[#0b0b10] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-hidden z-10"
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             >
@@ -421,7 +421,8 @@ export default function Projects() {
                 <X size={18} />
               </button>
 
-              <div className="space-y-6">
+              {/* Only the content scrolls, so the close button above stays in view */}
+              <div data-lenis-prevent className="min-h-0 overflow-y-auto overscroll-contain p-6 sm:p-8 space-y-6">
                 {/* Header */}
                 <div className="pr-10">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -446,11 +447,12 @@ export default function Projects() {
                 </div>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-3">
+                {/* Stacked label/value rows on phones; three tiles from sm up */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                   {selectedProject.metrics.map((m, i) => (
-                    <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 text-center">
+                    <div key={i} className="px-4 py-3 sm:p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between gap-3 sm:block sm:text-center">
                       <p className="text-xs text-slate-500 dark:text-white/50">{m.label}</p>
-                      <p className="text-lg font-display font-bold text-slate-900 dark:text-white mt-1">{m.value}</p>
+                      <p className="text-base sm:text-lg font-display font-bold text-slate-900 dark:text-white sm:mt-1 text-right sm:text-center">{m.value}</p>
                     </div>
                   ))}
                 </div>

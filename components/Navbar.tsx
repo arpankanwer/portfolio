@@ -46,7 +46,7 @@ export default function Navbar() {
 
   return (
     <>
-      <CommandPalette isOpen={commandOpen} onClose={() => setCommandOpen(false)} />
+      <CommandPalette isOpen={commandOpen} onOpen={() => setCommandOpen(true)} onClose={() => setCommandOpen(false)} />
 
       {/* Easter Egg Banner */}
       <AnimatePresence>
@@ -81,15 +81,15 @@ export default function Navbar() {
                 // — Scrolled: max glassy, barely visible tint —
                 "bg-white/35 supports-[backdrop-filter]:bg-white/12 supports-[backdrop-filter]:bg-gradient-to-b supports-[backdrop-filter]:from-white/10 supports-[backdrop-filter]:via-white/2 supports-[backdrop-filter]:to-transparent",
                 "dark:bg-zinc-900/35 supports-[backdrop-filter]:dark:bg-white/[0.02] supports-[backdrop-filter]:dark:from-white/[0.03] supports-[backdrop-filter]:dark:via-white/[0.005] supports-[backdrop-filter]:dark:to-transparent",
-                "border-white/10 dark:border-white/06",
+                "border-white/10 dark:border-white/6",
                 "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),0_8px_32px_rgba(0,0,0,0.02),0_1px_3px_rgba(0,0,0,0.01)]",
                 "supports-[backdrop-filter]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),0_8px_32px_rgba(0,0,0,0.02),0_4px_16px_rgba(0,0,0,0.01)]",
               ].join(" ")
             : [
                 // — Top / unscrolled: pure glass, almost invisible —
-                "bg-white/15 supports-[backdrop-filter]:bg-white/05 supports-[backdrop-filter]:bg-gradient-to-b supports-[backdrop-filter]:from-white/08 supports-[backdrop-filter]:via-white/1 supports-[backdrop-filter]:to-transparent",
+                "bg-white/15 supports-[backdrop-filter]:bg-white/5 supports-[backdrop-filter]:bg-gradient-to-b supports-[backdrop-filter]:from-white/8 supports-[backdrop-filter]:via-white/1 supports-[backdrop-filter]:to-transparent",
                 "dark:bg-zinc-900/15 supports-[backdrop-filter]:dark:bg-white/[0.008] supports-[backdrop-filter]:dark:from-white/[0.015] supports-[backdrop-filter]:dark:via-white/[0.004] supports-[backdrop-filter]:dark:to-transparent",
-                "border-white/08 dark:border-white/[0.02]",
+                "border-white/8 dark:border-white/[0.02]",
                 "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.14),0_4px_24px_rgba(0,0,0,0.01),0_1px_2px_rgba(0,0,0,0.005)]",
                 "supports-[backdrop-filter]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.01),0_2px_8px_rgba(0,0,0,0.005)]",
               ].join(" ")

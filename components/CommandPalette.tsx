@@ -20,10 +20,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface CommandPaletteProps {
   isOpen?: boolean;
+  onOpen?: () => void;
   onClose?: () => void;
 }
 
-export default function CommandPalette({ isOpen: controlledOpen, onClose }: CommandPaletteProps) {
+export default function CommandPalette({ isOpen: controlledOpen, onOpen, onClose }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -36,7 +37,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
         e.preventDefault();
         if (isControlled && onClose) {
           if (controlledOpen) onClose();
-          else setOpen(true);
+          else onOpen?.();
         } else {
           setOpen((prev) => !prev);
         }
@@ -49,7 +50,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onClose }: Comm
 
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, [controlledOpen, isControlled, onClose, showModal]);
+  }, [controlledOpen, isControlled, onOpen, onClose, showModal]);
 
   // Lock background scroll + compensate scrollbar width — mirrors Projects.tsx pattern
   // Prevents Lenis smooth-scroll from hijacking wheel behind the palette

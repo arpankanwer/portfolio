@@ -27,7 +27,7 @@ export default function About() {
         >
           {/* Left Side: Editorial Story */}
           <div className="flex-1 space-y-6">
-            <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider">
+            <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan uppercase tracking-wider">
               About The Developer
             </div>
 

@@ -59,7 +59,7 @@ export default function OpenSource() {
           viewport={{ once: true }}
           className="mb-14 text-center md:text-left"
         >
-          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan uppercase tracking-wider mb-3">
             <span>Open Source</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
@@ -95,7 +95,7 @@ export default function OpenSource() {
                       {isMerged ? <GitMerge size={13} /> : <Users size={13} />}
                       <span>{c.status}</span>
                     </span>
-                    <span className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan">
+                    <span className="liquid-glass-subtle flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan">
                       <Calendar size={12} /> <span>{c.date}</span>
                     </span>
                   </div>

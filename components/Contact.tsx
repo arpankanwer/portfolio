@@ -66,7 +66,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan uppercase tracking-wider mb-3">
+          <div className="liquid-glass-subtle inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-700 dark:text-cyan uppercase tracking-wider mb-3">
             <span>Get In Touch</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
@@ -91,15 +91,16 @@ export default function Contact() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[60px] rounded-full pointer-events-none" />
               
               {/* Email Block */}
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between group">
-                <div className="flex items-center gap-3.5">
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between gap-3 group">
+                <div className="flex items-center gap-3.5 min-w-0">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary shrink-0">
                     <Mail size={18} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-xs text-slate-500 dark:text-white/50 font-medium">Direct Email</h3>
-                    <a href="mailto:birarpanjot@gmail.com" className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary dark:hover:text-cyan transition-colors">
-                      birarpanjot@gmail.com
+                    {/* <wbr> lets narrow phones break after the @ instead of overflowing the card */}
+                    <a href="mailto:birarpanjot@gmail.com" className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary dark:hover:text-cyan transition-colors [overflow-wrap:anywhere]">
+                      birarpanjot@<wbr />gmail.com
                     </a>
                   </div>
                 </div>
@@ -113,12 +114,12 @@ export default function Contact() {
               </div>
 
               {/* Phone Block */}
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between group">
-                <div className="flex items-center gap-3.5">
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-between gap-3 group">
+                <div className="flex items-center gap-3.5 min-w-0">
                   <div className="w-10 h-10 rounded-xl bg-cyan/10 dark:bg-cyan/20 flex items-center justify-center text-cyan shrink-0">
                     <Phone size={18} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-xs text-slate-500 dark:text-white/50 font-medium">Direct Phone</h3>
                     <a href="tel:+12898891472" className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary dark:hover:text-cyan transition-colors">
                       +1 (289) 889-1472
@@ -206,7 +207,7 @@ export default function Contact() {
                     id="name"
                     type="text"
                     {...register('name')}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     placeholder="Jane Doe"
                   />
                   {errors.name && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.name.message}</p>}
@@ -220,7 +221,7 @@ export default function Contact() {
                     id="email"
                     type="email"
                     {...register('email')}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     placeholder="jane@company.com"
                   />
                   {errors.email && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.email.message}</p>}
@@ -235,7 +236,7 @@ export default function Contact() {
                   id="subject"
                   type="text"
                   {...register('subject')}
-                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                   placeholder="Software Engineering Role / Project Inquiry"
                 />
                 {errors.subject && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.subject.message}</p>}
@@ -249,7 +250,7 @@ export default function Contact() {
                   id="message"
                   rows={4}
                   {...register('message')}
-                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
+                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
                   placeholder="Hi Birarpanjot, we saw your portfolio and would love to connect..."
                 />
                 {errors.message && <p className="mt-1 text-xs text-rose-500 dark:text-rose-400">{errors.message.message}</p>}

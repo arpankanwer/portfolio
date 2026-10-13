@@ -31,9 +31,16 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+// Runs before first paint so visitors who picked light mode don't get a dark flash.
+// Mirrors applyTheme() in ThemeProvider; the server always renders the default (dark).
+const themeInitScript = `try{if(localStorage.getItem('bk_portfolio_theme')==='light'){var r=document.documentElement;r.classList.remove('dark');r.classList.add('light');r.style.colorScheme='light'}}catch(e){}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} dark`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-white" suppressHydrationWarning>
         <ThemeProvider>
           <div className="noise-bg"></div>
