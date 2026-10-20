@@ -52,21 +52,21 @@ const projects: Project[] = [
     image: '/projects/paigeconnect.png',
     appStoreUrl: 'https://apps.apple.com/ca/app/paige-connect/id6744338186',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA',
-    overview: "Paige™ is KiloBryte's platform for keeping seniors connected with family. Beyond the app itself, I added voice AI: recordings are analyzed with Amplifier Health's models to surface vocal health signals and how they change over time.",
-    architecture: "React Native (Expo) mobile client with native video bridging, backed by Node.js and Firebase. A Next.js layer integrates Amplifier Health's Apex voice AI model and Longitudinal API, and an automated cron-job pipeline submits recordings for analysis and feeds a results dashboard.",
+    overview: "Paige™ is KiloBryte's platform for keeping seniors connected with family. Beyond the app itself, I added voice AI: each recording is analyzed to surface vocal health signals and how they change over time.",
+    architecture: "React Native (Expo) mobile client with native video bridging, backed by Node.js and Firebase. A Next.js layer integrates a voice AI model and a longitudinal analysis API, and an automated cron-job pipeline submits recordings for analysis and feeds a results dashboard.",
     features: [
       'Companion app for the Paige one-touch video-calling frame, on iOS and Android',
       'Frame setup, plus inviting and managing the contacts who can call the frame',
       'Native video bridging for calls',
-      "Amplifier Health's Apex voice AI model integrated into Next.js, screening recordings for signals like stress, fatigue, and cognitive load",
+      'Voice AI model integrated into Next.js, screening recordings for signals like stress, fatigue, and cognitive load',
       'Automated cron-job pipeline that submits recordings for analysis, plus a results dashboard',
-      "Amplifier Health's Longitudinal API, comparing each recording with the person's history: baseline, deltas, and trend"
+      "Longitudinal analysis comparing each recording with the person's history: baseline, deltas, and trend"
     ],
     results: 'Live on the Apple App Store and Google Play Store.',
     metrics: [
       { label: 'Platforms', value: 'iOS & Android' },
       { label: 'Store Status', value: 'Live' },
-      { label: 'Voice AI', value: 'Apex' }
+      { label: 'Voice AI', value: 'Vocal Health' }
     ]
   },
   {
