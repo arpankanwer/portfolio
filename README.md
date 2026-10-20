@@ -10,7 +10,7 @@ Welcome to my portfolio! I'm Birarpanjot Singh Kanwer, a full-stack developer ba
 
 ## About Me
 
-I'm a full-stack developer working across React Native apps, Next.js dashboards, Node.js and Firebase backends, and PHP/MySQL systems. At **KiloBryte** I build and maintain the Paige™ app for seniors, and integrated Amplifier Health's Apex voice AI model and Longitudinal API to surface vocal health signals and trends over time. At **Evertz Microsystems** I automated 50+ Selenium tests, cutting regression testing time by 25%. As a Programming Tutor at **Sheridan College** I mentored 125+ students. In open source, I've had PRs merged in **Microsoft VS Code** and **oh-my-opencode-slim**.
+I'm a full-stack developer working across React Native apps, Next.js dashboards, Node.js and Firebase backends, and PHP/MySQL systems. At **KiloBryte** I build and maintain the Paige™ app for seniors, and integrated a voice AI model and longitudinal analysis to surface vocal health signals and trends over time. At **Evertz Microsystems** I automated 50+ Selenium tests, cutting regression testing time by 25%. As a Programming Tutor at **Sheridan College** I mentored 125+ students. In open source, I've had PRs merged in **Microsoft VS Code** and **oh-my-opencode-slim**.
 
 I'm always looking for challenging projects that push me to learn and grow. My skills include:
 
@@ -32,8 +32,8 @@ The ones I use most: **TypeScript, React.js, Next.js, React Native and Node.js**
 
 - Build and maintain the Paige™ app, which keeps seniors in touch with family through one-touch video calls, using React Native, Expo, Next.js, Node.js and Firebase. It's live on the [App Store](https://apps.apple.com/ca/app/paige-connect/id6744338186) and [Google Play](https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA).
 - Work on the native video bridging behind Paige's calls on iOS and Android.
-- Integrated Amplifier Health's Apex voice AI model into our Next.js app to screen each recording for vocal health signals such as stress, fatigue and cognitive load, with an automated cron-job pipeline and a results dashboard.
-- Integrated Amplifier Health's Longitudinal API, so every user gets a baseline, per-recording deltas and a trend over time instead of one-off readings.
+- Integrated a voice AI model into our Next.js app to screen each recording for vocal health signals such as stress, fatigue and cognitive load, with an automated cron-job pipeline and a results dashboard.
+- Integrated a longitudinal analysis API, so every user gets a baseline, per-recording deltas and a trend over time instead of one-off readings.
 
 ### Software QA Engineering Intern, Evertz Microsystems Ltd
 *May 2024 – Aug 2024 · Burlington, ON*
@@ -60,7 +60,7 @@ Here are some of the projects I've worked on:
 
 ### Paige Connect: One-Touch Video Calling for Seniors
 
-Paige keeps aging family members in touch through a one-touch video-calling frame. Paige Connect is its companion app: family members and frame admins use it to set up the frame, manage who can call it, and make and receive calls. I build and maintain it at KiloBryte, including the voice AI that analyzes recordings with Amplifier Health's models.
+Paige keeps aging family members in touch through a one-touch video-calling frame. Paige Connect is its companion app: family members and frame admins use it to set up the frame, manage who can call it, and make and receive calls. I build and maintain it at KiloBryte, including the voice AI integration that analyzes recordings for vocal health signals.
 
 - **Technologies Used:** React Native, Expo, Next.js, Node.js, Firebase, native video bridging
 - **Links:** [App Store](https://apps.apple.com/ca/app/paige-connect/id6744338186) · [Google Play](https://play.google.com/store/apps/details?id=com.kilobryte.paigecompanion&hl=en_CA)

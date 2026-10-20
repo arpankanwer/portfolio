@@ -55,7 +55,7 @@ export default function About() {
             
             <div className="space-y-3 text-slate-600 dark:text-white/70 text-sm sm:text-base leading-relaxed border-l-2 border-primary/40 pl-5">
               <p>
-                At <strong className="text-slate-900 dark:text-white font-medium">KiloBryte</strong>, I build and maintain the Paige™ app for seniors, live on the App Store and Play Store, and integrated Amplifier Health's Apex voice AI model and Longitudinal API to surface vocal health signals and trends over time.
+                At <strong className="text-slate-900 dark:text-white font-medium">KiloBryte</strong>, I build and maintain the Paige™ app for seniors, live on the App Store and Play Store, and integrated a voice AI model and longitudinal analysis to surface vocal health signals and trends over time.
               </p>
               <p>
                 At <strong className="text-slate-900 dark:text-white font-medium">Evertz Microsystems</strong>, I automated 50+ Selenium tests, reducing regression testing time by 25% and enabling faster releases.
